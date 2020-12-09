@@ -4,16 +4,19 @@
 #include <memory>
 #include <stdexcept>
 
-class SwapchainFactory
+class SwapchainFactory final
 {
     private:
         uint32_t amountOfImagesInSwapchain;
+
+        //Read only, no smart pointer required
+        const VkDevice* CACHED_DEVICE;
 
         std::unique_ptr<const VkSwapchainKHR> createSwapchain(const VkDevice* device, const VkSwapchainCreateInfoKHR* swapchainCreateInfo) const;
         std::unique_ptr<const VkImage[]> getImagesInSwapchain(const VkDevice* device, const VkSwapchainKHR* swapchain, uint32_t* amountOfImagesInSwapchain) const;
         std::unique_ptr<const VkImageView[]> createImageViews(const VkDevice* device, const VkImage swapchainImages[], const uint32_t& amountOfImagesInSwapchain) const;
     public:
-        SwapchainFactory(const VkSurfaceKHR* surface, const uint32_t& windowWidth, const uint32_t& windowHeight, const VkDevice* device);
+        SwapchainFactory(const VkDevice* device, const VkSurfaceKHR* surface, const uint32_t& windowWidth, const uint32_t& windowHeight);
         ~SwapchainFactory();
 
         //Read-only "getter fields"

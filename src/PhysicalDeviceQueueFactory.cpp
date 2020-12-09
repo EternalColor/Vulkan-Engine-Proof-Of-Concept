@@ -1,34 +1,26 @@
 #include "PhysicalDeviceQueueFactory.hpp"
 
-PhysicalDeviceQueueFactory::PhysicalDeviceQueueFactory(const VkPhysicalDevice* physicalDevices, const VkQueueFlagBits&& requiredQueueFlags)
-    :   
-        //INITIALIZER ORDER MATTERS!
-        amountOfQueueFamilies { 0 },
-        QUEUE_FAIMILY_PROPERTIES { this->createQueueFamilyProperties(physicalDevices, amountOfQueueFamilies) },
-        DEVICE_QUEUE_CREATE_INFO { this->createDeviceQueueCreateInfo(physicalDevices, requiredQueueFlags, QUEUE_FAIMILY_PROPERTIES.get(), amountOfQueueFamilies) }
+PhysicalDeviceQueueFactory::PhysicalDeviceQueueFactory(const VkPhysicalDevice* physicalDevice, const VkQueueFlagBits&& requiredQueueFlags)
+    :   //INITIALIZER ORDER MATTERS!
+        DEVICE_QUEUE_CREATE_INFO { this->createDeviceQueueCreateInfo(physicalDevice, requiredQueueFlags) }
         
 {
 
 }
 
-std::unique_ptr<const VkQueueFamilyProperties[]> PhysicalDeviceQueueFactory::createQueueFamilyProperties(const VkPhysicalDevice* physicalDevices, uint32_t& amountOfQueueFamilies) const
+std::unique_ptr<const VkDeviceQueueCreateInfo> PhysicalDeviceQueueFactory::createDeviceQueueCreateInfo(const VkPhysicalDevice* physicalDevice, const VkQueueFlagBits& requiredQueueFlags) const
 {
-    //Assume only 1 physical device
-    vkGetPhysicalDeviceQueueFamilyProperties(*physicalDevices, &amountOfQueueFamilies, nullptr);
+   //Assume only 1 physical device
+    uint32_t amountOfQueueFamilies = 0;
+    vkGetPhysicalDeviceQueueFamilyProperties(*physicalDevice, &amountOfQueueFamilies, nullptr);
 
-    //Can not use <const VkQueueFamilyProperties[]> here because vulkan method requires non-const familyProperties parameter
-    std::unique_ptr<VkQueueFamilyProperties[]> familyProperties = std::make_unique<VkQueueFamilyProperties[]>(amountOfQueueFamilies); 
-    vkGetPhysicalDeviceQueueFamilyProperties(*physicalDevices, &amountOfQueueFamilies, familyProperties.get());
+    VkQueueFamilyProperties familyProperties[amountOfQueueFamilies]; 
+    vkGetPhysicalDeviceQueueFamilyProperties(*physicalDevice, &amountOfQueueFamilies, familyProperties);
 
-    return familyProperties;
-}
-
-std::unique_ptr<const VkDeviceQueueCreateInfo> PhysicalDeviceQueueFactory::createDeviceQueueCreateInfo(const VkPhysicalDevice* physicalDevices, const VkQueueFlagBits& requiredQueueFlags, const VkQueueFamilyProperties queueFamilyProperties[], const uint32_t& amountOfQueueFamilies) const
-{
     //Find out which queue family fits the best
     for(uint32_t i = 0; i < amountOfQueueFamilies; ++i)
     {
-        if(queueFamilyProperties[i].queueFlags & requiredQueueFlags)
+        if(familyProperties[i].queueFlags & requiredQueueFlags)
         {
             return std::unique_ptr<const VkDeviceQueueCreateInfo>
             {
@@ -38,7 +30,7 @@ std::unique_ptr<const VkDeviceQueueCreateInfo> PhysicalDeviceQueueFactory::creat
                     nullptr, //pNext
                     0, //flags
                     i, //queueFamilyIndex
-                    queueFamilyProperties[i].queueCount, //queueCount
+                    familyProperties[i].queueCount, //queueCount
                     PhysicalDeviceQueueFactory::QUEUE_PRIORITIES //pQueuePriorities
                 }
             };

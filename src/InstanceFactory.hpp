@@ -6,7 +6,7 @@
 #include <GLFW/glfw3.h>
 #include "Layers.hpp"
 
-class InstanceFactory
+class InstanceFactory final
 {
     private:
         uint32_t extensionCount;

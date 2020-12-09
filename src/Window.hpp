@@ -9,7 +9,7 @@
 
 //Delete struct for GLFWwindow -> so we can use unique_ptr<GLFWwindow, DestroyGLFWwindow>
 //Still requires glfwTerminate() to be executed from elsewhere! -> In Window destructor glfwTerminate() is called
-struct DestroyGLFWwindow
+struct DestroyGLFWwindow final
 {
     void operator()(GLFWwindow* ptr)
     {
@@ -28,15 +28,16 @@ class Window final
 
         std::unique_ptr<GLFWwindow, DestroyGLFWwindow> createWindow(const uint32_t& width, const uint32_t& height, const char* title) const;
 
-        std::unique_ptr<VkSurfaceKHR> createSurface(const VkInstance* vkInstance, GLFWwindow* window) const;
-        std::unique_ptr<VkSurfaceCapabilitiesKHR> createSurfaceCapabilities(const VkPhysicalDevice* physicalDevice, const VkSurfaceKHR* surface) const;
+        std::unique_ptr<const VkSurfaceKHR> createSurface(const VkInstance* vkInstance, const VkPhysicalDevice* physicalDevice, const uint32_t& queueFamilyIndex, GLFWwindow* window) const;
+        void checkSurfaceSupport(const VkPhysicalDevice* physicalDevice, const uint32_t& queueFamilyIndex, const VkSurfaceKHR* surface) const;
+        std::unique_ptr<const VkSurfaceCapabilitiesKHR> createSurfaceCapabilities(const VkPhysicalDevice* physicalDevice, const VkSurfaceKHR* surface) const;
     public:
         //Read-only "getter fields"
         const std::unique_ptr<GLFWwindow, DestroyGLFWwindow> WINDOW;
         const std::unique_ptr<const VkSurfaceKHR> SURFACE;
         const std::unique_ptr<const VkSurfaceCapabilitiesKHR> SURFACE_CAPABILITIES;
 
-        Window(const uint32_t&& width, const uint32_t&& height, const char* title, const VkInstance* instance, const VkPhysicalDevice* physicalDevice);
+        Window(const uint32_t&& width, const uint32_t&& height, const char* title, const VkInstance* instance, const VkPhysicalDevice* physicalDevice, const uint32_t& queueFamilyIndex);
         ~Window(); 
 
         void PollEvents() const;

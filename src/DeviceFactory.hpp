@@ -6,7 +6,7 @@
 #include <vulkan/vulkan.h>
 #include "Layers.hpp"
 
-class DeviceFactory
+class DeviceFactory final
 {
     private:
         const std::vector<const char*> DEVICE_EXTENSIONS;

@@ -1,11 +1,12 @@
 #include "Window.hpp"
 
-Window::Window(const uint32_t&& width, const uint32_t&& height, const char* title, const VkInstance* instance, const VkPhysicalDevice* physicalDevice) 
-    :   width { width },
+Window::Window(const uint32_t&& width, const uint32_t&& height, const char* title, const VkInstance* instance, const VkPhysicalDevice* physicalDevice, const uint32_t& queueFamilyIndex) 
+    :   //INITIALIZATION ORDER MATTERS
+        width { width },
         height { height },
         CACHED_INSTANCE { instance },
         WINDOW { this->createWindow(width, height, title) }, 
-        SURFACE { this->createSurface(this->CACHED_INSTANCE, this->WINDOW.get()) },
+        SURFACE { this->createSurface(this->CACHED_INSTANCE, physicalDevice, queueFamilyIndex, this->WINDOW.get()) },
         SURFACE_CAPABILITIES { this->createSurfaceCapabilities(physicalDevice, this->SURFACE.get()) }
 {
 }
@@ -39,17 +40,35 @@ std::unique_ptr<GLFWwindow, DestroyGLFWwindow> Window::createWindow(const uint32
     return std::unique_ptr<GLFWwindow, DestroyGLFWwindow> { glfwCreateWindow(width, height, title, nullptr, nullptr), DestroyGLFWwindow()};
 }
 
-std::unique_ptr<VkSurfaceKHR> Window::createSurface(const VkInstance* vkInstance, GLFWwindow* window) const
+std::unique_ptr<const VkSurfaceKHR> Window::createSurface(const VkInstance* vkInstance, const VkPhysicalDevice* physicalDevice, const uint32_t& queueFamilyIndex, GLFWwindow* window) const
 {
     std::unique_ptr<VkSurfaceKHR> surface { new VkSurfaceKHR(VK_NULL_HANDLE) };
     glfwCreateWindowSurface(*vkInstance, window, nullptr, surface.get());
 
+    this->checkSurfaceSupport(physicalDevice, queueFamilyIndex, surface.get());
+
     return surface;
 }
 
-std::unique_ptr<VkSurfaceCapabilitiesKHR> Window::createSurfaceCapabilities(const VkPhysicalDevice* physicalDevice, const VkSurfaceKHR* surface) const
+void Window::checkSurfaceSupport(const VkPhysicalDevice* physicalDevice, const uint32_t& queueFamilyIndex, const VkSurfaceKHR* surface) const
+{
+    VkBool32 surfaceSupport = VK_FALSE;
+
+    if(vkGetPhysicalDeviceSurfaceSupportKHR(*physicalDevice, queueFamilyIndex, *surface, &surfaceSupport) != VK_SUCCESS)
+    {
+        throw std::runtime_error("Error while checking surface support!"); 
+    }
+
+    if(surfaceSupport != VK_TRUE)
+    {
+        throw std::runtime_error("Surface is not supported!"); 
+    }
+}
+
+std::unique_ptr<const VkSurfaceCapabilitiesKHR> Window::createSurfaceCapabilities(const VkPhysicalDevice* physicalDevice, const VkSurfaceKHR* surface) const
 {
     std::unique_ptr<VkSurfaceCapabilitiesKHR> surfaceCapabilities = std::make_unique<VkSurfaceCapabilitiesKHR>();
+    
     vkGetPhysicalDeviceSurfaceCapabilitiesKHR(*physicalDevice, *surface, surfaceCapabilities.get());
 
     return surfaceCapabilities;

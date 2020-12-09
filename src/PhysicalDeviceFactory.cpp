@@ -1,7 +1,8 @@
 #include "PhysicalDeviceFactory.hpp"
 
 PhysicalDeviceFactory::PhysicalDeviceFactory(const VkInstance* instance) 
-    :   PHYSICAL_DEVICES { this->getVkPhysicalDevices(instance) },
+    :   //INITIALIZATION ORDER MATTERS
+        PHYSICAL_DEVICES { this->getVkPhysicalDevices(instance) },
         PHYSICAL_DEVICE_FEATURES { this->getVkPhysicalDeviceFeatures(this->PHYSICAL_DEVICES.get()) }
 {
 

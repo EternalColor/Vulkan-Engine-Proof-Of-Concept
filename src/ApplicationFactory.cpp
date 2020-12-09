@@ -1,7 +1,8 @@
 #include "ApplicationFactory.hpp"
 
 ApplicationFactory::ApplicationFactory() 
-    :   DEFAULT_APPLICATION_INFO 
+    :   //INITIALIZATION ORDER MATTERS
+        DEFAULT_APPLICATION_INFO 
         { 
             new VkApplicationInfo
             {

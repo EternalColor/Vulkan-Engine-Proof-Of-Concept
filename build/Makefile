@@ -171,6 +171,33 @@ __/src/ApplicationFactory.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/ApplicationFactory.cpp.s
 .PHONY : __/src/ApplicationFactory.cpp.s
 
+__/src/Attachment.o: __/src/Attachment.cpp.o
+
+.PHONY : __/src/Attachment.o
+
+# target to build an object file
+__/src/Attachment.cpp.o:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.o
+.PHONY : __/src/Attachment.cpp.o
+
+__/src/Attachment.i: __/src/Attachment.cpp.i
+
+.PHONY : __/src/Attachment.i
+
+# target to preprocess a source file
+__/src/Attachment.cpp.i:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.i
+.PHONY : __/src/Attachment.cpp.i
+
+__/src/Attachment.s: __/src/Attachment.cpp.s
+
+.PHONY : __/src/Attachment.s
+
+# target to generate assembly for a file
+__/src/Attachment.cpp.s:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.s
+.PHONY : __/src/Attachment.cpp.s
+
 __/src/DeviceFactory.o: __/src/DeviceFactory.cpp.o
 
 .PHONY : __/src/DeviceFactory.o
@@ -414,6 +441,33 @@ __/src/Runtime.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.s
 .PHONY : __/src/Runtime.cpp.s
 
+__/src/ShaderLoader.o: __/src/ShaderLoader.cpp.o
+
+.PHONY : __/src/ShaderLoader.o
+
+# target to build an object file
+__/src/ShaderLoader.cpp.o:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o
+.PHONY : __/src/ShaderLoader.cpp.o
+
+__/src/ShaderLoader.i: __/src/ShaderLoader.cpp.i
+
+.PHONY : __/src/ShaderLoader.i
+
+# target to preprocess a source file
+__/src/ShaderLoader.cpp.i:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.i
+.PHONY : __/src/ShaderLoader.cpp.i
+
+__/src/ShaderLoader.s: __/src/ShaderLoader.cpp.s
+
+.PHONY : __/src/ShaderLoader.s
+
+# target to generate assembly for a file
+__/src/ShaderLoader.cpp.s:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.s
+.PHONY : __/src/ShaderLoader.cpp.s
+
 __/src/SwapchainFactory.o: __/src/SwapchainFactory.cpp.o
 
 .PHONY : __/src/SwapchainFactory.o
@@ -440,6 +494,33 @@ __/src/SwapchainFactory.s: __/src/SwapchainFactory.cpp.s
 __/src/SwapchainFactory.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.s
 .PHONY : __/src/SwapchainFactory.cpp.s
+
+__/src/ViewportFactory.o: __/src/ViewportFactory.cpp.o
+
+.PHONY : __/src/ViewportFactory.o
+
+# target to build an object file
+__/src/ViewportFactory.cpp.o:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o
+.PHONY : __/src/ViewportFactory.cpp.o
+
+__/src/ViewportFactory.i: __/src/ViewportFactory.cpp.i
+
+.PHONY : __/src/ViewportFactory.i
+
+# target to preprocess a source file
+__/src/ViewportFactory.cpp.i:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.i
+.PHONY : __/src/ViewportFactory.cpp.i
+
+__/src/ViewportFactory.s: __/src/ViewportFactory.cpp.s
+
+.PHONY : __/src/ViewportFactory.s
+
+# target to generate assembly for a file
+__/src/ViewportFactory.cpp.s:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.s
+.PHONY : __/src/ViewportFactory.cpp.s
 
 __/src/Window.o: __/src/Window.cpp.o
 
@@ -480,6 +561,9 @@ help:
 	@echo "... __/src/ApplicationFactory.o"
 	@echo "... __/src/ApplicationFactory.i"
 	@echo "... __/src/ApplicationFactory.s"
+	@echo "... __/src/Attachment.o"
+	@echo "... __/src/Attachment.i"
+	@echo "... __/src/Attachment.s"
 	@echo "... __/src/DeviceFactory.o"
 	@echo "... __/src/DeviceFactory.i"
 	@echo "... __/src/DeviceFactory.s"
@@ -507,9 +591,15 @@ help:
 	@echo "... __/src/Runtime.o"
 	@echo "... __/src/Runtime.i"
 	@echo "... __/src/Runtime.s"
+	@echo "... __/src/ShaderLoader.o"
+	@echo "... __/src/ShaderLoader.i"
+	@echo "... __/src/ShaderLoader.s"
 	@echo "... __/src/SwapchainFactory.o"
 	@echo "... __/src/SwapchainFactory.i"
 	@echo "... __/src/SwapchainFactory.s"
+	@echo "... __/src/ViewportFactory.o"
+	@echo "... __/src/ViewportFactory.i"
+	@echo "... __/src/ViewportFactory.s"
 	@echo "... __/src/Window.o"
 	@echo "... __/src/Window.i"
 	@echo "... __/src/Window.s"

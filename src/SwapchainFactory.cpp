@@ -1,7 +1,9 @@
 #include "SwapchainFactory.hpp"
 
-SwapchainFactory::SwapchainFactory(const VkSurfaceKHR* surface, const uint32_t& windowWidth, const uint32_t& windowHeight, const VkDevice* device)
-    :   amountOfImagesInSwapchain { 0 },
+SwapchainFactory::SwapchainFactory(const VkDevice* device, const VkSurfaceKHR* surface, const uint32_t& windowWidth, const uint32_t& windowHeight)
+    :   //INITIALIZATION ORDER MATTERS
+        amountOfImagesInSwapchain { 0 },
+        CACHED_DEVICE { device },
         SWAPCHAIN_CREATE_INFO 
         {
             new VkSwapchainCreateInfoKHR
@@ -35,7 +37,14 @@ SwapchainFactory::SwapchainFactory(const VkSurfaceKHR* surface, const uint32_t& 
 
 SwapchainFactory::~SwapchainFactory()
 {
+    for(uint32_t i = 0; i < this->amountOfImagesInSwapchain; ++i)
+    {
+        vkDestroyImageView(*this->CACHED_DEVICE, this->SWAPCHAIN_IMAGE_VIEWS[i], nullptr);
+        //TODO: Check why not delete
+        //vkDestroyImage(*this->CACHED_DEVICE, this->SWAPCHAIN_IMAGES[i], nullptr);
+    }
     
+    vkDestroySwapchainKHR(*this->CACHED_DEVICE, *this->SWAPCHAIN, nullptr);
 }
 
 std::unique_ptr<const VkSwapchainKHR> SwapchainFactory::createSwapchain(const VkDevice* device, const VkSwapchainCreateInfoKHR* swapchainCreateInfo) const
