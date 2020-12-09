@@ -1,0 +1,7 @@
+/home/sascha/HDD1/VulkanTest2/CMakeFiles/rebuild_cache.dir
+/home/sascha/HDD1/VulkanTest2/CMakeFiles/edit_cache.dir
+/home/sascha/HDD1/VulkanTest2/src/CMakeFiles/rebuild_cache.dir
+/home/sascha/HDD1/VulkanTest2/src/CMakeFiles/edit_cache.dir
+/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/rebuild_cache.dir
+/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/edit_cache.dir
+/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/SnowfallEngine.dir
