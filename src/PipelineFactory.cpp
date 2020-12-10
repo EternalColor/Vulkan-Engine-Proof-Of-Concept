@@ -19,6 +19,8 @@ PipelineFactory::~PipelineFactory()
 
 std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> PipelineFactory::createShaderStages(const uint32_t& shaderStageCount, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[]) const
 {
+    VkPipelineShaderStageCreateInfo* shaderStageCreateInfos = new VkPipelineShaderStageCreateInfo[shaderStageCount];
+
     VkPipelineShaderStageCreateInfo vertexShaderPipelineStageCreateInfo = {};
     vertexShaderPipelineStageCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
     vertexShaderPipelineStageCreateInfo.pNext = nullptr;
@@ -26,10 +28,11 @@ std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> PipelineFactory::create
     vertexShaderPipelineStageCreateInfo.stage = VK_SHADER_STAGE_VERTEX_BIT;
     vertexShaderPipelineStageCreateInfo.pName = "main";
     vertexShaderPipelineStageCreateInfo.pSpecializationInfo = nullptr;
-
+    
     for(size_t currentVertexShaderCount = 0; currentVertexShaderCount < vertexShaderCount; ++currentVertexShaderCount)
     {
         vertexShaderPipelineStageCreateInfo.module = vertexShaderModules[currentVertexShaderCount]; 
+        shaderStageCreateInfos[currentVertexShaderCount] = vertexShaderPipelineStageCreateInfo;
     }
 
     VkPipelineShaderStageCreateInfo fragmentShaderPipelineStageCreateInfo = {};
@@ -43,11 +46,12 @@ std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> PipelineFactory::create
     for(size_t currentFragmentShaderCount = 0; currentFragmentShaderCount < fragmentShaderCount; ++currentFragmentShaderCount)
     {
         fragmentShaderPipelineStageCreateInfo.module = fragmentShaderModules[currentFragmentShaderCount]; 
+        shaderStageCreateInfos[vertexShaderCount + currentFragmentShaderCount] = fragmentShaderPipelineStageCreateInfo;
     }
 
     return std::unique_ptr<VkPipelineShaderStageCreateInfo[]> 
     {
-        new VkPipelineShaderStageCreateInfo[shaderStageCount] { vertexShaderPipelineStageCreateInfo, fragmentShaderPipelineStageCreateInfo }
+        shaderStageCreateInfos
     };
 }
 

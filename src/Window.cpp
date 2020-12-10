@@ -7,7 +7,8 @@ Window::Window(const uint32_t&& width, const uint32_t&& height, const char* titl
         CACHED_INSTANCE { instance },
         WINDOW { this->createWindow(width, height, title) }, 
         SURFACE { this->createSurface(this->CACHED_INSTANCE, physicalDevice, queueFamilyIndex, this->WINDOW.get()) },
-        SURFACE_CAPABILITIES { this->createSurfaceCapabilities(physicalDevice, this->SURFACE.get()) }
+        SURFACE_CAPABILITIES { this->createSurfaceCapabilities(physicalDevice, this->SURFACE.get()) },
+        SURFACE_FORMATS { this->getSurfaceFormats(physicalDevice, this->SURFACE.get()) }
 {
 }
 
@@ -40,16 +41,6 @@ std::unique_ptr<GLFWwindow, DestroyGLFWwindow> Window::createWindow(const uint32
     return std::unique_ptr<GLFWwindow, DestroyGLFWwindow> { glfwCreateWindow(width, height, title, nullptr, nullptr), DestroyGLFWwindow()};
 }
 
-std::unique_ptr<const VkSurfaceKHR> Window::createSurface(const VkInstance* vkInstance, const VkPhysicalDevice* physicalDevice, const uint32_t& queueFamilyIndex, GLFWwindow* window) const
-{
-    std::unique_ptr<VkSurfaceKHR> surface { new VkSurfaceKHR(VK_NULL_HANDLE) };
-    glfwCreateWindowSurface(*vkInstance, window, nullptr, surface.get());
-
-    this->checkSurfaceSupport(physicalDevice, queueFamilyIndex, surface.get());
-
-    return surface;
-}
-
 void Window::checkSurfaceSupport(const VkPhysicalDevice* physicalDevice, const uint32_t& queueFamilyIndex, const VkSurfaceKHR* surface) const
 {
     VkBool32 surfaceSupport = VK_FALSE;
@@ -65,6 +56,16 @@ void Window::checkSurfaceSupport(const VkPhysicalDevice* physicalDevice, const u
     }
 }
 
+std::unique_ptr<const VkSurfaceKHR> Window::createSurface(const VkInstance* vkInstance, const VkPhysicalDevice* physicalDevice, const uint32_t& queueFamilyIndex, GLFWwindow* window) const
+{
+    std::unique_ptr<VkSurfaceKHR> surface { new VkSurfaceKHR(VK_NULL_HANDLE) };
+    glfwCreateWindowSurface(*vkInstance, window, nullptr, surface.get());
+
+    this->checkSurfaceSupport(physicalDevice, queueFamilyIndex, surface.get());
+
+    return surface;
+}
+
 std::unique_ptr<const VkSurfaceCapabilitiesKHR> Window::createSurfaceCapabilities(const VkPhysicalDevice* physicalDevice, const VkSurfaceKHR* surface) const
 {
     std::unique_ptr<VkSurfaceCapabilitiesKHR> surfaceCapabilities = std::make_unique<VkSurfaceCapabilitiesKHR>();
@@ -72,6 +73,17 @@ std::unique_ptr<const VkSurfaceCapabilitiesKHR> Window::createSurfaceCapabilitie
     vkGetPhysicalDeviceSurfaceCapabilitiesKHR(*physicalDevice, *surface, surfaceCapabilities.get());
 
     return surfaceCapabilities;
+}
+
+std::unique_ptr<const VkSurfaceFormatKHR[]> Window::getSurfaceFormats(const VkPhysicalDevice* physicalDevice, const VkSurfaceKHR* surface) const
+{
+    uint32_t amountOfFormats = 0;
+    vkGetPhysicalDeviceSurfaceFormatsKHR(*physicalDevice, *surface, &amountOfFormats, nullptr);
+
+    std::unique_ptr<VkSurfaceFormatKHR[]> surfaceFormats = std::make_unique<VkSurfaceFormatKHR[]>(amountOfFormats);
+    vkGetPhysicalDeviceSurfaceFormatsKHR(*physicalDevice, *surface, &amountOfFormats, surfaceFormats.get());
+
+    return surfaceFormats;
 }
 
 const bool Window::CloseRequested() const

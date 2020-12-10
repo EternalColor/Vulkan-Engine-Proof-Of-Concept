@@ -19,27 +19,29 @@ ShaderLoader::~ShaderLoader()
 }
 
 //Shader Code is interpreted as uint32_t
-std::unique_ptr<const std::vector<uint32_t>> ShaderLoader::readFile(const std::string& fileName) const
+//size_t fileSize will be assigned and returned via reference
+std::unique_ptr<const uint32_t[]> ShaderLoader::readFile(const std::string& fileName, size_t& fileSize) const
 {
     //Set carret at end of file, so we can tell its size 
     std::ifstream file(fileName, std::ios::binary | std::ios::ate);
 
     if(file)
     {
-        size_t fileSize = file.tellg();
-        //Heap allocation happens here but it MUST be assigned to a smart pointer afterwards
-        std::vector<char>* fileBuffer = new std::vector<char>(fileSize);
+        fileSize = file.tellg();
+
+        char* fileBuffer = new char[fileSize];
 
         //Reset carret and then read the whole file, we now know its size
         file.seekg(0);
-        file.read(fileBuffer->data(), fileSize);
+        file.read(fileBuffer, fileSize);
 
         file.close();
 
-        return std::unique_ptr<const std::vector<uint32_t>>
+        return std::unique_ptr<const uint32_t[]>
         {
-            //Shader Code is interpreted as uint32_t
-            reinterpret_cast<const std::vector<uint32_t> *>(fileBuffer)
+            //Shader code is represented as uint32_t and not char so we cast the whole array
+            //Assuming the file is in uint32_t format so we dont need to recast every element. (This is standard SPIR-V behaviour)
+            reinterpret_cast<const uint32_t*>(fileBuffer)
         };
     }
     else
@@ -65,10 +67,11 @@ std::unique_ptr<const VkShaderModule[]> ShaderLoader::createShaderModules(const 
 
     for(uint32_t i = 0; i < shaderPaths.size(); ++i)
     {
-        const std::unique_ptr<const std::vector<uint32_t>> code = this->readFile(shaderPaths[i]);
+        size_t fileSize = 0;
+        const std::unique_ptr<const uint32_t[]> code = this->readFile(shaderPaths[i], fileSize);
 
-        shaderCreateInfo.codeSize = code.get()->size();
-        shaderCreateInfo.pCode = code.get()->data();
+        shaderCreateInfo.codeSize = fileSize;
+        shaderCreateInfo.pCode = code.get();
 
         vkCreateShaderModule(*device, &shaderCreateInfo, nullptr, &shaderModules[i]);
     }

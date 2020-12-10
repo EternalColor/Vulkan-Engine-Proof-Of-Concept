@@ -1,9 +1,9 @@
-#include "Runtime.hpp"
+#include "VulkanWrapper.hpp"
 
-Runtime::Runtime() 
+VulkanWrapper::VulkanWrapper() 
     :   //INITIALIZATION ORDER MATTERS
-        VERTEX_SHADER_PATHS { },
-        FRAGMENT_SHADER_PATHS {  },
+        VERTEX_SHADER_PATHS { "/home/sascha/HDD1/VulkanTest2/build/vert.spv" },
+        FRAGMENT_SHADER_PATHS { "/home/sascha/HDD1/VulkanTest2/build/frag.spv" },
         LAYERS { std::make_unique<Layers>() }, 
         APPLICATION_FACTORY { std::make_unique<ApplicationFactory>() },
         INSTANCE_FACTORY { std::make_unique<InstanceFactory>(this->APPLICATION_FACTORY->DEFAULT_APPLICATION_INFO.get(), this->LAYERS.get()) },
@@ -14,6 +14,12 @@ Runtime::Runtime()
         SWAPCHAIN_FACTORY { std::make_unique<const SwapchainFactory>(this->DEVICE_FACTORY->DEVICE.get(), this->WINDOW->SURFACE.get(), this->WINDOW->GetWidth(), this->WINDOW->GetHeight()) },
         SHADER_LOADER { std::make_unique<const ShaderLoader>(this->DEVICE_FACTORY->DEVICE.get(), this->VERTEX_SHADER_PATHS, this->FRAGMENT_SHADER_PATHS) },
         VIEWPORT_FACTORY { std::make_unique<const ViewportFactory>(this->WINDOW->GetWidth(), this->WINDOW->GetHeight()) },
+        ATTACHMENT_FACTORY { std::make_unique<const AttachmentFactory>( &this->WINDOW->SURFACE_FORMATS[0].format ) },
+        SUBPASS { std::make_unique<const Subpass>(this->ATTACHMENT_FACTORY->REFERENCE.get()) },
+        RENDERPASS { std::make_unique<const Renderpass>(this->DEVICE_FACTORY->DEVICE.get(), this->ATTACHMENT_FACTORY->DESCRIPTION.get(), this->SUBPASS->DESCRIPTION.get(), this->SUBPASS->DEPENDENCY.get()) },
+        PIPELINE_FACTORY { std::make_unique<const PipelineFactory>(this->DEVICE_FACTORY->DEVICE.get(), this->SHADER_LOADER->VERTEX_SHADER_COUNT, this->SHADER_LOADER->FRAGMENT_SHADER_COUNT, this->SHADER_LOADER->VERTEX_SHADERS.get(), this->SHADER_LOADER->FRAGMENT_SHADERS.get(), this->RENDERPASS->RENDER_PASS.get(), this->VIEWPORT_FACTORY->VIEWPORT.get(), this->VIEWPORT_FACTORY->SCISSOR.get()) },
+        SEMAPHORE_FACTORY { std::make_unique<const SemaphoreFactory>(this->DEVICE_FACTORY->DEVICE.get()) },
+        //TODO: place game loop elsewhere
         GAME_LOOP { std::make_unique<const GameLoop>(this->WINDOW.get()) }
 {
 }

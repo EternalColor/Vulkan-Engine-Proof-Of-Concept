@@ -13,9 +13,14 @@
 #include "SwapchainFactory.hpp"
 #include "ShaderLoader.hpp"
 #include "ViewportFactory.hpp"
+#include "AttachmentFactory.hpp"
+#include "Renderpass.hpp"
+#include "Subpass.hpp"
+#include "PipelineFactory.hpp"
+#include "SemaphoreFactory.hpp"
 #include "GameLoop.hpp"
 
-class Runtime final
+class VulkanWrapper final
 {
     private:
         //TODO: Load from folder
@@ -33,8 +38,13 @@ class Runtime final
         const std::unique_ptr<const SwapchainFactory> SWAPCHAIN_FACTORY;
         const std::unique_ptr<const ShaderLoader> SHADER_LOADER;
         const std::unique_ptr<const ViewportFactory> VIEWPORT_FACTORY;
+        const std::unique_ptr<const AttachmentFactory> ATTACHMENT_FACTORY;
+        const std::unique_ptr<const Subpass> SUBPASS;
+        const std::unique_ptr<const Renderpass> RENDERPASS;
+        const std::unique_ptr<const PipelineFactory> PIPELINE_FACTORY;
+        const std::unique_ptr<const SemaphoreFactory> SEMAPHORE_FACTORY;
         const std::unique_ptr<const GameLoop> GAME_LOOP;
     public: 
-        Runtime();
-        ~Runtime() = default;
+        VulkanWrapper();
+        ~VulkanWrapper() = default;
 };  

@@ -1,6 +1,7 @@
 add_executable(${PROJECT_NAME} ${SRC})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE vulkan)
+#Libraries that are needed by glfw3 inderictely
 target_link_libraries(${PROJECT_NAME} PRIVATE dl)
 target_link_libraries(${PROJECT_NAME} PRIVATE pthread)
 target_link_libraries(${PROJECT_NAME} PRIVATE X11)

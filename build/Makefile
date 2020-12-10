@@ -171,32 +171,32 @@ __/src/ApplicationFactory.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/ApplicationFactory.cpp.s
 .PHONY : __/src/ApplicationFactory.cpp.s
 
-__/src/Attachment.o: __/src/Attachment.cpp.o
+__/src/AttachmentFactory.o: __/src/AttachmentFactory.cpp.o
 
-.PHONY : __/src/Attachment.o
+.PHONY : __/src/AttachmentFactory.o
 
 # target to build an object file
-__/src/Attachment.cpp.o:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.o
-.PHONY : __/src/Attachment.cpp.o
+__/src/AttachmentFactory.cpp.o:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/AttachmentFactory.cpp.o
+.PHONY : __/src/AttachmentFactory.cpp.o
 
-__/src/Attachment.i: __/src/Attachment.cpp.i
+__/src/AttachmentFactory.i: __/src/AttachmentFactory.cpp.i
 
-.PHONY : __/src/Attachment.i
+.PHONY : __/src/AttachmentFactory.i
 
 # target to preprocess a source file
-__/src/Attachment.cpp.i:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.i
-.PHONY : __/src/Attachment.cpp.i
+__/src/AttachmentFactory.cpp.i:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/AttachmentFactory.cpp.i
+.PHONY : __/src/AttachmentFactory.cpp.i
 
-__/src/Attachment.s: __/src/Attachment.cpp.s
+__/src/AttachmentFactory.s: __/src/AttachmentFactory.cpp.s
 
-.PHONY : __/src/Attachment.s
+.PHONY : __/src/AttachmentFactory.s
 
 # target to generate assembly for a file
-__/src/Attachment.cpp.s:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.s
-.PHONY : __/src/Attachment.cpp.s
+__/src/AttachmentFactory.cpp.s:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/AttachmentFactory.cpp.s
+.PHONY : __/src/AttachmentFactory.cpp.s
 
 __/src/DeviceFactory.o: __/src/DeviceFactory.cpp.o
 
@@ -495,33 +495,6 @@ __/src/Renderpass.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.s
 .PHONY : __/src/Renderpass.cpp.s
 
-__/src/Runtime.o: __/src/Runtime.cpp.o
-
-.PHONY : __/src/Runtime.o
-
-# target to build an object file
-__/src/Runtime.cpp.o:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o
-.PHONY : __/src/Runtime.cpp.o
-
-__/src/Runtime.i: __/src/Runtime.cpp.i
-
-.PHONY : __/src/Runtime.i
-
-# target to preprocess a source file
-__/src/Runtime.cpp.i:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.i
-.PHONY : __/src/Runtime.cpp.i
-
-__/src/Runtime.s: __/src/Runtime.cpp.s
-
-.PHONY : __/src/Runtime.s
-
-# target to generate assembly for a file
-__/src/Runtime.cpp.s:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.s
-.PHONY : __/src/Runtime.cpp.s
-
 __/src/SemaphoreFactory.o: __/src/SemaphoreFactory.cpp.o
 
 .PHONY : __/src/SemaphoreFactory.o
@@ -657,6 +630,33 @@ __/src/ViewportFactory.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.s
 .PHONY : __/src/ViewportFactory.cpp.s
 
+__/src/VulkanWrapper.o: __/src/VulkanWrapper.cpp.o
+
+.PHONY : __/src/VulkanWrapper.o
+
+# target to build an object file
+__/src/VulkanWrapper.cpp.o:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o
+.PHONY : __/src/VulkanWrapper.cpp.o
+
+__/src/VulkanWrapper.i: __/src/VulkanWrapper.cpp.i
+
+.PHONY : __/src/VulkanWrapper.i
+
+# target to preprocess a source file
+__/src/VulkanWrapper.cpp.i:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.i
+.PHONY : __/src/VulkanWrapper.cpp.i
+
+__/src/VulkanWrapper.s: __/src/VulkanWrapper.cpp.s
+
+.PHONY : __/src/VulkanWrapper.s
+
+# target to generate assembly for a file
+__/src/VulkanWrapper.cpp.s:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.s
+.PHONY : __/src/VulkanWrapper.cpp.s
+
 __/src/Window.o: __/src/Window.cpp.o
 
 .PHONY : __/src/Window.o
@@ -696,9 +696,9 @@ help:
 	@echo "... __/src/ApplicationFactory.o"
 	@echo "... __/src/ApplicationFactory.i"
 	@echo "... __/src/ApplicationFactory.s"
-	@echo "... __/src/Attachment.o"
-	@echo "... __/src/Attachment.i"
-	@echo "... __/src/Attachment.s"
+	@echo "... __/src/AttachmentFactory.o"
+	@echo "... __/src/AttachmentFactory.i"
+	@echo "... __/src/AttachmentFactory.s"
 	@echo "... __/src/DeviceFactory.o"
 	@echo "... __/src/DeviceFactory.i"
 	@echo "... __/src/DeviceFactory.s"
@@ -732,9 +732,6 @@ help:
 	@echo "... __/src/Renderpass.o"
 	@echo "... __/src/Renderpass.i"
 	@echo "... __/src/Renderpass.s"
-	@echo "... __/src/Runtime.o"
-	@echo "... __/src/Runtime.i"
-	@echo "... __/src/Runtime.s"
 	@echo "... __/src/SemaphoreFactory.o"
 	@echo "... __/src/SemaphoreFactory.i"
 	@echo "... __/src/SemaphoreFactory.s"
@@ -750,6 +747,9 @@ help:
 	@echo "... __/src/ViewportFactory.o"
 	@echo "... __/src/ViewportFactory.i"
 	@echo "... __/src/ViewportFactory.s"
+	@echo "... __/src/VulkanWrapper.o"
+	@echo "... __/src/VulkanWrapper.i"
+	@echo "... __/src/VulkanWrapper.s"
 	@echo "... __/src/Window.o"
 	@echo "... __/src/Window.i"
 	@echo "... __/src/Window.s"

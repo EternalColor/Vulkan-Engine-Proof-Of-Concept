@@ -4,8 +4,8 @@
 build/CMakeFiles/SnowfallEngine.dir/__/src/ApplicationFactory.cpp.o: src/ApplicationFactory.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/ApplicationFactory.cpp.o: src/ApplicationFactory.hpp
 
-build/CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.o: src/Attachment.cpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.o: src/Attachment.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/AttachmentFactory.cpp.o: src/AttachmentFactory.cpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/AttachmentFactory.cpp.o: src/AttachmentFactory.hpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.o: src/DeviceFactory.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.o: src/DeviceFactory.hpp
@@ -26,6 +26,7 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o: src/Layers.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o: src/Layers.hpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/ApplicationFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/AttachmentFactory.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/DeviceFactory.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/GameLoop.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/InstanceFactory.hpp
@@ -33,11 +34,15 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/Layers.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/Main.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/PhysicalDeviceFactory.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/PhysicalDeviceQueueFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/PipelineFactory.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/Renderer.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/Runtime.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/Renderpass.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/SemaphoreFactory.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/ShaderLoader.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/Subpass.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/SwapchainFactory.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/ViewportFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/VulkanWrapper.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/Window.hpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.o: src/PhysicalDeviceFactory.cpp
@@ -55,20 +60,6 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o: src/Renderer.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o: src/Renderpass.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o: src/Renderpass.hpp
 
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/ApplicationFactory.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/DeviceFactory.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/GameLoop.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/InstanceFactory.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/Layers.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/PhysicalDeviceFactory.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/PhysicalDeviceQueueFactory.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/Runtime.cpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/Runtime.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/ShaderLoader.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/SwapchainFactory.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/ViewportFactory.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/Window.hpp
-
 build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o: src/SemaphoreFactory.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o: src/SemaphoreFactory.hpp
 
@@ -83,6 +74,25 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o: src/Swapchain
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o: src/ViewportFactory.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o: src/ViewportFactory.hpp
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/ApplicationFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/AttachmentFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/DeviceFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/GameLoop.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/InstanceFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/Layers.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/PhysicalDeviceFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/PhysicalDeviceQueueFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/PipelineFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/Renderpass.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/SemaphoreFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/ShaderLoader.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/Subpass.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/SwapchainFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/ViewportFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/VulkanWrapper.cpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/VulkanWrapper.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o: src/Window.hpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.o: src/Window.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.o: src/Window.hpp

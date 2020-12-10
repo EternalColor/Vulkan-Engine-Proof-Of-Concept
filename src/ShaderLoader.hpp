@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vulkan/vulkan.h>
-#include <iostream>
+#include <algorithm>
 #include <memory>
 #include <vector>
 #include <string>
@@ -12,7 +12,7 @@ class ShaderLoader final
     private:
         //Read only, no smart pointer required
         const VkDevice* CACHED_DEVICE;
-        std::unique_ptr<const std::vector<uint32_t>> readFile(const std::string& fileName) const;
+        std::unique_ptr<const uint32_t[]> readFile(const std::string& fileName, size_t& fileSize) const;
         std::unique_ptr<const VkShaderModule[]> createShaderModules(const VkDevice* device, const std::vector<std::string>& shaderPaths) const;
         void DestroyShaderModulesOfShaderCategory(const VkShaderModule shaderModules[], const uint32_t& shaderCount) const;
     public: 

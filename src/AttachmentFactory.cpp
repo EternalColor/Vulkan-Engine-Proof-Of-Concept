@@ -1,8 +1,8 @@
-#include "Attachment.hpp"
+#include "AttachmentFactory.hpp"
 
-uint32_t Attachment::attachmentCount = 0;
+uint32_t AttachmentFactory::attachmentCount = 0;
 
-Attachment::Attachment(const VkFormat* format)
+AttachmentFactory::AttachmentFactory(const VkFormat* format)
     :   //INITIALIZATION ORDER MATTERS
         DESCRIPTION 
         {
@@ -23,10 +23,10 @@ Attachment::Attachment(const VkFormat* format)
         {
             new VkAttachmentReference
             {
-                Attachment::attachmentCount,                //attachment
+                AttachmentFactory::attachmentCount,                //attachment
                 VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL    //layout
             }
         }
 {
-    ++Attachment::attachmentCount;
+    ++AttachmentFactory::attachmentCount;
 }

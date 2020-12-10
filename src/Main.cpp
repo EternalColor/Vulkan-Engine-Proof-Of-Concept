@@ -3,12 +3,12 @@
 #include "Renderer.hpp"
 #include "Window.hpp"
 #include "GameLoop.hpp"
-#include "Runtime.hpp"
+#include "VulkanWrapper.hpp"
 
 //Remove and compile as shared library
 int main()
 {
     glfwInit();
     
-    std::unique_ptr<Runtime> runtime = std::make_unique<Runtime>();
+    std::make_unique<VulkanWrapper>();
 }
