@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/sascha/HDD1/VulkanTest2/src/Attachment.cpp
-Attachment.hpp
-/home/sascha/HDD1/VulkanTest2/src/Attachment.hpp
+/home/sascha/HDD1/VulkanTest2/src/SemaphoreFactory.cpp
+SemaphoreFactory.hpp
+/home/sascha/HDD1/VulkanTest2/src/SemaphoreFactory.hpp
 
-/home/sascha/HDD1/VulkanTest2/src/Attachment.hpp
+/home/sascha/HDD1/VulkanTest2/src/SemaphoreFactory.hpp
 vulkan/vulkan.h
 -
 memory

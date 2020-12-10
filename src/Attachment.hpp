@@ -3,12 +3,15 @@
 #include <vulkan/vulkan.h>
 #include <memory>
 
-class Attachment
+class Attachment final
 {
+    private:
+        static uint32_t attachmentCount;
     public:
-        Attachment();
-        ~Attachment();
+        Attachment(const VkFormat* format);
+        ~Attachment() = default;
 
-        const std::unique_ptr<VkAttachmentDescription> DESCRIPTION;
-        const std::unique_ptr<VkAttachmentReference> REFERENCE;
+        //Read-only "getter fields"
+        const std::unique_ptr<const VkAttachmentDescription> DESCRIPTION;
+        const std::unique_ptr<const VkAttachmentReference> REFERENCE;
 };

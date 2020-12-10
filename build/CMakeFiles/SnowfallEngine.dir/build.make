@@ -115,9 +115,22 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.s"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/DeviceFactory.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.s
 
+build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
+build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.o: src/FramebufferFactory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.o"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/FramebufferFactory.cpp
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.i"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sascha/HDD1/VulkanTest2/src/FramebufferFactory.cpp > CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.i
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.s"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/FramebufferFactory.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.s
+
 build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o: src/GameLoop.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/GameLoop.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.i: cmake_force
@@ -130,7 +143,7 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.s: cmake_force
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.o: src/InstanceFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/InstanceFactory.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.i: cmake_force
@@ -143,7 +156,7 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.s: cmake_force
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o: src/Layers.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/Layers.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.i: cmake_force
@@ -156,7 +169,7 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.s: cmake_force
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o: src/Main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/Main.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.i: cmake_force
@@ -169,7 +182,7 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.s: cmake_force
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.o: src/PhysicalDeviceFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/PhysicalDeviceFactory.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.i: cmake_force
@@ -182,7 +195,7 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.s: cmake_fo
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o: src/PhysicalDeviceQueueFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/PhysicalDeviceQueueFactory.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.i: cmake_force
@@ -193,9 +206,22 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.s: cma
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.s"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/PhysicalDeviceQueueFactory.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.s
 
+build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
+build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.o: src/PipelineFactory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.o"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/PipelineFactory.cpp
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.i"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sascha/HDD1/VulkanTest2/src/PipelineFactory.cpp > CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.i
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.s"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/PipelineFactory.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.s
+
 build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o: src/Renderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/Renderer.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.i: cmake_force
@@ -206,9 +232,22 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.s"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/Renderer.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.s
 
+build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
+build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o: src/Renderpass.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/Renderpass.cpp
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.i"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sascha/HDD1/VulkanTest2/src/Renderpass.cpp > CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.i
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.s"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/Renderpass.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.s
+
 build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/Runtime.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/Runtime.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.i: cmake_force
@@ -219,9 +258,22 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.s"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/Runtime.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.s
 
+build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
+build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o: src/SemaphoreFactory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/SemaphoreFactory.cpp
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.i"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sascha/HDD1/VulkanTest2/src/SemaphoreFactory.cpp > CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.i
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.s"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/SemaphoreFactory.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.s
+
 build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o: src/ShaderLoader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/ShaderLoader.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.i: cmake_force
@@ -232,9 +284,22 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.s"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/ShaderLoader.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.s
 
+build/CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
+build/CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.o: src/Subpass.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.o"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/Subpass.cpp
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.i"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sascha/HDD1/VulkanTest2/src/Subpass.cpp > CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.i
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.s"
+	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sascha/HDD1/VulkanTest2/src/Subpass.cpp -o CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.s
+
 build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o: src/SwapchainFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/SwapchainFactory.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.i: cmake_force
@@ -247,7 +312,7 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.s: cmake_force
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o: src/ViewportFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/ViewportFactory.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.i: cmake_force
@@ -260,7 +325,7 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.s: cmake_force
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.o: build/CMakeFiles/SnowfallEngine.dir/flags.make
 build/CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.o: src/Window.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object build/CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.o"
 	cd /home/sascha/HDD1/VulkanTest2/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.o -c /home/sascha/HDD1/VulkanTest2/src/Window.cpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.i: cmake_force
@@ -276,15 +341,20 @@ SnowfallEngine_OBJECTS = \
 "CMakeFiles/SnowfallEngine.dir/__/src/ApplicationFactory.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.o" \
+"CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o" \
+"CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o" \
+"CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o" \
+"CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o" \
+"CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o" \
 "CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.o"
@@ -295,21 +365,26 @@ SnowfallEngine_EXTERNAL_OBJECTS =
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/ApplicationFactory.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/Attachment.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.o
+build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o
+build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o
+build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o
+build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o
+build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/__/src/Window.cpp.o
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/build.make
 build/SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable SnowfallEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable SnowfallEngine"
 	cd /home/sascha/HDD1/VulkanTest2/build && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SnowfallEngine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

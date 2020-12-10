@@ -11,6 +11,9 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.o: src/DeviceFactor
 build/CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.o: src/DeviceFactory.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.o: src/Layers.hpp
 
+build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.o: src/FramebufferFactory.cpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.o: src/FramebufferFactory.hpp
+
 build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o: src/GameLoop.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o: src/GameLoop.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o: src/Window.hpp
@@ -43,8 +46,14 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceFactory.cpp.o: src/Phys
 build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o: src/PhysicalDeviceQueueFactory.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o: src/PhysicalDeviceQueueFactory.hpp
 
+build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.o: src/PipelineFactory.cpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.o: src/PipelineFactory.hpp
+
 build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o: src/Renderer.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o: src/Renderer.hpp
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o: src/Renderpass.cpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o: src/Renderpass.hpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/ApplicationFactory.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/DeviceFactory.hpp
@@ -60,8 +69,14 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/SwapchainFactory.h
 build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/ViewportFactory.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Runtime.cpp.o: src/Window.hpp
 
+build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o: src/SemaphoreFactory.cpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/SemaphoreFactory.cpp.o: src/SemaphoreFactory.hpp
+
 build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o: src/ShaderLoader.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/ShaderLoader.cpp.o: src/ShaderLoader.hpp
+
+build/CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.o: src/Subpass.cpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/Subpass.cpp.o: src/Subpass.hpp
 
 build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o: src/SwapchainFactory.cpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/SwapchainFactory.cpp.o: src/SwapchainFactory.hpp

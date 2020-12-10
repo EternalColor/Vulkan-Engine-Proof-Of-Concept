@@ -3,7 +3,7 @@
 #include <vulkan/vulkan.h>
 #include <memory>
 
-class ViewportFactory
+class ViewportFactory final
 {
     private: 
         std::unique_ptr<const VkViewport> createViewport(const uint32_t& windowWidth, const uint32_t& windowHeight) const;

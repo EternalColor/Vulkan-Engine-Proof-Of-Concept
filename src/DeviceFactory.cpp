@@ -16,9 +16,6 @@ DeviceFactory::~DeviceFactory()
 
 std::unique_ptr<const VkDevice> DeviceFactory::createVkDevice(const VkInstance* vkInstance, const VkPhysicalDevice physicalDevices[], const VkDeviceQueueCreateInfo* deviceQueueCreateInfo, const Layers* layers, const std::vector<const char*>& extensions, const VkPhysicalDeviceFeatures* physicalDeviceFeatures) const
 {
-    //Can not use <const VkDevice> here because vulkan method requires non-const device parameter
-    std::unique_ptr<VkDevice> device { new VkDevice(VK_NULL_HANDLE) };
-
     VkDeviceCreateInfo deviceCreateInfo {};
     deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
     deviceCreateInfo.pNext = nullptr;
@@ -30,6 +27,9 @@ std::unique_ptr<const VkDevice> DeviceFactory::createVkDevice(const VkInstance* 
     deviceCreateInfo.enabledExtensionCount = extensions.size();
     deviceCreateInfo.ppEnabledExtensionNames = extensions.data();
     deviceCreateInfo.pEnabledFeatures = physicalDeviceFeatures;
+
+    //Can not use <const VkDevice> here because vulkan method requires non-const device parameter
+    std::unique_ptr<VkDevice> device { new VkDevice(VK_NULL_HANDLE) };
 
     //TODO: Choose better device than just 0
     if(vkCreateDevice(physicalDevices[0], &deviceCreateInfo, nullptr, device.get()) != VK_SUCCESS)

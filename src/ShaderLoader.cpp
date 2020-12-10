@@ -4,8 +4,8 @@ ShaderLoader::ShaderLoader(const VkDevice* device, const std::vector<std::string
     :   //INITIALIZATION ORDER MATTERS
         CACHED_DEVICE { device },
         //The amount of shader is the same as the amount of paths of the corresponding shader category
-        vertexShaderCount { vertexShaderPaths.size() },
-        fragmentShaderCount { fragmentShaderPaths.size() },
+        VERTEX_SHADER_COUNT { vertexShaderPaths.size() },
+        FRAGMENT_SHADER_COUNT { fragmentShaderPaths.size() },
         VERTEX_SHADERS { this->createShaderModules(this->CACHED_DEVICE, vertexShaderPaths) },
         FRAGMENT_SHADERS { this->createShaderModules(this->CACHED_DEVICE, fragmentShaderPaths) }
 {
@@ -14,8 +14,8 @@ ShaderLoader::ShaderLoader(const VkDevice* device, const std::vector<std::string
 
 ShaderLoader::~ShaderLoader()
 {
-    this->DestroyShaderModulesOfShaderCategory(this->VERTEX_SHADERS.get(), this->vertexShaderCount);
-    this->DestroyShaderModulesOfShaderCategory(this->FRAGMENT_SHADERS.get(), this->fragmentShaderCount);
+    this->DestroyShaderModulesOfShaderCategory(this->VERTEX_SHADERS.get(), this->VERTEX_SHADER_COUNT);
+    this->DestroyShaderModulesOfShaderCategory(this->FRAGMENT_SHADERS.get(), this->FRAGMENT_SHADER_COUNT);
 }
 
 //Shader Code is interpreted as uint32_t
