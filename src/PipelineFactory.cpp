@@ -3,9 +3,10 @@
 PipelineFactory::PipelineFactory(const VkDevice* device, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[], const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor)
     :   //INITIALIZER ORDER MATTERS!
         CACHED_DEVICE { device },
-        SHADER_STAGES { this->createShaderStages(vertexShaderCount, fragmentShaderCount, vertexShaderModules, fragmentShaderModules) },
+        SHADER_STAGE_COUNT { 2 },
+        SHADER_STAGES { this->createShaderStages(this->SHADER_STAGE_COUNT, vertexShaderCount, fragmentShaderCount, vertexShaderModules, fragmentShaderModules) },
         PIPELINE_LAYOUT { this->createPipelineLayout(device) },
-        PIPELINE { this->createPipeline(device, this->SHADER_STAGES.get(), this->PIPELINE_LAYOUT.get(), renderPass, viewport, scissor) }
+        PIPELINE { this->createPipeline(device, this->SHADER_STAGE_COUNT, this->SHADER_STAGES.get(), this->PIPELINE_LAYOUT.get(), renderPass, viewport, scissor) }
 {
 
 }
@@ -16,7 +17,7 @@ PipelineFactory::~PipelineFactory()
     vkDestroyPipeline(*this->CACHED_DEVICE, *this->PIPELINE, nullptr);
 }
 
-std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> PipelineFactory::createShaderStages(const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[]) const
+std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> PipelineFactory::createShaderStages(const uint32_t& shaderStageCount, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[]) const
 {
     VkPipelineShaderStageCreateInfo vertexShaderPipelineStageCreateInfo = {};
     vertexShaderPipelineStageCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
@@ -46,7 +47,7 @@ std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> PipelineFactory::create
 
     return std::unique_ptr<VkPipelineShaderStageCreateInfo[]> 
     {
-        new VkPipelineShaderStageCreateInfo[2] { vertexShaderPipelineStageCreateInfo, fragmentShaderPipelineStageCreateInfo }
+        new VkPipelineShaderStageCreateInfo[shaderStageCount] { vertexShaderPipelineStageCreateInfo, fragmentShaderPipelineStageCreateInfo }
     };
 }
 
@@ -68,7 +69,7 @@ std::unique_ptr<const VkPipelineLayout> PipelineFactory::createPipelineLayout(co
     return pipelineLayout;
 }
 
-std::unique_ptr<const VkPipeline> PipelineFactory::createPipeline(const VkDevice* device, const VkPipelineShaderStageCreateInfo shaderStageCreateInfos[], const VkPipelineLayout* layout, const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor) const
+std::unique_ptr<const VkPipeline> PipelineFactory::createPipeline(const VkDevice* device, const uint32_t& shaderStageCount, const VkPipelineShaderStageCreateInfo shaderStageCreateInfos[], const VkPipelineLayout* layout, const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor) const
 {
     VkPipelineVertexInputStateCreateInfo pipelineVertexInputStateCreateInfo = {};
     pipelineVertexInputStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
@@ -162,7 +163,7 @@ std::unique_ptr<const VkPipeline> PipelineFactory::createPipeline(const VkDevice
     graphicsPipelineCreateInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
     graphicsPipelineCreateInfo.pNext = nullptr;
     graphicsPipelineCreateInfo.flags = 0;
-    graphicsPipelineCreateInfo.stageCount = 2;
+    graphicsPipelineCreateInfo.stageCount = shaderStageCount;
     graphicsPipelineCreateInfo.pStages = shaderStageCreateInfos;
     graphicsPipelineCreateInfo.pVertexInputState = &pipelineVertexInputStateCreateInfo;
     graphicsPipelineCreateInfo.pInputAssemblyState = &pipelineInputAssemblyStateCreateInfo;
