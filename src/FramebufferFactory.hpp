@@ -2,6 +2,7 @@
 
 #include <vulkan/vulkan.h>
 #include <memory>
+#include <stdexcept>
 
 class FramebufferFactory final
 {

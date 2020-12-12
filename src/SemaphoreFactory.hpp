@@ -14,5 +14,7 @@ class SemaphoreFactory final
         SemaphoreFactory(const VkDevice* device);
         ~SemaphoreFactory();
 
-        const std::unique_ptr<const VkSemaphore> SEMAPHORE;
+        //Read-only "getter fields"
+        const std::unique_ptr<const VkSemaphore> SEMAPHORE_IMAGE_AVAILABLE;
+        const std::unique_ptr<const VkSemaphore> SEMAPHORE_RENDERING_DONE;
 };

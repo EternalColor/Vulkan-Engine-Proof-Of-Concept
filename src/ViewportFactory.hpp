@@ -5,9 +5,6 @@
 
 class ViewportFactory final
 {
-    private: 
-        std::unique_ptr<const VkViewport> createViewport(const uint32_t& windowWidth, const uint32_t& windowHeight) const;
-        std::unique_ptr<const VkRect2D> createScissor(const uint32_t& windowWidth, const uint32_t& windowHeight) const;
     public:
         ViewportFactory(const uint32_t& windowWidth, const uint32_t& windowHeight);
         ~ViewportFactory() = default;

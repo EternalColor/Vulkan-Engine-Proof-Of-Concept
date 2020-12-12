@@ -17,7 +17,10 @@
 #include "Renderpass.hpp"
 #include "Subpass.hpp"
 #include "PipelineFactory.hpp"
+#include "FramebufferFactory.hpp"
 #include "SemaphoreFactory.hpp"
+#include "CommandBufferFactory.hpp"
+#include "CommandBufferRecorder.hpp"
 #include "GameLoop.hpp"
 
 class VulkanWrapper final
@@ -42,8 +45,9 @@ class VulkanWrapper final
         const std::unique_ptr<const Subpass> SUBPASS;
         const std::unique_ptr<const Renderpass> RENDERPASS;
         const std::unique_ptr<const PipelineFactory> PIPELINE_FACTORY;
+        const std::unique_ptr<const FramebufferFactory> FRAMEBUFFER_FACTORY;
         const std::unique_ptr<const SemaphoreFactory> SEMAPHORE_FACTORY;
-        const std::unique_ptr<const GameLoop> GAME_LOOP;
+        const std::unique_ptr<const CommandBufferFactory> COMMAND_BUFFER_FACTORY;
     public: 
         VulkanWrapper();
         ~VulkanWrapper() = default;

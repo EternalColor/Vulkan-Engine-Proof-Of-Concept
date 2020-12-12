@@ -1,6 +1,6 @@
 #include "SwapchainFactory.hpp"
 
-SwapchainFactory::SwapchainFactory(const VkDevice* device, const VkSurfaceKHR* surface, const uint32_t& windowWidth, const uint32_t& windowHeight)
+SwapchainFactory::SwapchainFactory(const VkDevice* device, const VkSurfaceFormatKHR* format, const VkSurfaceKHR* surface, const uint32_t& windowWidth, const uint32_t& windowHeight)
     :   //INITIALIZATION ORDER MATTERS
         amountOfImagesInSwapchain { 0 },
         CACHED_DEVICE { device },
@@ -13,24 +13,24 @@ SwapchainFactory::SwapchainFactory(const VkDevice* device, const VkSurfaceKHR* s
                 0,                                           //flags
                 *surface,                                    //surface
                 3,                                           //minImageCount
-                VK_FORMAT_B8G8R8A8_SRGB,                     //imageFormat
-                VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,           //imageColorSpace
+                format->format,                              //imageFormat
+                format->colorSpace,                          //imageColorSpace
                 VkExtent2D { windowWidth, windowHeight},     //imageExtent
                 1,                                           //imageArrayLayers
                 VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,         //imageUsage
                 VK_SHARING_MODE_EXCLUSIVE,                   //imageSharingMode
-                0,                                           //queueFamilyIndex
+                0,                                           //queueFamilyIndexCount
                 nullptr,                                     //queueFamilyIndecies
                 VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR,       //preTransform
                 VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,           //compositeAlpha
                 VK_PRESENT_MODE_IMMEDIATE_KHR,               //presentMode
                 VK_TRUE,                                     //clipped
-                nullptr                                      //oldSwapchain
+                VK_NULL_HANDLE,                              //oldSwapchain
             }
         },
         SWAPCHAIN { this->createSwapchain(device, this->SWAPCHAIN_CREATE_INFO.get()) },
         SWAPCHAIN_IMAGES { this->getImagesInSwapchain(device, this->SWAPCHAIN.get(), &this->amountOfImagesInSwapchain) },
-        SWAPCHAIN_IMAGE_VIEWS { this->createImageViews(device, this->SWAPCHAIN_IMAGES.get(), this->amountOfImagesInSwapchain)}
+        SWAPCHAIN_IMAGE_VIEWS { this->createImageViews(device, format, this->SWAPCHAIN_IMAGES.get(), this->amountOfImagesInSwapchain)}
 {
 
 }
@@ -67,7 +67,7 @@ std::unique_ptr<const VkImage[]> SwapchainFactory::getImagesInSwapchain(const Vk
     return swapchainImages;
 }
 
-std::unique_ptr<const VkImageView[]> SwapchainFactory::createImageViews(const VkDevice* device, const VkImage swapchainImages[], const uint32_t& amountOfImagesInSwapchain) const
+std::unique_ptr<const VkImageView[]> SwapchainFactory::createImageViews(const VkDevice* device, const VkSurfaceFormatKHR* format, const VkImage swapchainImages[], const uint32_t& amountOfImagesInSwapchain) const
 {
     std::unique_ptr<VkImageView[]> imageViews = std::make_unique<VkImageView[]>(amountOfImagesInSwapchain);
 
@@ -76,7 +76,7 @@ std::unique_ptr<const VkImageView[]> SwapchainFactory::createImageViews(const Vk
     imageViewCreateInfo.pNext = nullptr;
     imageViewCreateInfo.flags = 0;
     imageViewCreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D; //TODO: Check if 2D is appropiate view type
-    imageViewCreateInfo.format = VK_FORMAT_B8G8R8A8_SRGB;
+    imageViewCreateInfo.format = format->format;
     imageViewCreateInfo.components.r = VK_COMPONENT_SWIZZLE_IDENTITY;
     imageViewCreateInfo.components.g = VK_COMPONENT_SWIZZLE_IDENTITY; 
     imageViewCreateInfo.components.b = VK_COMPONENT_SWIZZLE_IDENTITY; 
@@ -98,4 +98,9 @@ std::unique_ptr<const VkImageView[]> SwapchainFactory::createImageViews(const Vk
     }
 
     return imageViews;
+}
+
+const uint32_t& SwapchainFactory::GetAmountOfImagesInSwapchain() const
+{
+    return this->amountOfImagesInSwapchain;
 }

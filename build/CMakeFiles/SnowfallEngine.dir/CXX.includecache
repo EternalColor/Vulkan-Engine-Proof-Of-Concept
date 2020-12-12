@@ -6,21 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/sascha/HDD1/VulkanTest2/src/ShaderLoader.cpp
-ShaderLoader.hpp
-/home/sascha/HDD1/VulkanTest2/src/ShaderLoader.hpp
+/home/sascha/HDD1/VulkanTest2/src/AttachmentFactory.cpp
+AttachmentFactory.hpp
+/home/sascha/HDD1/VulkanTest2/src/AttachmentFactory.hpp
 
-/home/sascha/HDD1/VulkanTest2/src/ShaderLoader.hpp
+/home/sascha/HDD1/VulkanTest2/src/AttachmentFactory.hpp
 vulkan/vulkan.h
 -
-algorithm
--
 memory
--
-vector
--
-string
--
-fstream
 -
 

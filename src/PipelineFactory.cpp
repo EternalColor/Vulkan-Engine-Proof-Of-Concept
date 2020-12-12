@@ -3,10 +3,9 @@
 PipelineFactory::PipelineFactory(const VkDevice* device, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[], const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor)
     :   //INITIALIZER ORDER MATTERS!
         CACHED_DEVICE { device },
-        SHADER_STAGE_COUNT { 2 },
-        SHADER_STAGES { this->createShaderStages(this->SHADER_STAGE_COUNT, vertexShaderCount, fragmentShaderCount, vertexShaderModules, fragmentShaderModules) },
+        SHADER_STAGES { this->createShaderStages(vertexShaderCount, fragmentShaderCount, vertexShaderModules, fragmentShaderModules) },
         PIPELINE_LAYOUT { this->createPipelineLayout(device) },
-        PIPELINE { this->createPipeline(device, this->SHADER_STAGE_COUNT, this->SHADER_STAGES.get(), this->PIPELINE_LAYOUT.get(), renderPass, viewport, scissor) }
+        PIPELINE { this->createPipeline(device, vertexShaderCount + fragmentShaderCount, this->SHADER_STAGES.get(), this->PIPELINE_LAYOUT.get(), renderPass, viewport, scissor) }
 {
 
 }
@@ -17,9 +16,9 @@ PipelineFactory::~PipelineFactory()
     vkDestroyPipeline(*this->CACHED_DEVICE, *this->PIPELINE, nullptr);
 }
 
-std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> PipelineFactory::createShaderStages(const uint32_t& shaderStageCount, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[]) const
+std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> PipelineFactory::createShaderStages(const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[]) const
 {
-    VkPipelineShaderStageCreateInfo* shaderStageCreateInfos = new VkPipelineShaderStageCreateInfo[shaderStageCount];
+    VkPipelineShaderStageCreateInfo* shaderStageCreateInfos = new VkPipelineShaderStageCreateInfo[vertexShaderCount + fragmentShaderCount];
 
     VkPipelineShaderStageCreateInfo vertexShaderPipelineStageCreateInfo = {};
     vertexShaderPipelineStageCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;

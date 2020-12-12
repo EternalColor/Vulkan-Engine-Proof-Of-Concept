@@ -198,6 +198,33 @@ __/src/AttachmentFactory.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/AttachmentFactory.cpp.s
 .PHONY : __/src/AttachmentFactory.cpp.s
 
+__/src/CommandBufferFactory.o: __/src/CommandBufferFactory.cpp.o
+
+.PHONY : __/src/CommandBufferFactory.o
+
+# target to build an object file
+__/src/CommandBufferFactory.cpp.o:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/CommandBufferFactory.cpp.o
+.PHONY : __/src/CommandBufferFactory.cpp.o
+
+__/src/CommandBufferFactory.i: __/src/CommandBufferFactory.cpp.i
+
+.PHONY : __/src/CommandBufferFactory.i
+
+# target to preprocess a source file
+__/src/CommandBufferFactory.cpp.i:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/CommandBufferFactory.cpp.i
+.PHONY : __/src/CommandBufferFactory.cpp.i
+
+__/src/CommandBufferFactory.s: __/src/CommandBufferFactory.cpp.s
+
+.PHONY : __/src/CommandBufferFactory.s
+
+# target to generate assembly for a file
+__/src/CommandBufferFactory.cpp.s:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/CommandBufferFactory.cpp.s
+.PHONY : __/src/CommandBufferFactory.cpp.s
+
 __/src/DeviceFactory.o: __/src/DeviceFactory.cpp.o
 
 .PHONY : __/src/DeviceFactory.o
@@ -251,33 +278,6 @@ __/src/FramebufferFactory.s: __/src/FramebufferFactory.cpp.s
 __/src/FramebufferFactory.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.s
 .PHONY : __/src/FramebufferFactory.cpp.s
-
-__/src/GameLoop.o: __/src/GameLoop.cpp.o
-
-.PHONY : __/src/GameLoop.o
-
-# target to build an object file
-__/src/GameLoop.cpp.o:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o
-.PHONY : __/src/GameLoop.cpp.o
-
-__/src/GameLoop.i: __/src/GameLoop.cpp.i
-
-.PHONY : __/src/GameLoop.i
-
-# target to preprocess a source file
-__/src/GameLoop.cpp.i:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.i
-.PHONY : __/src/GameLoop.cpp.i
-
-__/src/GameLoop.s: __/src/GameLoop.cpp.s
-
-.PHONY : __/src/GameLoop.s
-
-# target to generate assembly for a file
-__/src/GameLoop.cpp.s:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.s
-.PHONY : __/src/GameLoop.cpp.s
 
 __/src/InstanceFactory.o: __/src/InstanceFactory.cpp.o
 
@@ -440,33 +440,6 @@ __/src/PipelineFactory.s: __/src/PipelineFactory.cpp.s
 __/src/PipelineFactory.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.s
 .PHONY : __/src/PipelineFactory.cpp.s
-
-__/src/Renderer.o: __/src/Renderer.cpp.o
-
-.PHONY : __/src/Renderer.o
-
-# target to build an object file
-__/src/Renderer.cpp.o:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o
-.PHONY : __/src/Renderer.cpp.o
-
-__/src/Renderer.i: __/src/Renderer.cpp.i
-
-.PHONY : __/src/Renderer.i
-
-# target to preprocess a source file
-__/src/Renderer.cpp.i:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.i
-.PHONY : __/src/Renderer.cpp.i
-
-__/src/Renderer.s: __/src/Renderer.cpp.s
-
-.PHONY : __/src/Renderer.s
-
-# target to generate assembly for a file
-__/src/Renderer.cpp.s:
-	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.s
-.PHONY : __/src/Renderer.cpp.s
 
 __/src/Renderpass.o: __/src/Renderpass.cpp.o
 
@@ -699,15 +672,15 @@ help:
 	@echo "... __/src/AttachmentFactory.o"
 	@echo "... __/src/AttachmentFactory.i"
 	@echo "... __/src/AttachmentFactory.s"
+	@echo "... __/src/CommandBufferFactory.o"
+	@echo "... __/src/CommandBufferFactory.i"
+	@echo "... __/src/CommandBufferFactory.s"
 	@echo "... __/src/DeviceFactory.o"
 	@echo "... __/src/DeviceFactory.i"
 	@echo "... __/src/DeviceFactory.s"
 	@echo "... __/src/FramebufferFactory.o"
 	@echo "... __/src/FramebufferFactory.i"
 	@echo "... __/src/FramebufferFactory.s"
-	@echo "... __/src/GameLoop.o"
-	@echo "... __/src/GameLoop.i"
-	@echo "... __/src/GameLoop.s"
 	@echo "... __/src/InstanceFactory.o"
 	@echo "... __/src/InstanceFactory.i"
 	@echo "... __/src/InstanceFactory.s"
@@ -726,9 +699,6 @@ help:
 	@echo "... __/src/PipelineFactory.o"
 	@echo "... __/src/PipelineFactory.i"
 	@echo "... __/src/PipelineFactory.s"
-	@echo "... __/src/Renderer.o"
-	@echo "... __/src/Renderer.i"
-	@echo "... __/src/Renderer.s"
 	@echo "... __/src/Renderpass.o"
 	@echo "... __/src/Renderpass.i"
 	@echo "... __/src/Renderpass.s"

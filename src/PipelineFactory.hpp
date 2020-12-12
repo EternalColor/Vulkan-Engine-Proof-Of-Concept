@@ -8,9 +8,8 @@ class PipelineFactory final
     private:
         //Read only, no smart pointer required
         const VkDevice* CACHED_DEVICE;
-        const uint32_t SHADER_STAGE_COUNT;
 
-        std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> createShaderStages(const uint32_t& shaderStageCount, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[]) const;
+        std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> createShaderStages(const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[]) const;
         std::unique_ptr<const VkPipelineLayout> createPipelineLayout(const VkDevice* device) const;
         std::unique_ptr<const VkPipeline> createPipeline(const VkDevice* device, const uint32_t& shaderStageCount, const VkPipelineShaderStageCreateInfo shaderStageCreateInfos[], const VkPipelineLayout* layout, const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor) const;
     public:

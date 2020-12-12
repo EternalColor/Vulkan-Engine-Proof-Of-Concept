@@ -7,6 +7,10 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/ApplicationFactory.cpp.o
 build/CMakeFiles/SnowfallEngine.dir/__/src/AttachmentFactory.cpp.o
  /home/sascha/HDD1/VulkanTest2/src/AttachmentFactory.cpp
  /home/sascha/HDD1/VulkanTest2/src/AttachmentFactory.hpp
+build/CMakeFiles/SnowfallEngine.dir/__/src/CommandBufferFactory.cpp.o
+ /home/sascha/HDD1/VulkanTest2/src/CommandBufferFactory.cpp
+ /home/sascha/HDD1/VulkanTest2/src/CommandBufferFactory.hpp
+ /home/sascha/HDD1/VulkanTest2/src/CommandBufferRecorder.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.o
  /home/sascha/HDD1/VulkanTest2/src/DeviceFactory.cpp
  /home/sascha/HDD1/VulkanTest2/src/DeviceFactory.hpp
@@ -14,10 +18,6 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/DeviceFactory.cpp.o
 build/CMakeFiles/SnowfallEngine.dir/__/src/FramebufferFactory.cpp.o
  /home/sascha/HDD1/VulkanTest2/src/FramebufferFactory.cpp
  /home/sascha/HDD1/VulkanTest2/src/FramebufferFactory.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/GameLoop.cpp.o
- /home/sascha/HDD1/VulkanTest2/src/GameLoop.cpp
- /home/sascha/HDD1/VulkanTest2/src/GameLoop.hpp
- /home/sascha/HDD1/VulkanTest2/src/Window.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/InstanceFactory.cpp.o
  /home/sascha/HDD1/VulkanTest2/src/InstanceFactory.cpp
  /home/sascha/HDD1/VulkanTest2/src/InstanceFactory.hpp
@@ -28,7 +28,10 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Layers.cpp.o
 build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o
  /home/sascha/HDD1/VulkanTest2/src/ApplicationFactory.hpp
  /home/sascha/HDD1/VulkanTest2/src/AttachmentFactory.hpp
+ /home/sascha/HDD1/VulkanTest2/src/CommandBufferFactory.hpp
+ /home/sascha/HDD1/VulkanTest2/src/CommandBufferRecorder.hpp
  /home/sascha/HDD1/VulkanTest2/src/DeviceFactory.hpp
+ /home/sascha/HDD1/VulkanTest2/src/FramebufferFactory.hpp
  /home/sascha/HDD1/VulkanTest2/src/GameLoop.hpp
  /home/sascha/HDD1/VulkanTest2/src/InstanceFactory.hpp
  /home/sascha/HDD1/VulkanTest2/src/Layers.hpp
@@ -36,7 +39,6 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/Main.cpp.o
  /home/sascha/HDD1/VulkanTest2/src/PhysicalDeviceFactory.hpp
  /home/sascha/HDD1/VulkanTest2/src/PhysicalDeviceQueueFactory.hpp
  /home/sascha/HDD1/VulkanTest2/src/PipelineFactory.hpp
- /home/sascha/HDD1/VulkanTest2/src/Renderer.hpp
  /home/sascha/HDD1/VulkanTest2/src/Renderpass.hpp
  /home/sascha/HDD1/VulkanTest2/src/SemaphoreFactory.hpp
  /home/sascha/HDD1/VulkanTest2/src/ShaderLoader.hpp
@@ -54,9 +56,6 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/PhysicalDeviceQueueFactory.cpp.o
 build/CMakeFiles/SnowfallEngine.dir/__/src/PipelineFactory.cpp.o
  /home/sascha/HDD1/VulkanTest2/src/PipelineFactory.cpp
  /home/sascha/HDD1/VulkanTest2/src/PipelineFactory.hpp
-build/CMakeFiles/SnowfallEngine.dir/__/src/Renderer.cpp.o
- /home/sascha/HDD1/VulkanTest2/src/Renderer.cpp
- /home/sascha/HDD1/VulkanTest2/src/Renderer.hpp
 build/CMakeFiles/SnowfallEngine.dir/__/src/Renderpass.cpp.o
  /home/sascha/HDD1/VulkanTest2/src/Renderpass.cpp
  /home/sascha/HDD1/VulkanTest2/src/Renderpass.hpp
@@ -78,7 +77,10 @@ build/CMakeFiles/SnowfallEngine.dir/__/src/ViewportFactory.cpp.o
 build/CMakeFiles/SnowfallEngine.dir/__/src/VulkanWrapper.cpp.o
  /home/sascha/HDD1/VulkanTest2/src/ApplicationFactory.hpp
  /home/sascha/HDD1/VulkanTest2/src/AttachmentFactory.hpp
+ /home/sascha/HDD1/VulkanTest2/src/CommandBufferFactory.hpp
+ /home/sascha/HDD1/VulkanTest2/src/CommandBufferRecorder.hpp
  /home/sascha/HDD1/VulkanTest2/src/DeviceFactory.hpp
+ /home/sascha/HDD1/VulkanTest2/src/FramebufferFactory.hpp
  /home/sascha/HDD1/VulkanTest2/src/GameLoop.hpp
  /home/sascha/HDD1/VulkanTest2/src/InstanceFactory.hpp
  /home/sascha/HDD1/VulkanTest2/src/Layers.hpp

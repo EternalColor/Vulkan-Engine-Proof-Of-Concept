@@ -22,20 +22,24 @@ std::unique_ptr<const VkFramebuffer[]> FramebufferFactory::createFramebuffers(co
     //Can not use <const VkFramebuffer[]> here because vulkan method requires non-const physicalDevices parameter
     std::unique_ptr<VkFramebuffer[]> framebuffers = std::make_unique<VkFramebuffer[]>(amountOfImagesInSwapchain);
 
+    VkFramebufferCreateInfo framebufferCreateInfo = {};
+    framebufferCreateInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+    framebufferCreateInfo.pNext = nullptr;
+    framebufferCreateInfo.flags = 0;
+    framebufferCreateInfo.renderPass = *renderPass;
+    framebufferCreateInfo.attachmentCount = 1;
+    framebufferCreateInfo.width = windowWidth;
+    framebufferCreateInfo.height = windowHeight;
+    framebufferCreateInfo.layers = 1;
+
     for(uint32_t i = 0; i < amountOfImagesInSwapchain; ++i)
     {
-        VkFramebufferCreateInfo framebufferCreateInfo = {};
-        framebufferCreateInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
-        framebufferCreateInfo.pNext = nullptr;
-        framebufferCreateInfo.flags = 0;
-        framebufferCreateInfo.renderPass = *renderPass;
-        framebufferCreateInfo.attachmentCount = 1;
         framebufferCreateInfo.pAttachments = &imageViews[i];
-        framebufferCreateInfo.width = windowWidth;
-        framebufferCreateInfo.height = windowHeight;
-        framebufferCreateInfo.layers = 1;
 
-        vkCreateFramebuffer(*device, &framebufferCreateInfo, nullptr, &framebuffers[i]);
+        if(vkCreateFramebuffer(*device, &framebufferCreateInfo, nullptr, &framebuffers[i]) != VK_SUCCESS)
+        {
+            std::runtime_error("Error creating framebuffer");
+        }
     }
 
     return framebuffers;

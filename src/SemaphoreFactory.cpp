@@ -3,14 +3,16 @@
 SemaphoreFactory::SemaphoreFactory(const VkDevice* device)
     :   //INITIALIZER ORDER MATTERS!
         CACHED_DEVICE { device },
-        SEMAPHORE { this->createSemaphore(this->CACHED_DEVICE) }
+        SEMAPHORE_IMAGE_AVAILABLE { this->createSemaphore(this->CACHED_DEVICE) },
+        SEMAPHORE_RENDERING_DONE { this->createSemaphore(this->CACHED_DEVICE) }
 {
 
 }
 
 SemaphoreFactory::~SemaphoreFactory()
 {
-    vkDestroySemaphore(*this->CACHED_DEVICE, *this->SEMAPHORE, nullptr);
+    vkDestroySemaphore(*this->CACHED_DEVICE, *this->SEMAPHORE_RENDERING_DONE, nullptr);
+    vkDestroySemaphore(*this->CACHED_DEVICE, *this->SEMAPHORE_IMAGE_AVAILABLE, nullptr);
 }
 
 std::unique_ptr<const VkSemaphore> SemaphoreFactory::createSemaphore(const VkDevice* device) const

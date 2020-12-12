@@ -9,7 +9,7 @@ AttachmentFactory::AttachmentFactory(const VkFormat* format)
             new VkAttachmentDescription
             {
                 0,                                  //flags
-                *format,                             //format
+                *format,                            //format
                 VK_SAMPLE_COUNT_1_BIT,              //samples
                 VK_ATTACHMENT_LOAD_OP_CLEAR,        //loadOp       
                 VK_ATTACHMENT_STORE_OP_STORE,       //storeOp
@@ -23,7 +23,7 @@ AttachmentFactory::AttachmentFactory(const VkFormat* format)
         {
             new VkAttachmentReference
             {
-                AttachmentFactory::attachmentCount,                //attachment
+                AttachmentFactory::attachmentCount,         //attachment
                 VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL    //layout
             }
         }

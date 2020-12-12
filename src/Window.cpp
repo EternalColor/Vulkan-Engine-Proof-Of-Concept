@@ -15,7 +15,6 @@ Window::Window(const uint32_t&& width, const uint32_t&& height, const char* titl
 Window::~Window()
 {
     vkDestroySurfaceKHR(*this->CACHED_INSTANCE, *this->SURFACE, nullptr);
-    glfwTerminate();
 }
 
 void Window::PollEvents() const
@@ -23,9 +22,38 @@ void Window::PollEvents() const
     glfwPollEvents();
 }
 
-void Window::RenderOneFrame() const 
+void Window::RenderOneFrame(const VkDevice* device, const VkQueue* queue, const VkSwapchainKHR* swapchain, const VkSemaphore* semaphoreImageAvailable, const VkSemaphore* semaphoreRenderingDone, const uint32_t& commandBufferCount, const VkCommandBuffer commandBuffers[]) const 
 {
     //TODO:: Implement
+    uint32_t imageIndex = 0;
+    vkAcquireNextImageKHR(*device, *swapchain, std::numeric_limits<uint64_t>::max(), *semaphoreImageAvailable, VK_NULL_HANDLE, &imageIndex);
+
+    VkSubmitInfo submitInfo = {};
+    submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;;
+    submitInfo.pNext = nullptr;
+    submitInfo.waitSemaphoreCount = 1;
+    submitInfo.pWaitSemaphores = semaphoreImageAvailable;
+    
+    VkPipelineStageFlags waitStageMask[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
+    submitInfo.pWaitDstStageMask = waitStageMask;
+    submitInfo.commandBufferCount = commandBufferCount;
+    submitInfo.pCommandBuffers = commandBuffers;
+    submitInfo.signalSemaphoreCount = 1;
+    submitInfo.pSignalSemaphores = semaphoreRenderingDone;
+
+    vkQueueSubmit(*queue, 1, &submitInfo, VK_NULL_HANDLE);
+
+    VkPresentInfoKHR presentInfo = {};
+    presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+    presentInfo.pNext = nullptr;
+    presentInfo.waitSemaphoreCount = 1;
+    presentInfo.pWaitSemaphores = semaphoreRenderingDone;
+    presentInfo.swapchainCount = 1;
+    presentInfo.pSwapchains = swapchain;
+    presentInfo.pImageIndices = &imageIndex;
+    presentInfo.pResults = nullptr;
+
+    vkQueuePresentKHR(*queue, &presentInfo);
 }
 
 std::unique_ptr<GLFWwindow, DestroyGLFWwindow> Window::createWindow(const uint32_t& width, const uint32_t& height, const char* title) const

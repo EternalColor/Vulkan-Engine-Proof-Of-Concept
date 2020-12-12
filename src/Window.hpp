@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <vulkan/vulkan.h>
 #include <memory>
+#include <limits>
 #include <stdexcept>
 
 //Delete struct for GLFWwindow -> so we can use unique_ptr<GLFWwindow, DestroyGLFWwindow>
@@ -44,7 +45,7 @@ class Window final
         ~Window(); 
 
         void PollEvents() const;
-        void RenderOneFrame() const;
+        void RenderOneFrame(const VkDevice* device, const VkQueue* queue, const VkSwapchainKHR* swapchain, const VkSemaphore* semaphoreImageAvailable, const VkSemaphore* semaphoreRenderingDone, const uint32_t& commandBufferCount, const VkCommandBuffer commandBuffers[]) const;
         const bool CloseRequested() const;
 
         const uint32_t& GetWidth() const;

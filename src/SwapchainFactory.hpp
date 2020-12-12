@@ -14,10 +14,12 @@ class SwapchainFactory final
 
         std::unique_ptr<const VkSwapchainKHR> createSwapchain(const VkDevice* device, const VkSwapchainCreateInfoKHR* swapchainCreateInfo) const;
         std::unique_ptr<const VkImage[]> getImagesInSwapchain(const VkDevice* device, const VkSwapchainKHR* swapchain, uint32_t* amountOfImagesInSwapchain) const;
-        std::unique_ptr<const VkImageView[]> createImageViews(const VkDevice* device, const VkImage swapchainImages[], const uint32_t& amountOfImagesInSwapchain) const;
+        std::unique_ptr<const VkImageView[]> createImageViews(const VkDevice* device, const VkSurfaceFormatKHR* format, const VkImage swapchainImages[], const uint32_t& amountOfImagesInSwapchain) const;
     public:
-        SwapchainFactory(const VkDevice* device, const VkSurfaceKHR* surface, const uint32_t& windowWidth, const uint32_t& windowHeight);
+        SwapchainFactory(const VkDevice* device, const VkSurfaceFormatKHR* format, const VkSurfaceKHR* surface, const uint32_t& windowWidth, const uint32_t& windowHeight);
         ~SwapchainFactory();
+
+        const uint32_t& GetAmountOfImagesInSwapchain() const;
 
         //Read-only "getter fields"
         const std::unique_ptr<const VkSwapchainCreateInfoKHR> SWAPCHAIN_CREATE_INFO;
