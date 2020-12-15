@@ -44,12 +44,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/sascha/HDD1/VulkanTest2/build/cmake_install.cmake")
+  include("/home/sascha/HDD1/VulkanTest2/src/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/sascha/HDD1/VulkanTest2/shaders/cmake_install.cmake")
+  include("/home/sascha/HDD1/VulkanTest2/build/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

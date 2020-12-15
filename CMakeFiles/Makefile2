@@ -72,20 +72,20 @@ CMAKE_BINARY_DIR = /home/sascha/HDD1/VulkanTest2
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: src/all
 all: build/all
-all: shaders/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
+preinstall: src/preinstall
 preinstall: build/preinstall
-preinstall: shaders/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: src/clean
 clean: build/clean
-clean: shaders/clean
 
 .PHONY : clean
 
@@ -108,22 +108,22 @@ build/clean: build/CMakeFiles/SnowfallEngine.dir/clean
 .PHONY : build/clean
 
 #=============================================================================
-# Directory level rules for directory shaders
+# Directory level rules for directory src
 
 # Recursive "all" directory target.
-shaders/all:
+src/all:
 
-.PHONY : shaders/all
+.PHONY : src/all
 
 # Recursive "preinstall" directory target.
-shaders/preinstall:
+src/preinstall:
 
-.PHONY : shaders/preinstall
+.PHONY : src/preinstall
 
 # Recursive "clean" directory target.
-shaders/clean:
+src/clean:
 
-.PHONY : shaders/clean
+.PHONY : src/clean
 
 #=============================================================================
 # Target rules for target build/CMakeFiles/SnowfallEngine.dir

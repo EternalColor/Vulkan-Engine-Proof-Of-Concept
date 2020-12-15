@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.19)
 
 project(SnowfallEngine VERSION 1.0.0)
 
-
+#Include all .cpp and .hpp files recursively in src folder
+file(GLOB_RECURSE SRC "src/*.hpp" "src/*.cpp")
 
 # Flags for debug build
 set(
