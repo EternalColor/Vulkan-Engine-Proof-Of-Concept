@@ -1,6 +1,6 @@
 #include "CommandBufferFactory.hpp"
 
-CommandBufferFactory::CommandBufferFactory(const VkDevice* device, const uint32_t& queueFamilyIndex, const uint32_t&& bufferCount)
+CommandBufferFactory::CommandBufferFactory(const VkDevice* device, const uint32_t& queueFamilyIndex, const uint32_t& bufferCount)
     :   //INITIALIZATION ORDER MATTERS
         CACHED_DEVICE { device },
         BUFFER_COUNT { bufferCount },

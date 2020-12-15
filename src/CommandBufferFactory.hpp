@@ -14,7 +14,7 @@ class CommandBufferFactory final
         std::unique_ptr<const VkCommandPool> createCommandPool(const VkDevice* device, const uint32_t& queueFamilyIndex) const;
         std::unique_ptr<const VkCommandBuffer[]> createCommandBuffers(const VkDevice* device, const VkCommandPool* commandPool, const uint32_t& bufferCount) const;
     public:
-        CommandBufferFactory(const VkDevice* device, const uint32_t& queueFamilyIndex, const uint32_t&& bufferCount);
+        CommandBufferFactory(const VkDevice* device, const uint32_t& queueFamilyIndex, const uint32_t& bufferCount);
         ~CommandBufferFactory();
 
         //Read-only "getter fields"
