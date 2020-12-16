@@ -12,6 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.19.1/CMakeSystem.cmake"
   "CMakeLists.txt"
   "build/CMakeLists.txt"
+  "shaders/CMakeLists.txt"
   "src/CMakeLists.txt"
   "/usr/share/cmake-3.19/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.19/Modules/CMakeCXXInformation.cmake"
@@ -45,9 +46,11 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "build/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "shaders/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "build/CMakeFiles/SnowfallEngine.dir/DependInfo.cmake"
+  "shaders/CMakeFiles/run.dir/DependInfo.cmake"
   )

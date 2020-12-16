@@ -74,18 +74,21 @@ CMAKE_BINARY_DIR = /home/sascha/HDD1/VulkanTest2
 # The main recursive "all" target.
 all: src/all
 all: build/all
+all: shaders/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: src/preinstall
 preinstall: build/preinstall
+preinstall: shaders/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: src/clean
 clean: build/clean
+clean: shaders/clean
 
 .PHONY : clean
 
@@ -106,6 +109,24 @@ build/preinstall:
 build/clean: build/CMakeFiles/SnowfallEngine.dir/clean
 
 .PHONY : build/clean
+
+#=============================================================================
+# Directory level rules for directory shaders
+
+# Recursive "all" directory target.
+shaders/all: shaders/CMakeFiles/run.dir/all
+
+.PHONY : shaders/all
+
+# Recursive "preinstall" directory target.
+shaders/preinstall:
+
+.PHONY : shaders/preinstall
+
+# Recursive "clean" directory target.
+shaders/clean: shaders/CMakeFiles/run.dir/clean
+
+.PHONY : shaders/clean
 
 #=============================================================================
 # Directory level rules for directory src
@@ -151,6 +172,33 @@ SnowfallEngine: build/CMakeFiles/SnowfallEngine.dir/rule
 build/CMakeFiles/SnowfallEngine.dir/clean:
 	$(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/clean
 .PHONY : build/CMakeFiles/SnowfallEngine.dir/clean
+
+#=============================================================================
+# Target rules for target shaders/CMakeFiles/run.dir
+
+# All Build rule for target.
+shaders/CMakeFiles/run.dir/all:
+	$(MAKE) $(MAKESILENT) -f shaders/CMakeFiles/run.dir/build.make shaders/CMakeFiles/run.dir/depend
+	$(MAKE) $(MAKESILENT) -f shaders/CMakeFiles/run.dir/build.make shaders/CMakeFiles/run.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=21 "Built target run"
+.PHONY : shaders/CMakeFiles/run.dir/all
+
+# Build rule for subdir invocation for target.
+shaders/CMakeFiles/run.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sascha/HDD1/VulkanTest2/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 shaders/CMakeFiles/run.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sascha/HDD1/VulkanTest2/CMakeFiles 0
+.PHONY : shaders/CMakeFiles/run.dir/rule
+
+# Convenience name for target.
+run: shaders/CMakeFiles/run.dir/rule
+
+.PHONY : run
+
+# clean rule for target.
+shaders/CMakeFiles/run.dir/clean:
+	$(MAKE) $(MAKESILENT) -f shaders/CMakeFiles/run.dir/build.make shaders/CMakeFiles/run.dir/clean
+.PHONY : shaders/CMakeFiles/run.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
