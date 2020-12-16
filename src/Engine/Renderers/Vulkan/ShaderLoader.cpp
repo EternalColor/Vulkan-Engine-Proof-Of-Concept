@@ -45,7 +45,7 @@ namespace SnowfallEngine
 
                     return std::unique_ptr<const uint32_t[]>
                     {
-                        //Shader code is represented as uint32_t and not char so we cast the whole array
+                        //Shader code is represented as uint32_t and not char so we cast the pointer (array pointer in this case)
                         //Assuming the file is in uint32_t format so we dont need to recast every element. (This is standard SPIR-V behaviour)
                         reinterpret_cast<const uint32_t*>(fileBuffer)
                     };

@@ -1,13 +1,16 @@
 add_executable(${PROJECT_NAME} ${SRC})
 
-target_link_libraries(${PROJECT_NAME} PUBLIC vulkan)
-#Libraries that are needed by glfw3 inderictely
-target_link_libraries(${PROJECT_NAME} PUBLIC dl)
-target_link_libraries(${PROJECT_NAME} PUBLIC pthread)
-target_link_libraries(${PROJECT_NAME} PUBLIC X11)
-target_link_libraries(${PROJECT_NAME} PUBLIC Xxf86vm)
-target_link_libraries(${PROJECT_NAME} PUBLIC Xrandr)
-target_link_libraries(${PROJECT_NAME} PUBLIC Xi)
-target_link_libraries(${PROJECT_NAME} PUBLIC Xinerama)
-target_link_libraries(${PROJECT_NAME} PUBLIC Xcursor)
-target_link_libraries(${PROJECT_NAME} PUBLIC glfw3)
+#Vulkan
+target_link_libraries(${PROJECT_NAME} PRIVATE vulkan)
+#GLFW3 and dependencies
+target_link_libraries(${PROJECT_NAME} PRIVATE dl)
+target_link_libraries(${PROJECT_NAME} PRIVATE pthread)
+target_link_libraries(${PROJECT_NAME} PRIVATE X11)
+target_link_libraries(${PROJECT_NAME} PRIVATE Xxf86vm)
+target_link_libraries(${PROJECT_NAME} PRIVATE Xrandr)
+target_link_libraries(${PROJECT_NAME} PRIVATE Xi)
+target_link_libraries(${PROJECT_NAME} PRIVATE Xinerama)
+target_link_libraries(${PROJECT_NAME} PRIVATE Xcursor)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw3)
+#GLM
+target_link_libraries(${PROJECT_NAME} PRIVATE glm)
