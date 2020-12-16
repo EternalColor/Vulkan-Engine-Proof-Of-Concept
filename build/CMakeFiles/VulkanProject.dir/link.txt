@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -Wall CMakeFiles/VulkanProject.dir/__/src/Application.cpp.o CMakeFiles/VulkanProject.dir/__/src/Main.cpp.o CMakeFiles/VulkanProject.dir/__/src/PhysicalDevice.cpp.o CMakeFiles/VulkanProject.dir/__/src/PhysicalDeviceQueue.cpp.o CMakeFiles/VulkanProject.dir/__/src/Renderer.cpp.o -o VulkanProject  -lvulkan -lglfw3 
