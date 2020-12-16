@@ -29,7 +29,6 @@ namespace SnowfallEngine
                     COMMAND_BUFFER_FACTORY { std::make_unique<const CommandBufferFactory>(this->DEVICE_FACTORY->DEVICE.get(), this->PHYSICAL_DEVICE_QUEUE_FACTORY->DEVICE_QUEUE_CREATE_INFO->queueFamilyIndex, this->SWAPCHAIN_FACTORY->GetAmountOfImagesInSwapchain()) }     
             {
                 CommandBufferRecorder::RecordCommandBuffers(this->COMMAND_BUFFER_FACTORY->BUFFERS.get(), this->SWAPCHAIN_FACTORY->GetAmountOfImagesInSwapchain(), this->RENDERPASS->RENDER_PASS.get(), this->FRAMEBUFFER_FACTORY->FRAMEBUFFERS.get(), this->WINDOW->GetWidth(), this->WINDOW->GetHeight(), this->PIPELINE_FACTORY->PIPELINE.get(), this->VIEWPORT_FACTORY->VIEWPORT.get(), this->VIEWPORT_FACTORY->SCISSOR.get());
-                Core::GameLoop::Run(this->WINDOW.get(), this->DEVICE_FACTORY->DEVICE.get(), this->DEVICE_FACTORY->DEVICE_QUEUE.get(), this->SWAPCHAIN_FACTORY->SWAPCHAIN.get(), this->SEMAPHORE_FACTORY->SEMAPHORE_IMAGE_AVAILABLE.get(), this->SEMAPHORE_FACTORY->SEMAPHORE_RENDERING_DONE.get(), this->COMMAND_BUFFER_FACTORY->BUFFER_COUNT, this->COMMAND_BUFFER_FACTORY->BUFFERS.get()); 
             }
         }
     }

@@ -60,6 +60,8 @@ namespace SnowfallEngine
                 presentInfo.pResults = nullptr;
 
                 vkQueuePresentKHR(*queue, &presentInfo);
+
+                vkQueueWaitIdle(*queue);
             }
 
             std::unique_ptr<GLFWwindow, DestroyGLFWwindow> Window::createWindow(const uint32_t& width, const uint32_t& height, const char* title) const

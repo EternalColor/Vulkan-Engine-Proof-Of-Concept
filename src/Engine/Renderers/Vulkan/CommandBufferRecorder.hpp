@@ -42,7 +42,7 @@ namespace SnowfallEngine
 
                         vkCmdSetScissor(commandBuffers[i], 0, 1, scissors);
 
-                        vkCmdDraw(commandBuffers[i], 0, 1, 0, 0);
+                        vkCmdDraw(commandBuffers[i], 3, 1, 0, 0);
 
                         vkCmdEndRenderPass(commandBuffers[i]);
 

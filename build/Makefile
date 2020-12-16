@@ -144,6 +144,33 @@ SnowfallEngine/fast:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/build
 .PHONY : SnowfallEngine/fast
 
+__/src/Engine/Core/GameLoop.o: __/src/Engine/Core/GameLoop.cpp.o
+
+.PHONY : __/src/Engine/Core/GameLoop.o
+
+# target to build an object file
+__/src/Engine/Core/GameLoop.cpp.o:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Core/GameLoop.cpp.o
+.PHONY : __/src/Engine/Core/GameLoop.cpp.o
+
+__/src/Engine/Core/GameLoop.i: __/src/Engine/Core/GameLoop.cpp.i
+
+.PHONY : __/src/Engine/Core/GameLoop.i
+
+# target to preprocess a source file
+__/src/Engine/Core/GameLoop.cpp.i:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Core/GameLoop.cpp.i
+.PHONY : __/src/Engine/Core/GameLoop.cpp.i
+
+__/src/Engine/Core/GameLoop.s: __/src/Engine/Core/GameLoop.cpp.s
+
+.PHONY : __/src/Engine/Core/GameLoop.s
+
+# target to generate assembly for a file
+__/src/Engine/Core/GameLoop.cpp.s:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Core/GameLoop.cpp.s
+.PHONY : __/src/Engine/Core/GameLoop.cpp.s
+
 __/src/Engine/Core/Main.o: __/src/Engine/Core/Main.cpp.o
 
 .PHONY : __/src/Engine/Core/Main.o
@@ -666,6 +693,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SnowfallEngine"
+	@echo "... __/src/Engine/Core/GameLoop.o"
+	@echo "... __/src/Engine/Core/GameLoop.i"
+	@echo "... __/src/Engine/Core/GameLoop.s"
 	@echo "... __/src/Engine/Core/Main.o"
 	@echo "... __/src/Engine/Core/Main.i"
 	@echo "... __/src/Engine/Core/Main.s"

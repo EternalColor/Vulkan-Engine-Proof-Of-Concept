@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/SnowfallEngine.dir/__/src/Engine/Core/GameLoop.cpp.o"
   "CMakeFiles/SnowfallEngine.dir/__/src/Engine/Core/Main.cpp.o"
   "CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/ApplicationFactory.cpp.o"
   "CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/AttachmentFactory.cpp.o"

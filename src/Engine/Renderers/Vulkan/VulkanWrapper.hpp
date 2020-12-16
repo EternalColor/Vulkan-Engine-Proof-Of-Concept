@@ -21,7 +21,6 @@
 #include "SemaphoreFactory.hpp"
 #include "CommandBufferFactory.hpp"
 #include "CommandBufferRecorder.hpp"
-#include "../../Core/GameLoop.hpp"
 
 namespace SnowfallEngine
 {
@@ -35,6 +34,9 @@ namespace SnowfallEngine
                     //TODO: Load from folder
                     const std::vector<std::string> VERTEX_SHADER_PATHS;
                     const std::vector<std::string> FRAGMENT_SHADER_PATHS;
+                public: 
+                    VulkanWrapper();
+                    ~VulkanWrapper() = default;
 
                     //Read-only "getter fields"
                     const std::unique_ptr<const Layers> LAYERS;
@@ -54,9 +56,6 @@ namespace SnowfallEngine
                     const std::unique_ptr<const FramebufferFactory> FRAMEBUFFER_FACTORY;
                     const std::unique_ptr<const SemaphoreFactory> SEMAPHORE_FACTORY;
                     const std::unique_ptr<const CommandBufferFactory> COMMAND_BUFFER_FACTORY;
-                public: 
-                    VulkanWrapper();
-                    ~VulkanWrapper() = default;
             };  
         }
     }
