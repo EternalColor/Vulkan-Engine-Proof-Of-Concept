@@ -30,7 +30,7 @@ namespace SnowfallEngine
                 commandPoolCreateInfo.flags = 0;
                 commandPoolCreateInfo.queueFamilyIndex = queueFamilyIndex;
 
-                //Can not use <const VkCommandPool> here because vulkan method requires non-const physicalDevices parameter
+                //Can not use <const VkCommandPool> here because vulkan method requires non-const VkCommandPool parameter
                 std::unique_ptr<VkCommandPool> commandPool { new VkCommandPool(VK_NULL_HANDLE) };
                 if(vkCreateCommandPool(*device, &commandPoolCreateInfo, nullptr, commandPool.get()) != VK_SUCCESS)
                 {
@@ -49,7 +49,7 @@ namespace SnowfallEngine
                 commandBufferAllocateInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
                 commandBufferAllocateInfo.commandBufferCount = bufferCount;
 
-                //Can not use <const VkCommandBuffer[]> here because vulkan method requires non-const physicalDevices parameter
+                //Can not use <const VkCommandBuffer[]> here because vulkan method requires non-const VkCommandBuffer parameter
                 std::unique_ptr<VkCommandBuffer[]> commandBuffers = std::make_unique<VkCommandBuffer[]>(bufferCount);
                 
                 if(vkAllocateCommandBuffers(*device, &commandBufferAllocateInfo, commandBuffers.get())!= VK_SUCCESS)

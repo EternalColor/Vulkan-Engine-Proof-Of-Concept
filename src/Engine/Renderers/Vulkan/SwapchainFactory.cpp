@@ -10,7 +10,7 @@ namespace SnowfallEngine
                 :   //INITIALIZATION ORDER MATTERS
                     amountOfImagesInSwapchain { 0 },
                     CACHED_DEVICE { device },
-                    SWAPCHAIN_CREATE_INFO 
+                    CREATE_INFO 
                     {
                         new VkSwapchainCreateInfoKHR
                         {
@@ -34,9 +34,9 @@ namespace SnowfallEngine
                             VK_NULL_HANDLE,                              //oldSwapchain
                         }
                     },
-                    SWAPCHAIN { this->createSwapchain(device, this->SWAPCHAIN_CREATE_INFO.get()) },
-                    SWAPCHAIN_IMAGES { this->getImagesInSwapchain(device, this->SWAPCHAIN.get(), &this->amountOfImagesInSwapchain) },
-                    SWAPCHAIN_IMAGE_VIEWS { this->createImageViews(device, format, this->SWAPCHAIN_IMAGES.get(), this->amountOfImagesInSwapchain)}
+                    SWAPCHAIN { this->createSwapchain(device, this->CREATE_INFO.get()) },
+                    IMAGES { this->getImagesInSwapchain(device, this->SWAPCHAIN.get(), &this->amountOfImagesInSwapchain) },
+                    IMAGE_VIEWS { this->createImageViews(device, format, this->IMAGES.get(), this->amountOfImagesInSwapchain)}
             {
 
             }
@@ -45,7 +45,7 @@ namespace SnowfallEngine
             {
                 for(uint32_t i = 0; i < this->amountOfImagesInSwapchain; ++i)
                 {
-                    vkDestroyImageView(*this->CACHED_DEVICE, this->SWAPCHAIN_IMAGE_VIEWS[i], nullptr);
+                    vkDestroyImageView(*this->CACHED_DEVICE, this->IMAGE_VIEWS[i], nullptr);
                     //TODO: Check why not delete
                     //vkDestroyImage(*this->CACHED_DEVICE, this->SWAPCHAIN_IMAGES[i], nullptr);
                 }

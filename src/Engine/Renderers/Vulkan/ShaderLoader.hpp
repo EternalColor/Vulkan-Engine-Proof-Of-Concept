@@ -25,8 +25,8 @@ namespace SnowfallEngine
                     ~ShaderLoader();
 
                     //Read-only "getter fields"
-                    const size_t VERTEX_SHADER_COUNT;
-                    const size_t FRAGMENT_SHADER_COUNT;
+                    const uint32_t VERTEX_SHADER_COUNT;
+                    const uint32_t FRAGMENT_SHADER_COUNT;
 
                     const std::unique_ptr<const VkShaderModule[]> VERTEX_SHADERS;
                     const std::unique_ptr<const VkShaderModule[]> FRAGMENT_SHADERS;

@@ -3,7 +3,7 @@
 #include <memory>
 #include <stdexcept>
 #include <vulkan/vulkan.h>
-#include <GLFW/glfw3.h>
+#include "../../libraries/glfw/include/GLFW/glfw3.h"
 #include "Layers.hpp"
 
 namespace SnowfallEngine

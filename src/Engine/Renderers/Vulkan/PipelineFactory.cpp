@@ -6,12 +6,12 @@ namespace SnowfallEngine
     {
         namespace VulkanRenderer
         {
-            PipelineFactory::PipelineFactory(const VkDevice* device, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[], const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor)
+            PipelineFactory::PipelineFactory(const VkDevice* device, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[], const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor, const VkFormat* format)
                 :   //INITIALIZER ORDER MATTERS!
                     CACHED_DEVICE { device },
                     SHADER_STAGES { this->createShaderStages(vertexShaderCount, fragmentShaderCount, vertexShaderModules, fragmentShaderModules) },
                     PIPELINE_LAYOUT { this->createPipelineLayout(device) },
-                    PIPELINE { this->createPipeline(device, vertexShaderCount + fragmentShaderCount, this->SHADER_STAGES.get(), this->PIPELINE_LAYOUT.get(), renderPass, viewport, scissor) }
+                    PIPELINE { this->createPipeline(device, vertexShaderCount + fragmentShaderCount, this->SHADER_STAGES.get(), this->PIPELINE_LAYOUT.get(), renderPass, viewport, scissor, format) }
             {
 
             }
@@ -78,16 +78,21 @@ namespace SnowfallEngine
                 return pipelineLayout;
             }
 
-            std::unique_ptr<const VkPipeline> PipelineFactory::createPipeline(const VkDevice* device, const uint32_t& shaderStageCount, const VkPipelineShaderStageCreateInfo shaderStageCreateInfos[], const VkPipelineLayout* layout, const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor) const
+            std::unique_ptr<const VkPipeline> PipelineFactory::createPipeline(const VkDevice* device, const uint32_t& shaderStageCount, const VkPipelineShaderStageCreateInfo shaderStageCreateInfos[], const VkPipelineLayout* layout, const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor, const VkFormat* format) const
             {
+                //TODO: Dont use auto
+                //TODO: Place somewhere else
+                auto bindingDescription = Geometry::Vertex2D::GetBindingDescription();
+                auto attributeDescriptions = Geometry::Vertex2D::GetAttributeDescriptions(format);
+
                 VkPipelineVertexInputStateCreateInfo pipelineVertexInputStateCreateInfo = {};
                 pipelineVertexInputStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
                 pipelineVertexInputStateCreateInfo.pNext = nullptr;
                 pipelineVertexInputStateCreateInfo.flags = 0;
-                pipelineVertexInputStateCreateInfo.vertexBindingDescriptionCount = 0;
-                pipelineVertexInputStateCreateInfo.pVertexBindingDescriptions = nullptr;
-                pipelineVertexInputStateCreateInfo.vertexAttributeDescriptionCount = 0;
-                pipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions = nullptr;
+                pipelineVertexInputStateCreateInfo.vertexBindingDescriptionCount = 1;
+                pipelineVertexInputStateCreateInfo.pVertexBindingDescriptions = &bindingDescription;
+                pipelineVertexInputStateCreateInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(attributeDescriptions.size());
+                pipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 
                 VkPipelineInputAssemblyStateCreateInfo pipelineInputAssemblyStateCreateInfo = {};
                 pipelineInputAssemblyStateCreateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;

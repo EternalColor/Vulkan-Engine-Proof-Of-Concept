@@ -8,7 +8,7 @@ namespace SnowfallEngine
         {
             PhysicalDeviceQueueFactory::PhysicalDeviceQueueFactory(const VkPhysicalDevice* physicalDevice, const VkQueueFlagBits&& requiredQueueFlags)
                 :   //INITIALIZER ORDER MATTERS!
-                    DEVICE_QUEUE_CREATE_INFO { this->createDeviceQueueCreateInfo(physicalDevice, requiredQueueFlags) }
+                    CREATE_INFO { this->createDeviceQueueCreateInfo(physicalDevice, requiredQueueFlags) }
                     
             {
 
@@ -16,7 +16,7 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkDeviceQueueCreateInfo> PhysicalDeviceQueueFactory::createDeviceQueueCreateInfo(const VkPhysicalDevice* physicalDevice, const VkQueueFlagBits& requiredQueueFlags) const
             {
-            //Assume only 1 physical device
+                //Assume only 1 physical device
                 uint32_t amountOfQueueFamilies = 0;
                 vkGetPhysicalDeviceQueueFamilyProperties(*physicalDevice, &amountOfQueueFamilies, nullptr);
 

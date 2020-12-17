@@ -39,8 +39,8 @@ namespace SnowfallEngine
                 this->renderWrapper->DEVICE_FACTORY->DEVICE.get(), 
                 this->renderWrapper->DEVICE_FACTORY->DEVICE_QUEUE.get(), 
                 this->renderWrapper->SWAPCHAIN_FACTORY->SWAPCHAIN.get(), 
-                this->renderWrapper->SEMAPHORE_FACTORY->SEMAPHORE_IMAGE_AVAILABLE.get(), 
-                this->renderWrapper->SEMAPHORE_FACTORY->SEMAPHORE_RENDERING_DONE.get(), 
+                this->renderWrapper->SEMAPHORE_FACTORY->IMAGE_AVAILABLE.get(), 
+                this->renderWrapper->SEMAPHORE_FACTORY->RENDERING_DONE.get(), 
                 this->renderWrapper->COMMAND_BUFFER_FACTORY->BUFFER_COUNT, 
                 this->renderWrapper->COMMAND_BUFFER_FACTORY->BUFFERS.get()
             );

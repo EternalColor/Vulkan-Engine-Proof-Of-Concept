@@ -21,7 +21,7 @@ namespace SnowfallEngine
                     ~PhysicalDeviceQueueFactory() = default;
 
                     //Read-only "getter fields"
-                    const std::unique_ptr<const VkDeviceQueueCreateInfo> DEVICE_QUEUE_CREATE_INFO;  
+                    const std::unique_ptr<const VkDeviceQueueCreateInfo> CREATE_INFO;  
             };
         }
     }

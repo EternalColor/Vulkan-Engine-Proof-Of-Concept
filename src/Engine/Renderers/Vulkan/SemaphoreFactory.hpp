@@ -21,8 +21,8 @@ namespace SnowfallEngine
                     ~SemaphoreFactory();
 
                     //Read-only "getter fields"
-                    const std::unique_ptr<const VkSemaphore> SEMAPHORE_IMAGE_AVAILABLE;
-                    const std::unique_ptr<const VkSemaphore> SEMAPHORE_RENDERING_DONE;
+                    const std::unique_ptr<const VkSemaphore> IMAGE_AVAILABLE;
+                    const std::unique_ptr<const VkSemaphore> RENDERING_DONE;
             };
         }
     }

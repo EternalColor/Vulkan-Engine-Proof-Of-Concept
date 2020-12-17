@@ -11,6 +11,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Xrandr)
 target_link_libraries(${PROJECT_NAME} PRIVATE Xi)
 target_link_libraries(${PROJECT_NAME} PRIVATE Xinerama)
 target_link_libraries(${PROJECT_NAME} PRIVATE Xcursor)
-target_link_libraries(${PROJECT_NAME} PRIVATE glfw3)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 #GLM
 target_link_libraries(${PROJECT_NAME} PRIVATE glm)

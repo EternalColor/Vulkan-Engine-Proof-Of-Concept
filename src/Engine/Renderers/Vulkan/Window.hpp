@@ -2,7 +2,7 @@
 
 #define GLFW_INCLUDE_VULKAN
 
-#include <GLFW/glfw3.h>
+#include "../../libraries/glfw/include/GLFW/glfw3.h"
 #include <vulkan/vulkan.h>
 #include <memory>
 #include <limits>

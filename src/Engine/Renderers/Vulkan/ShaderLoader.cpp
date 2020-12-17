@@ -10,8 +10,8 @@ namespace SnowfallEngine
                 :   //INITIALIZATION ORDER MATTERS
                     CACHED_DEVICE { device },
                     //The amount of shader is the same as the amount of paths of the corresponding shader category
-                    VERTEX_SHADER_COUNT { vertexShaderPaths.size() },
-                    FRAGMENT_SHADER_COUNT { fragmentShaderPaths.size() },
+                    VERTEX_SHADER_COUNT { static_cast<uint32_t>(vertexShaderPaths.size()) },
+                    FRAGMENT_SHADER_COUNT { static_cast<uint32_t>(fragmentShaderPaths.size()) },
                     VERTEX_SHADERS { this->createShaderModules(this->CACHED_DEVICE, vertexShaderPaths) },
                     FRAGMENT_SHADERS { this->createShaderModules(this->CACHED_DEVICE, fragmentShaderPaths) }
             {

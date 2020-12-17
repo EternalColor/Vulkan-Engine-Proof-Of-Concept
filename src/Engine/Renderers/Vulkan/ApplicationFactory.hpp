@@ -16,7 +16,7 @@ namespace SnowfallEngine
                     ~ApplicationFactory() = default;
 
                     //Read-only "getter fields"
-                    const std::unique_ptr<VkApplicationInfo> DEFAULT_APPLICATION_INFO;
+                    const std::unique_ptr<VkApplicationInfo> APPLICATION_INFO;
             };
         }
     }

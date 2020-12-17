@@ -28,10 +28,10 @@ namespace SnowfallEngine
                     const uint32_t& GetAmountOfImagesInSwapchain() const;
 
                     //Read-only "getter fields"
-                    const std::unique_ptr<const VkSwapchainCreateInfoKHR> SWAPCHAIN_CREATE_INFO;
+                    const std::unique_ptr<const VkSwapchainCreateInfoKHR> CREATE_INFO;
                     const std::unique_ptr<const VkSwapchainKHR> SWAPCHAIN;
-                    const std::unique_ptr<const VkImage[]> SWAPCHAIN_IMAGES;
-                    const std::unique_ptr<const VkImageView[]> SWAPCHAIN_IMAGE_VIEWS;
+                    const std::unique_ptr<const VkImage[]> IMAGES;
+                    const std::unique_ptr<const VkImageView[]> IMAGE_VIEWS;
             };
         }
     }

@@ -38,6 +38,15 @@ namespace SnowfallEngine
                     VulkanWrapper();
                     ~VulkanWrapper() = default;
 
+                    //TODO: REMOVE
+                    const std::vector<Geometry::Vertex2D> vertices = 
+                    {
+                        //COLOR         POSITION
+                        {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+                        {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
+                        {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
+                    };
+
                     //Read-only "getter fields"
                     const std::unique_ptr<const Layers> LAYERS;
                     const std::unique_ptr<const ApplicationFactory> APPLICATION_FACTORY;
