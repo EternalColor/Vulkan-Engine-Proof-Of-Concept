@@ -10,8 +10,8 @@ namespace SnowfallEngine
                 :   //INITIALIZATION ORDER MATTERS
                     BEST_PHYSICAL_DEVICE { this->getBestPhysicalDevice(instance) },
                     BEST_PHYSICAL_DEVICE_FEATURES { this->getFeaturesOfBestPhysicalDevice(this->BEST_PHYSICAL_DEVICE.get()) },
-                    BEST_PHYSICAL_DEVICE_PROPERTIES { this->getPropertiesOfBestPhysicalDevice(this->BEST_PHYSICAL_DEVICE.get()) },
-                    BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES { nullptr } 
+                    BEST_PHYSICAL_DEVICE_PROPERTIES { this->getPropertiesOfBestPhysicalDevice(this->BEST_PHYSICAL_DEVICE.get()) }
+                   // BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES { this->getMemoryPropertiesOfBestPhysicalDevice(this->BEST_PHYSICAL_DEVICE.get()) } 
             {
 
             }
@@ -25,7 +25,7 @@ namespace SnowfallEngine
                 VkPhysicalDevice physicalDevices[physicalDeviceCount];
                 vkEnumeratePhysicalDevices(*instance, &physicalDeviceCount, physicalDevices);
 
-                uint32_t winnerIndex = 0;
+                uint32_t bestIndex = 0;
                 uint32_t bestScore = 0;
 
                 for(uint32_t i = 0; i < physicalDeviceCount; ++i)
@@ -35,12 +35,12 @@ namespace SnowfallEngine
                     //New highscore for physicalDevice found :)
                     if(score > bestScore)
                     {
+                        bestIndex = i;
                         bestScore = score;
-                        winnerIndex = i;
                     }
                 }
                 
-                return std::unique_ptr<const VkPhysicalDevice>( new VkPhysicalDevice(physicalDevices[winnerIndex]) );
+                return std::unique_ptr<const VkPhysicalDevice>( new VkPhysicalDevice(physicalDevices[bestIndex]) );
             }
 
             //Score is rated by HARDCODED VALUES
@@ -76,11 +76,30 @@ namespace SnowfallEngine
             //Intended to be used with BEST_DEVICE
             std::unique_ptr<const VkPhysicalDeviceProperties> PhysicalDeviceFactory::getPropertiesOfBestPhysicalDevice(const VkPhysicalDevice* physicalDevice) const
             {
+                //Can not use <const VkPhysicalDeviceProperties> here because vulkan method requires non-const VkPhysicalDeviceProperties parameter
                 std::unique_ptr<VkPhysicalDeviceProperties> deviceProperties = std::make_unique<VkPhysicalDeviceProperties>();
                 vkGetPhysicalDeviceProperties(*physicalDevice, deviceProperties.get());
 
                 return deviceProperties;
             }
+
+            /*std::unique_ptr<const VkPhysicalDeviceMemoryProperties> PhysicalDeviceFactory::getMemoryPropertiesOfBestPhysicalDevice(const VkPhysicalDevice* physicalDevice) const
+            {
+                //Can not use <const VkPhysicalDeviceMemoryProperties> here because vulkan method requires non-const VkPhysicalDeviceMemoryProperties parameter
+                std::unique_ptr<VkPhysicalDeviceMemoryProperties> memoryProperties = std::make_unique<VkPhysicalDeviceMemoryProperties>();
+                vkGetPhysicalDeviceMemoryProperties(*physicalDevice, memoryProperties.get());
+
+                for (uint32_t i = 0; i < memoryProperties->memoryTypeCount; ++i) 
+                {
+                    if (typeFilter & (1 << i)) 
+                    {
+                        return i;
+                    }
+                }
+
+
+                return memoryProperties;
+            }*/
         }
     }
 }

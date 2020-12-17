@@ -18,6 +18,7 @@ namespace SnowfallEngine
 
                     std::unique_ptr<const VkPhysicalDeviceFeatures> getFeaturesOfBestPhysicalDevice(const VkPhysicalDevice* physicalDevice) const;
                     std::unique_ptr<const VkPhysicalDeviceProperties> getPropertiesOfBestPhysicalDevice(const VkPhysicalDevice* physicalDevice) const;
+                    std::unique_ptr<const VkPhysicalDeviceMemoryProperties> getMemoryPropertiesOfBestPhysicalDevice(const VkPhysicalDevice* physicalDevice) const;
                 public:
                     PhysicalDeviceFactory(const VkInstance* instance);
                     ~PhysicalDeviceFactory() = default;
