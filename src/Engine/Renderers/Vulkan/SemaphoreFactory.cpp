@@ -23,7 +23,7 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkSemaphore> SemaphoreFactory::createSemaphore(const VkDevice* device) const
             {
-                VkSemaphoreCreateInfo semaphoreCreateInfo = 
+                const VkSemaphoreCreateInfo semaphoreCreateInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO,
                     .pNext = nullptr,

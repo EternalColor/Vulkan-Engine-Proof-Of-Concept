@@ -10,7 +10,7 @@ namespace SnowfallEngine
                 :   //INITIALIZATION ORDER MATTERS
                     DEVICE_EXTENSIONS { VK_KHR_SWAPCHAIN_EXTENSION_NAME },
                     DEVICE { this->createVkDevice(vkInstance, physicalDevices, deviceQueueCreateInfo, layers, this->DEVICE_EXTENSIONS, physicalDeviceFeatures) },
-                    DEVICE_QUEUE { this->createVkQueue(this->DEVICE.get(), queueFamilyIndex) }
+                    QUEUE { this->createVkQueue(this->DEVICE.get(), queueFamilyIndex) }
             {
                 
             }
@@ -22,16 +22,16 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkDevice> DeviceFactory::createVkDevice(const VkInstance* vkInstance, const VkPhysicalDevice physicalDevices[], const VkDeviceQueueCreateInfo* deviceQueueCreateInfo, const Layers* layers, const std::vector<const char*>& extensions, const VkPhysicalDeviceFeatures* physicalDeviceFeatures) const
             {
-                VkDeviceCreateInfo deviceCreateInfo 
+                const VkDeviceCreateInfo deviceCreateInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
                     .pNext = nullptr,
                     .flags = 0,
                     .queueCreateInfoCount = 1,
                     .pQueueCreateInfos = deviceQueueCreateInfo,
-                    .enabledLayerCount = layers->REQUIRED_LAYERS.size(),
+                    .enabledLayerCount = static_cast<uint32_t>(layers->REQUIRED_LAYERS.size()),
                     .ppEnabledLayerNames = layers->REQUIRED_LAYERS.data(),
-                    .enabledExtensionCount = extensions.size(),
+                    .enabledExtensionCount = static_cast<uint32_t>(extensions.size()),
                     .ppEnabledExtensionNames = extensions.data(),
                     .pEnabledFeatures = physicalDeviceFeatures
                 };

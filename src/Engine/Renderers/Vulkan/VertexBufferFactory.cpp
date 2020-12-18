@@ -6,14 +6,30 @@ namespace SnowfallEngine
     {
         namespace VulkanRenderer
         {
-            VertexBufferFactory::VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[]) 
+            VertexBufferFactory::VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, const std::vector<Geometry::Vertex2D>& vertices, const bool&& isStagingBuffer) 
                 :   //INITIALIZATION ORDER MATTERS
                     CACHED_DEVICE { device },
-                    BUFFER { this->createBuffer(device, deviceSize, queueFamilyIndex, queueFamilyIndices) },
-                    MEMORY_REQUIREMENTS { this->createMemoryRequirementsForBuffer(device, this->BUFFER.get()) },
-                    MEMORY { this->allocateMemory(device, properties, this->MEMORY_REQUIREMENTS.get()) }
+                    DEVICE_SIZE { deviceSize },
+                    BUFFER { this->createBuffer(this->CACHED_DEVICE, deviceSize, queueFamilyIndex, queueFamilyIndices, usageFlags) },
+                    MEMORY_REQUIREMENTS { this->createMemoryRequirementsForBuffer(this->CACHED_DEVICE, this->BUFFER.get()) },
+                    MEMORY { this->allocateMemory(this->CACHED_DEVICE, properties, this->MEMORY_REQUIREMENTS.get(), propertyFlags) }
             {
-                
+                if(isStagingBuffer)
+                {
+                    this->bindMemory(this->CACHED_DEVICE, this->BUFFER.get(), this->MEMORY.get());
+                    this->mapMemory(this->CACHED_DEVICE, this->MEMORY.get(), deviceSize, vertices);
+                }
+                else
+                {
+                    this->bindMemory(this->CACHED_DEVICE, this->BUFFER.get(), this->MEMORY.get());
+                }
+            }
+
+            VertexBufferFactory::VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags)
+                //Here we disable the bind and map memory, because this constructor is designed to be used for GPU vertex buffers that dont need the bind and mapping since we will copy the data ourselves
+                : VertexBufferFactory(device, deviceSize, properties, queueFamilyIndex, queueFamilyIndices, propertyFlags, usageFlags, std::vector<Geometry::Vertex2D>(), false)
+            {
+
             }
 
             VertexBufferFactory::~VertexBufferFactory()
@@ -22,18 +38,18 @@ namespace SnowfallEngine
                 vkFreeMemory(*this->CACHED_DEVICE, *this->MEMORY, nullptr);
             }
 
-            std::unique_ptr<const VkBuffer> VertexBufferFactory::createBuffer(const VkDevice* device, const VkDeviceSize& deviceSize, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[]) const
+            std::unique_ptr<const VkBuffer> VertexBufferFactory::createBuffer(const VkDevice* device, const VkDeviceSize& deviceSize, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkBufferUsageFlags& usageFlags) const
             {
-                const VkBufferCreateInfo bufferInfo = 
+                const VkBufferCreateInfo bufferInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO,
                     .pNext = nullptr,
                     .flags = 0,                                 
                     .size = deviceSize,
-                    .usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
+                    .usage = usageFlags,
                     .sharingMode = VK_SHARING_MODE_EXCLUSIVE,            
                     .queueFamilyIndexCount = queueFamilyIndex,                 
-                    .pQueueFamilyIndices = queueFamilyIndices,
+                    .pQueueFamilyIndices = queueFamilyIndices //can be set to nullptr if sharingMode is not VK_SHARING_MODE_CONCURRENT 
                 };
 
                 //Can not use <const VkBuffer> here because vulkan method requires non-const VkBuffer parameter
@@ -56,13 +72,14 @@ namespace SnowfallEngine
                 return memoryRequirements;
             }
 
-            std::unique_ptr<const VkDeviceMemory> VertexBufferFactory::allocateMemory(const VkDevice* device, const VkPhysicalDeviceMemoryProperties* properties, const VkMemoryRequirements* memoryRequirements) const
+            std::unique_ptr<const VkDeviceMemory> VertexBufferFactory::allocateMemory(const VkDevice* device, const VkPhysicalDeviceMemoryProperties* properties, const VkMemoryRequirements* memoryRequirements, const VkMemoryPropertyFlags& propertyFlags) const
             {
                 const VkMemoryAllocateInfo memoryAllocationInfo = 
                 {
                     .sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO,
                     .allocationSize = memoryRequirements->size,
-                    .memoryTypeIndex = findMemoryType(memoryRequirements->memoryTypeBits, properties, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT)
+                    .memoryTypeIndex = findMemoryType(memoryRequirements->memoryTypeBits, properties, propertyFlags) 
+                    //findMemoryType flags explained-> Must be visible to the CPU (VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT) | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT bit specifies that the host cache management commands 
                 };
 
                 //Can not use <const VkDeviceMemory> here because vulkan method requires non-const VkDeviceMemory parameter
@@ -71,16 +88,32 @@ namespace SnowfallEngine
                 if (vkAllocateMemory(*device, &memoryAllocationInfo, nullptr, deviceMemory.get()) != VK_SUCCESS)
                 {
                     throw std::runtime_error("failed to allocate vertex buffer memory!");
-                }       
+                }      
 
                 return deviceMemory;
             }
 
-            uint32_t VertexBufferFactory::findMemoryType(const uint32_t& typeFilter, const VkPhysicalDeviceMemoryProperties* properties, const VkMemoryPropertyFlags&& propertieFlags) const
+            void VertexBufferFactory::bindMemory(const VkDevice* device, const VkBuffer* buffer, const VkDeviceMemory* memory) const
+            {
+                vkBindBufferMemory(*device, *buffer, *memory, 0);
+            }
+
+            void VertexBufferFactory::mapMemory(const VkDevice* device, const VkDeviceMemory* deviceMemory, const VkDeviceSize& deviceSize, const std::vector<Geometry::Vertex2D>& vertices) const
+            {
+                void* data;
+                vkMapMemory(*device, *deviceMemory, 0, deviceSize, 0, &data);
+                
+                //Copy vertices into data
+                std::memcpy(data, vertices.data(), static_cast<size_t>(deviceSize));
+
+                vkUnmapMemory(*device, *deviceMemory);
+            }
+
+            const uint32_t VertexBufferFactory::findMemoryType(const uint32_t& typeFilter, const VkPhysicalDeviceMemoryProperties* properties, const VkMemoryPropertyFlags& propertyFlags) const
             {
                 for (uint32_t i = 0; i < properties->memoryTypeCount; i++) 
                 {
-                    if (typeFilter & (1 << i) && (properties->memoryTypes[i].propertyFlags & propertieFlags) == propertieFlags) 
+                    if (typeFilter & (1 << i) && (properties->memoryTypes[i].propertyFlags & propertyFlags) == propertyFlags) 
                     {
                         return i;
                     }

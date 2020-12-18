@@ -24,7 +24,7 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkCommandPool> CommandBufferFactory::createCommandPool(const VkDevice* device, const uint32_t& queueFamilyIndex) const
             {
-                VkCommandPoolCreateInfo commandPoolCreateInfo = 
+                const VkCommandPoolCreateInfo commandPoolCreateInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO,
                     .pNext = nullptr,
@@ -44,7 +44,7 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkCommandBuffer[]> CommandBufferFactory::createCommandBuffers(const VkDevice* device, const VkCommandPool* commandPool, const uint32_t& bufferCount) const
             {
-                VkCommandBufferAllocateInfo commandBufferAllocateInfo = 
+                const VkCommandBufferAllocateInfo commandBufferAllocateInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
                     .pNext = nullptr,

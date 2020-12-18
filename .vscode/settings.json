@@ -82,6 +82,7 @@
         "stack": "cpp",
         "cstdbool": "cpp",
         "strstream": "cpp",
-        "cfenv": "cpp"
+        "cfenv": "cpp",
+        "*.ipp": "cpp"
     }
 }

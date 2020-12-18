@@ -34,9 +34,9 @@ namespace SnowfallEngine
                 uint32_t imageIndex = 0;
                 vkAcquireNextImageKHR(*device, *swapchain, std::numeric_limits<uint64_t>::max(), *semaphoreImageAvailable, VK_NULL_HANDLE, &imageIndex);
 
-                VkPipelineStageFlags waitStageMask[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
+                VkPipelineStageFlags waitStageMask[] { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
 
-                VkSubmitInfo submitInfo = 
+                VkSubmitInfo submitInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO,
                     .pNext = nullptr,
@@ -51,7 +51,7 @@ namespace SnowfallEngine
 
                 vkQueueSubmit(*queue, 1, &submitInfo, VK_NULL_HANDLE);
 
-                VkPresentInfoKHR presentInfo = 
+                VkPresentInfoKHR presentInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
                     .pNext = nullptr,

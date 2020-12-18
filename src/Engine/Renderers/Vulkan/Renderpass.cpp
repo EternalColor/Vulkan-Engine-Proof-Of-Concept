@@ -21,7 +21,7 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkRenderPass> Renderpass::createRenderpass(const VkDevice* device, const VkAttachmentDescription attachmentDescriptions[], const VkSubpassDescription subpassDescriptions[], const VkSubpassDependency subpassDependencies[]) const
             {
-                VkRenderPassCreateInfo renderPassCreateInfo = 
+                const VkRenderPassCreateInfo renderPassCreateInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO,
                     .pNext = nullptr,

@@ -24,7 +24,7 @@ namespace SnowfallEngine
 
                     //Read-only "getter fields"
                     const std::unique_ptr<const VkDevice> DEVICE;
-                    const std::unique_ptr<const VkQueue> DEVICE_QUEUE;  
+                    const std::unique_ptr<const VkQueue> QUEUE;  
             };
         }
     }

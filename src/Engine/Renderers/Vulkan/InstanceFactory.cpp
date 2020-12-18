@@ -26,13 +26,13 @@ namespace SnowfallEngine
                 //Can not use <const VkInstance> here because vulkan method requires non-const instance parameter
                 std::unique_ptr<VkInstance> instance { new VkInstance(VK_NULL_HANDLE) }; 
 
-                VkInstanceCreateInfo instanceCreateInfo 
+                const VkInstanceCreateInfo instanceCreateInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
                     .pNext = nullptr,
                     .flags = 0,
                     .pApplicationInfo = applicationInfo,
-                    .enabledLayerCount = layers->REQUIRED_LAYERS.size(),
+                    .enabledLayerCount = static_cast<uint32_t>(layers->REQUIRED_LAYERS.size()),
                     .ppEnabledLayerNames = layers->REQUIRED_LAYERS.data(),
                     .enabledExtensionCount = extensionCount,
                     .ppEnabledExtensionNames = extensions

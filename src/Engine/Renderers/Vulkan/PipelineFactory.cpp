@@ -6,12 +6,12 @@ namespace SnowfallEngine
     {
         namespace VulkanRenderer
         {
-            PipelineFactory::PipelineFactory(const VkDevice* device, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[], const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor, const VkFormat* format)
+            PipelineFactory::PipelineFactory(const VkDevice* device, const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[], const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor)
                 :   //INITIALIZER ORDER MATTERS!
                     CACHED_DEVICE { device },
                     SHADER_STAGES { this->createShaderStages(vertexShaderCount, fragmentShaderCount, vertexShaderModules, fragmentShaderModules) },
                     PIPELINE_LAYOUT { this->createPipelineLayout(device) },
-                    PIPELINE { this->createPipeline(device, vertexShaderCount + fragmentShaderCount, this->SHADER_STAGES.get(), this->PIPELINE_LAYOUT.get(), renderPass, viewport, scissor, format) }
+                    PIPELINE { this->createPipeline(device, vertexShaderCount + fragmentShaderCount, this->SHADER_STAGES.get(), this->PIPELINE_LAYOUT.get(), renderPass, viewport, scissor) }
             {
 
             }
@@ -24,9 +24,10 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> PipelineFactory::createShaderStages(const size_t& vertexShaderCount, const size_t& fragmentShaderCount, const VkShaderModule vertexShaderModules[], const VkShaderModule fragmentShaderModules[]) const
             {
+                //BE CAREFUL, always assign the raw pointer to the unique ptr returned by this function -> memory leak potential otherwise
                 VkPipelineShaderStageCreateInfo* shaderStageCreateInfos = new VkPipelineShaderStageCreateInfo[vertexShaderCount + fragmentShaderCount];
 
-                VkPipelineShaderStageCreateInfo vertexShaderPipelineStageCreateInfo = 
+                VkPipelineShaderStageCreateInfo vertexShaderPipelineStageCreateInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
                     .pNext = nullptr,
@@ -42,7 +43,7 @@ namespace SnowfallEngine
                     shaderStageCreateInfos[currentVertexShaderCount] = vertexShaderPipelineStageCreateInfo;
                 }
 
-                VkPipelineShaderStageCreateInfo fragmentShaderPipelineStageCreateInfo = 
+                VkPipelineShaderStageCreateInfo fragmentShaderPipelineStageCreateInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO,
                     .pNext = nullptr,
@@ -58,7 +59,7 @@ namespace SnowfallEngine
                     shaderStageCreateInfos[vertexShaderCount + currentFragmentShaderCount] = fragmentShaderPipelineStageCreateInfo;
                 }
 
-                return std::unique_ptr<VkPipelineShaderStageCreateInfo[]> 
+                return std::unique_ptr<const VkPipelineShaderStageCreateInfo[]> 
                 {
                     shaderStageCreateInfos
                 };
@@ -66,7 +67,7 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkPipelineLayout> PipelineFactory::createPipelineLayout(const VkDevice* device) const
             {
-                VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = 
+                const VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO,
                     .pNext = nullptr,
@@ -84,14 +85,14 @@ namespace SnowfallEngine
                 return pipelineLayout;
             }
 
-            std::unique_ptr<const VkPipeline> PipelineFactory::createPipeline(const VkDevice* device, const uint32_t& shaderStageCount, const VkPipelineShaderStageCreateInfo shaderStageCreateInfos[], const VkPipelineLayout* layout, const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor, const VkFormat* format) const
+            std::unique_ptr<const VkPipeline> PipelineFactory::createPipeline(const VkDevice* device, const uint32_t& shaderStageCount, const VkPipelineShaderStageCreateInfo shaderStageCreateInfos[], const VkPipelineLayout* layout, const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor) const
             {
                 //TODO: Dont use auto
                 //TODO: Place somewhere else
                 auto bindingDescription = Geometry::Vertex2D::GetBindingDescription();
-                auto attributeDescriptions = Geometry::Vertex2D::GetAttributeDescriptions(format);
+                auto attributeDescriptions = Geometry::Vertex2D::GetAttributeDescriptions();
 
-                VkPipelineVertexInputStateCreateInfo pipelineVertexInputStateCreateInfo = 
+                const VkPipelineVertexInputStateCreateInfo pipelineVertexInputStateCreateInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,
                     .pNext = nullptr,
@@ -102,7 +103,7 @@ namespace SnowfallEngine
                     .pVertexAttributeDescriptions = attributeDescriptions.data()
                 };
 
-                VkPipelineInputAssemblyStateCreateInfo pipelineInputAssemblyStateCreateInfo = 
+                const VkPipelineInputAssemblyStateCreateInfo pipelineInputAssemblyStateCreateInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO,
                     .pNext = nullptr,
@@ -111,7 +112,7 @@ namespace SnowfallEngine
                     .primitiveRestartEnable = VK_FALSE
                 };
 
-                VkPipelineViewportStateCreateInfo pipelineViewportStateCreateInfo = 
+                const VkPipelineViewportStateCreateInfo pipelineViewportStateCreateInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO,
                     .pNext = nullptr,
@@ -122,7 +123,7 @@ namespace SnowfallEngine
                     .pScissors = scissor
                 };
 
-                VkPipelineRasterizationStateCreateInfo pipelineRasterizationStateCreateInfo = 
+                const VkPipelineRasterizationStateCreateInfo pipelineRasterizationStateCreateInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO,
                     .pNext = nullptr,
@@ -140,7 +141,7 @@ namespace SnowfallEngine
                 };
 
                 //Anti Aliasing
-                VkPipelineMultisampleStateCreateInfo pipelineMultisampleStateCreateInfo = 
+                const VkPipelineMultisampleStateCreateInfo pipelineMultisampleStateCreateInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO,
                     .pNext = nullptr,
@@ -153,7 +154,7 @@ namespace SnowfallEngine
                     .alphaToOneEnable = VK_FALSE
                 };
 
-                VkPipelineColorBlendAttachmentState pipelineColorBlendAttachmentState = 
+                const VkPipelineColorBlendAttachmentState pipelineColorBlendAttachmentState 
                 {
                     .blendEnable = VK_TRUE,
                     .srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA,
@@ -165,7 +166,7 @@ namespace SnowfallEngine
                     .colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT | VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT
                 };
 
-                VkPipelineColorBlendStateCreateInfo pipelineColorBlendStateCreateInfo = 
+                const VkPipelineColorBlendStateCreateInfo pipelineColorBlendStateCreateInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO,
                     .pNext = nullptr,
@@ -182,14 +183,14 @@ namespace SnowfallEngine
                         1.0f
                     } 
                 };
-                
-                VkDynamicState dynamicStates[] = 
+            
+                const VkDynamicState dynamicStates[]
                 {
                     VK_DYNAMIC_STATE_VIEWPORT,
                     VK_DYNAMIC_STATE_SCISSOR
                 };
 
-                VkPipelineDynamicStateCreateInfo dynamicStateCreateInfo = 
+                const VkPipelineDynamicStateCreateInfo dynamicStateCreateInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO,
                     .pNext = nullptr,
@@ -198,7 +199,7 @@ namespace SnowfallEngine
                     .pDynamicStates = dynamicStates
                 };
 
-                VkGraphicsPipelineCreateInfo graphicsPipelineCreateInfo = 
+                const VkGraphicsPipelineCreateInfo graphicsPipelineCreateInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO,
                     .pNext = nullptr,

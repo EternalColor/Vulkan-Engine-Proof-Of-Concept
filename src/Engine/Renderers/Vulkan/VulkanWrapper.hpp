@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vulkan/vulkan.h>
 #include <memory>
 #include <vector>
 #include <string>
@@ -32,21 +33,14 @@ namespace SnowfallEngine
             class VulkanWrapper final
             {
                 private:
+                    //TODO: REMOVE and load from actual vertex data
+                    const std::vector<Geometry::Vertex2D> VERTICES;
                     //TODO: Load from folder
                     const std::vector<std::string> VERTEX_SHADER_PATHS;
                     const std::vector<std::string> FRAGMENT_SHADER_PATHS;
                 public: 
                     VulkanWrapper();
                     ~VulkanWrapper() = default;
-
-                    //TODO: REMOVE
-                    const std::vector<Geometry::Vertex2D> vertices = 
-                    {
-                        //COLOR         POSITION
-                        {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
-                        {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
-                        {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
-                    };
 
                     //Read-only "getter fields"
                     const std::unique_ptr<const Layers> LAYERS;
@@ -66,7 +60,9 @@ namespace SnowfallEngine
                     const std::unique_ptr<const FramebufferFactory> FRAMEBUFFER_FACTORY;
                     const std::unique_ptr<const SemaphoreFactory> SEMAPHORE_FACTORY;
                     const std::unique_ptr<const CommandBufferFactory> COMMAND_BUFFER_FACTORY;
-                    const std::unique_ptr<const VertexBufferFactory> VERTEX_BUFFER_FACTORY;
+                    //Is not const because it will be deleted after the staging is moved to gpu
+                    std::unique_ptr<const VertexBufferFactory> VERTEX_BUFFER_FACTORY_FOR_CPU_STAGING;
+                    const std::unique_ptr<const VertexBufferFactory> VERTEX_BUFFER_FACTORY_FOR_GPU;
             };  
         }
     }

@@ -25,10 +25,9 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkFramebuffer[]> FramebufferFactory::createFramebuffers(const VkDevice* device, const uint32_t& amountOfImagesInSwapchain, const VkRenderPass* renderPass, const VkImageView imageViews[], const uint32_t& windowWidth, const uint32_t& windowHeight) const
             {
-                //Can not use <const VkFramebuffer[]> here because vulkan method requires non-const VkFramebuffer parameter
                 std::unique_ptr<VkFramebuffer[]> framebuffers = std::make_unique<VkFramebuffer[]>(amountOfImagesInSwapchain);
 
-                VkFramebufferCreateInfo framebufferCreateInfo = 
+                VkFramebufferCreateInfo framebufferCreateInfo 
                 {
                     .sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO,
                     .pNext = nullptr,

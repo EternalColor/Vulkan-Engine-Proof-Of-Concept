@@ -37,7 +37,7 @@ namespace SnowfallEngine
             this->renderWrapper->WINDOW->RenderOneFrame
             (
                 this->renderWrapper->DEVICE_FACTORY->DEVICE.get(), 
-                this->renderWrapper->DEVICE_FACTORY->DEVICE_QUEUE.get(), 
+                this->renderWrapper->DEVICE_FACTORY->QUEUE.get(), 
                 this->renderWrapper->SWAPCHAIN_FACTORY->SWAPCHAIN.get(), 
                 this->renderWrapper->SEMAPHORE_FACTORY->IMAGE_AVAILABLE.get(), 
                 this->renderWrapper->SEMAPHORE_FACTORY->RENDERING_DONE.get(), 

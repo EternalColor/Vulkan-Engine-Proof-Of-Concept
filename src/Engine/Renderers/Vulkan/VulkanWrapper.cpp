@@ -8,13 +8,21 @@ namespace SnowfallEngine
         {
             VulkanWrapper::VulkanWrapper() 
                 :   //INITIALIZATION ORDER MATTERS
+                    VERTICES
+                    {
+                        //POSITION        COLOR
+                        {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+                        {{0.5f, -0.5f},  {0.0f, 1.0f, 0.0f}},
+                        {{0.5f, 0.5f},   {0.0f, 0.0f, 1.0f}},
+                        {{-0.5f, 0.5f},  {1.0f, 1.0f, 1.0f}}
+                    },
                     VERTEX_SHADER_PATHS 
                     { 
-                        "/home/sascha/Games/VulkanTest2/build/vert.spv" 
+                        "/home/sascha/HDD1/VulkanTest2/build/vert.spv" 
                     },
                     FRAGMENT_SHADER_PATHS 
                     { 
-                        "/home/sascha/Games/VulkanTest2/build/frag.spv" 
+                        "/home/sascha/HDD1/VulkanTest2/build/frag.spv" 
                     },
                     LAYERS 
                     { 
@@ -30,7 +38,7 @@ namespace SnowfallEngine
                         (
                             this->APPLICATION_FACTORY->APPLICATION_INFO.get(), 
                             this->LAYERS.get()
-                        ) 
+                        )
                     },
                     PHYSICAL_DEVICE_FACTORY 
                     { 
@@ -134,8 +142,7 @@ namespace SnowfallEngine
                             this->SHADER_LOADER->FRAGMENT_SHADERS.get(), 
                             this->RENDERPASS->RENDER_PASS.get(), 
                             this->VIEWPORT_FACTORY->VIEWPORT.get(), 
-                            this->VIEWPORT_FACTORY->SCISSOR.get(),
-                            &this->WINDOW->SURFACE_FORMATS[0].format
+                            this->VIEWPORT_FACTORY->SCISSOR.get()
                         )
                     },
                     FRAMEBUFFER_FACTORY 
@@ -166,19 +173,62 @@ namespace SnowfallEngine
                             this->SWAPCHAIN_FACTORY->GetAmountOfImagesInSwapchain()
                         ) 
                     },
-                    VERTEX_BUFFER_FACTORY
+                    VERTEX_BUFFER_FACTORY_FOR_CPU_STAGING
                     {
-                       /* std::make_unique<const VertexBufferFactory>
+                        std::make_unique<const VertexBufferFactory>
                         (
                             this->DEVICE_FACTORY->DEVICE.get(),
-                            0,
+                            sizeof(this->VERTICES[0]) * this->VERTICES.size(),
                             this->PHYSICAL_DEVICE_FACTORY->BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES.get(),
                             this->PHYSICAL_DEVICE_QUEUE_FACTORY->CREATE_INFO->queueFamilyIndex,
-
-                        )*/
+                            nullptr,
+                            static_cast<VkMemoryPropertyFlagBits>(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT),
+                            static_cast<VkBufferUsageFlags>(VK_BUFFER_USAGE_TRANSFER_SRC_BIT),
+                            this->VERTICES,
+                            true
+                        )
+                    },
+                    VERTEX_BUFFER_FACTORY_FOR_GPU
+                    {
+                        std::make_unique<const VertexBufferFactory>
+                        (
+                            this->DEVICE_FACTORY->DEVICE.get(),
+                            sizeof(this->VERTICES[0]) * this->VERTICES.size(),
+                            this->PHYSICAL_DEVICE_FACTORY->BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES.get(),
+                            this->PHYSICAL_DEVICE_QUEUE_FACTORY->CREATE_INFO->queueFamilyIndex,
+                            nullptr,
+                            static_cast<VkMemoryPropertyFlagBits>(VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT),
+                            static_cast<VkBufferUsageFlags>(VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT)
+                        )
                     }
             {
-                CommandBufferRecorder::RecordCommandBuffers(this->COMMAND_BUFFER_FACTORY->BUFFERS.get(), this->SWAPCHAIN_FACTORY->GetAmountOfImagesInSwapchain(), this->RENDERPASS->RENDER_PASS.get(), this->FRAMEBUFFER_FACTORY->FRAMEBUFFERS.get(), this->WINDOW->GetWidth(), this->WINDOW->GetHeight(), this->PIPELINE_FACTORY->PIPELINE.get(), this->VIEWPORT_FACTORY->VIEWPORT.get(), this->VIEWPORT_FACTORY->SCISSOR.get());
+                CommandBufferRecorder::CopyBuffer
+                (
+                    this->DEVICE_FACTORY->DEVICE.get(),
+                    this->DEVICE_FACTORY->QUEUE.get(),
+                    this->VERTEX_BUFFER_FACTORY_FOR_CPU_STAGING->BUFFER.get(),
+                    this->VERTEX_BUFFER_FACTORY_FOR_GPU->BUFFER.get(),
+                    sizeof(this->VERTICES[0]) * this->VERTICES.size(),
+                    this->COMMAND_BUFFER_FACTORY->POOL.get()
+                );
+
+                //We dont need the staging buffer anymore so we can delete it
+                this->VERTEX_BUFFER_FACTORY_FOR_CPU_STAGING.reset();
+
+                CommandBufferRecorder::RecordCommandBuffers
+                (
+                    this->COMMAND_BUFFER_FACTORY->BUFFERS.get(), 
+                    this->SWAPCHAIN_FACTORY->GetAmountOfImagesInSwapchain(), 
+                    this->RENDERPASS->RENDER_PASS.get(), 
+                    this->FRAMEBUFFER_FACTORY->FRAMEBUFFERS.get(), 
+                    this->WINDOW->GetWidth(), 
+                    this->WINDOW->GetHeight(), 
+                    this->PIPELINE_FACTORY->PIPELINE.get(), 
+                    this->VIEWPORT_FACTORY->VIEWPORT.get(), 
+                    this->VIEWPORT_FACTORY->SCISSOR.get(), 
+                    static_cast<uint32_t>(this->VERTICES.size()), 
+                    this->VERTEX_BUFFER_FACTORY_FOR_GPU->BUFFER.get()
+                );
             }
         }
     }

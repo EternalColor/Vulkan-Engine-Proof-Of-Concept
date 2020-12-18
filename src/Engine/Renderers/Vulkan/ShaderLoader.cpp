@@ -64,10 +64,12 @@ namespace SnowfallEngine
                     return nullptr;
                 }
 
-                VkShaderModuleCreateInfo shaderCreateInfo = {};
-                shaderCreateInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
-                shaderCreateInfo.pNext = nullptr;
-                shaderCreateInfo.flags = 0;
+                VkShaderModuleCreateInfo shaderCreateInfo
+                {
+                    .sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO,
+                    .pNext = nullptr,
+                    .flags = 0
+                };
 
                 std::unique_ptr<VkShaderModule[]> shaderModules = std::make_unique<VkShaderModule[]>(shaderPaths.size());
 
