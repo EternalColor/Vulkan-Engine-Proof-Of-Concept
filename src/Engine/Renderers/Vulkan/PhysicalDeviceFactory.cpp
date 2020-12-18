@@ -10,8 +10,8 @@ namespace SnowfallEngine
                 :   //INITIALIZATION ORDER MATTERS
                     BEST_PHYSICAL_DEVICE { this->getBestPhysicalDevice(instance) },
                     BEST_PHYSICAL_DEVICE_FEATURES { this->getFeaturesOfBestPhysicalDevice(this->BEST_PHYSICAL_DEVICE.get()) },
-                    BEST_PHYSICAL_DEVICE_PROPERTIES { this->getPropertiesOfBestPhysicalDevice(this->BEST_PHYSICAL_DEVICE.get()) }
-                   // BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES { this->getMemoryPropertiesOfBestPhysicalDevice(this->BEST_PHYSICAL_DEVICE.get()) } 
+                    BEST_PHYSICAL_DEVICE_PROPERTIES { this->getPropertiesOfBestPhysicalDevice(this->BEST_PHYSICAL_DEVICE.get()) },
+                    BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES { this->getMemoryPropertiesOfBestPhysicalDevice(this->BEST_PHYSICAL_DEVICE.get()) } 
             {
 
             }
@@ -83,23 +83,14 @@ namespace SnowfallEngine
                 return deviceProperties;
             }
 
-            /*std::unique_ptr<const VkPhysicalDeviceMemoryProperties> PhysicalDeviceFactory::getMemoryPropertiesOfBestPhysicalDevice(const VkPhysicalDevice* physicalDevice) const
+            std::unique_ptr<const VkPhysicalDeviceMemoryProperties> PhysicalDeviceFactory::getMemoryPropertiesOfBestPhysicalDevice(const VkPhysicalDevice* physicalDevice) const
             {
                 //Can not use <const VkPhysicalDeviceMemoryProperties> here because vulkan method requires non-const VkPhysicalDeviceMemoryProperties parameter
                 std::unique_ptr<VkPhysicalDeviceMemoryProperties> memoryProperties = std::make_unique<VkPhysicalDeviceMemoryProperties>();
                 vkGetPhysicalDeviceMemoryProperties(*physicalDevice, memoryProperties.get());
-
-                for (uint32_t i = 0; i < memoryProperties->memoryTypeCount; ++i) 
-                {
-                    if (typeFilter & (1 << i)) 
-                    {
-                        return i;
-                    }
-                }
-
-
+                
                 return memoryProperties;
-            }*/
+            }
         }
     }
 }

@@ -24,11 +24,13 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkCommandPool> CommandBufferFactory::createCommandPool(const VkDevice* device, const uint32_t& queueFamilyIndex) const
             {
-                VkCommandPoolCreateInfo commandPoolCreateInfo = {};
-                commandPoolCreateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
-                commandPoolCreateInfo.pNext = nullptr;
-                commandPoolCreateInfo.flags = 0;
-                commandPoolCreateInfo.queueFamilyIndex = queueFamilyIndex;
+                VkCommandPoolCreateInfo commandPoolCreateInfo = 
+                {
+                    .sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO,
+                    .pNext = nullptr,
+                    .flags = 0,
+                    .queueFamilyIndex = queueFamilyIndex
+                };
 
                 //Can not use <const VkCommandPool> here because vulkan method requires non-const VkCommandPool parameter
                 std::unique_ptr<VkCommandPool> commandPool { new VkCommandPool(VK_NULL_HANDLE) };
@@ -42,13 +44,15 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkCommandBuffer[]> CommandBufferFactory::createCommandBuffers(const VkDevice* device, const VkCommandPool* commandPool, const uint32_t& bufferCount) const
             {
-                VkCommandBufferAllocateInfo commandBufferAllocateInfo = {};
-                commandBufferAllocateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-                commandBufferAllocateInfo.pNext = nullptr;
-                commandBufferAllocateInfo.commandPool = *commandPool;
-                commandBufferAllocateInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-                commandBufferAllocateInfo.commandBufferCount = bufferCount;
-
+                VkCommandBufferAllocateInfo commandBufferAllocateInfo = 
+                {
+                    .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
+                    .pNext = nullptr,
+                    .commandPool = *commandPool,
+                    .level = VK_COMMAND_BUFFER_LEVEL_PRIMARY,
+                    .commandBufferCount = bufferCount
+                };
+                
                 //Can not use <const VkCommandBuffer[]> here because vulkan method requires non-const VkCommandBuffer parameter
                 std::unique_ptr<VkCommandBuffer[]> commandBuffers = std::make_unique<VkCommandBuffer[]>(bufferCount);
                 

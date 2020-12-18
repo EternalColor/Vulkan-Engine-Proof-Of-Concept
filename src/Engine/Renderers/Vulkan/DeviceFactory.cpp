@@ -22,18 +22,20 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkDevice> DeviceFactory::createVkDevice(const VkInstance* vkInstance, const VkPhysicalDevice physicalDevices[], const VkDeviceQueueCreateInfo* deviceQueueCreateInfo, const Layers* layers, const std::vector<const char*>& extensions, const VkPhysicalDeviceFeatures* physicalDeviceFeatures) const
             {
-                VkDeviceCreateInfo deviceCreateInfo {};
-                deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
-                deviceCreateInfo.pNext = nullptr;
-                deviceCreateInfo.flags = 0;
-                deviceCreateInfo.queueCreateInfoCount = 1;
-                deviceCreateInfo.pQueueCreateInfos = deviceQueueCreateInfo;
-                deviceCreateInfo.enabledLayerCount = layers->REQUIRED_LAYERS.size();
-                deviceCreateInfo.ppEnabledLayerNames = layers->REQUIRED_LAYERS.data();
-                deviceCreateInfo.enabledExtensionCount = extensions.size();
-                deviceCreateInfo.ppEnabledExtensionNames = extensions.data();
-                deviceCreateInfo.pEnabledFeatures = physicalDeviceFeatures;
-
+                VkDeviceCreateInfo deviceCreateInfo 
+                {
+                    .sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
+                    .pNext = nullptr,
+                    .flags = 0,
+                    .queueCreateInfoCount = 1,
+                    .pQueueCreateInfos = deviceQueueCreateInfo,
+                    .enabledLayerCount = layers->REQUIRED_LAYERS.size(),
+                    .ppEnabledLayerNames = layers->REQUIRED_LAYERS.data(),
+                    .enabledExtensionCount = extensions.size(),
+                    .ppEnabledExtensionNames = extensions.data(),
+                    .pEnabledFeatures = physicalDeviceFeatures
+                };
+                
                 //Can not use <const VkDevice> here because vulkan method requires non-const device parameter
                 std::unique_ptr<VkDevice> device { new VkDevice(VK_NULL_HANDLE) };
 

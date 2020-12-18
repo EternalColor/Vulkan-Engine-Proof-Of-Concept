@@ -34,30 +34,34 @@ namespace SnowfallEngine
                 uint32_t imageIndex = 0;
                 vkAcquireNextImageKHR(*device, *swapchain, std::numeric_limits<uint64_t>::max(), *semaphoreImageAvailable, VK_NULL_HANDLE, &imageIndex);
 
-                VkSubmitInfo submitInfo = {};
-                submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;;
-                submitInfo.pNext = nullptr;
-                submitInfo.waitSemaphoreCount = 1;
-                submitInfo.pWaitSemaphores = semaphoreImageAvailable;
-                
                 VkPipelineStageFlags waitStageMask[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
-                submitInfo.pWaitDstStageMask = waitStageMask;
-                submitInfo.commandBufferCount = commandBufferCount;
-                submitInfo.pCommandBuffers = commandBuffers;
-                submitInfo.signalSemaphoreCount = 1;
-                submitInfo.pSignalSemaphores = semaphoreRenderingDone;
+
+                VkSubmitInfo submitInfo = 
+                {
+                    .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO,
+                    .pNext = nullptr,
+                    .waitSemaphoreCount = 1,
+                    .pWaitSemaphores = semaphoreImageAvailable,
+                    .pWaitDstStageMask = waitStageMask,
+                    .commandBufferCount = commandBufferCount,
+                    .pCommandBuffers = commandBuffers,
+                    .signalSemaphoreCount = 1,
+                    .pSignalSemaphores = semaphoreRenderingDone
+                };
 
                 vkQueueSubmit(*queue, 1, &submitInfo, VK_NULL_HANDLE);
 
-                VkPresentInfoKHR presentInfo = {};
-                presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
-                presentInfo.pNext = nullptr;
-                presentInfo.waitSemaphoreCount = 1;
-                presentInfo.pWaitSemaphores = semaphoreRenderingDone;
-                presentInfo.swapchainCount = 1;
-                presentInfo.pSwapchains = swapchain;
-                presentInfo.pImageIndices = &imageIndex;
-                presentInfo.pResults = nullptr;
+                VkPresentInfoKHR presentInfo = 
+                {
+                    .sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
+                    .pNext = nullptr,
+                    .waitSemaphoreCount = 1,
+                    .pWaitSemaphores = semaphoreRenderingDone,
+                    .swapchainCount = 1,
+                    .pSwapchains = swapchain,
+                    .pImageIndices = &imageIndex,
+                    .pResults = nullptr
+                };
 
                 vkQueuePresentKHR(*queue, &presentInfo);
 

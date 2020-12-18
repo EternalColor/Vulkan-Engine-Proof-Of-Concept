@@ -10,11 +10,11 @@ namespace SnowfallEngine
                 :   //INITIALIZATION ORDER MATTERS
                     VERTEX_SHADER_PATHS 
                     { 
-                        "/home/sascha/HDD1/VulkanTest2/build/vert.spv" 
+                        "/home/sascha/Games/VulkanTest2/build/vert.spv" 
                     },
                     FRAGMENT_SHADER_PATHS 
                     { 
-                        "/home/sascha/HDD1/VulkanTest2/build/frag.spv" 
+                        "/home/sascha/Games/VulkanTest2/build/frag.spv" 
                     },
                     LAYERS 
                     { 
@@ -165,7 +165,18 @@ namespace SnowfallEngine
                             this->PHYSICAL_DEVICE_QUEUE_FACTORY->CREATE_INFO->queueFamilyIndex, 
                             this->SWAPCHAIN_FACTORY->GetAmountOfImagesInSwapchain()
                         ) 
-                    }     
+                    },
+                    VERTEX_BUFFER_FACTORY
+                    {
+                       /* std::make_unique<const VertexBufferFactory>
+                        (
+                            this->DEVICE_FACTORY->DEVICE.get(),
+                            0,
+                            this->PHYSICAL_DEVICE_FACTORY->BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES.get(),
+                            this->PHYSICAL_DEVICE_QUEUE_FACTORY->CREATE_INFO->queueFamilyIndex,
+
+                        )*/
+                    }
             {
                 CommandBufferRecorder::RecordCommandBuffers(this->COMMAND_BUFFER_FACTORY->BUFFERS.get(), this->SWAPCHAIN_FACTORY->GetAmountOfImagesInSwapchain(), this->RENDERPASS->RENDER_PASS.get(), this->FRAMEBUFFER_FACTORY->FRAMEBUFFERS.get(), this->WINDOW->GetWidth(), this->WINDOW->GetHeight(), this->PIPELINE_FACTORY->PIPELINE.get(), this->VIEWPORT_FACTORY->VIEWPORT.get(), this->VIEWPORT_FACTORY->SCISSOR.get());
             }

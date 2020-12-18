@@ -12,29 +12,29 @@ namespace SnowfallEngine
                     {
                         new VkSubpassDescription
                         {
-                            0,                                  //flags
-                            VK_PIPELINE_BIND_POINT_GRAPHICS,    //pipelineBindPoint
-                            0,                                  //inputAttachmentCount
-                            nullptr,                            //pInputAttachments
-                            1,                                  //colorAttachmentCount
-                            attachmentReferences,               //pColorAttachments
-                            nullptr,                            //pResolveAttachments
-                            nullptr,                            //pDepthStencilAttachment
-                            0,                                  //preserveAttachmentCount
-                            nullptr                             //pPreserveAttachments
+                            .flags = 0,                                  
+                            .pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS,    
+                            .inputAttachmentCount = 0,                               
+                            .pInputAttachments = nullptr,                            
+                            .colorAttachmentCount = 1,                               
+                            .pColorAttachments = attachmentReferences,               
+                            .pResolveAttachments = nullptr,                          
+                            .pDepthStencilAttachment = nullptr,                      
+                            .preserveAttachmentCount = 0,                            
+                            .pPreserveAttachments = nullptr                          
                         }
                     },
                     DEPENDENCY
                     {
                         new VkSubpassDependency
                         {
-                            VK_SUBPASS_EXTERNAL,                                                        //srcSubpass
-                            0,                                                                          //dstSubpass
-                            VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,                              //srcStageMask
-                            VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,                              //dstStageMask
-                            0,                                                                          //srcAccessMask
-                            VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT, //dstAccessMask
-                            0                                                                           //dependencyFlags
+                            .srcSubpass = VK_SUBPASS_EXTERNAL,                                                        
+                            .dstSubpass = 0,                                                                          
+                            .srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,                            
+                            .dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,                            
+                            .srcAccessMask = 0,                                                                       
+                            .dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT,
+                            .dependencyFlags = 0                                                                      
                         }
                     }
             {

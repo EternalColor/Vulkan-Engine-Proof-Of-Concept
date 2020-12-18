@@ -28,15 +28,17 @@ namespace SnowfallEngine
                 //Can not use <const VkFramebuffer[]> here because vulkan method requires non-const VkFramebuffer parameter
                 std::unique_ptr<VkFramebuffer[]> framebuffers = std::make_unique<VkFramebuffer[]>(amountOfImagesInSwapchain);
 
-                VkFramebufferCreateInfo framebufferCreateInfo = {};
-                framebufferCreateInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
-                framebufferCreateInfo.pNext = nullptr;
-                framebufferCreateInfo.flags = 0;
-                framebufferCreateInfo.renderPass = *renderPass;
-                framebufferCreateInfo.attachmentCount = 1;
-                framebufferCreateInfo.width = windowWidth;
-                framebufferCreateInfo.height = windowHeight;
-                framebufferCreateInfo.layers = 1;
+                VkFramebufferCreateInfo framebufferCreateInfo = 
+                {
+                    .sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO,
+                    .pNext = nullptr,
+                    .flags = 0,
+                    .renderPass = *renderPass,
+                    .attachmentCount = 1,
+                    .width = windowWidth,
+                    .height = windowHeight,
+                    .layers = 1
+                };
 
                 for(uint32_t i = 0; i < amountOfImagesInSwapchain; ++i)
                 {

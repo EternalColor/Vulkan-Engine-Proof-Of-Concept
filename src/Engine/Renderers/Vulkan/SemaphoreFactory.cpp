@@ -23,10 +23,12 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkSemaphore> SemaphoreFactory::createSemaphore(const VkDevice* device) const
             {
-                VkSemaphoreCreateInfo semaphoreCreateInfo = {};
-                semaphoreCreateInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
-                semaphoreCreateInfo.pNext = nullptr;
-                semaphoreCreateInfo.flags = 0;
+                VkSemaphoreCreateInfo semaphoreCreateInfo = 
+                {
+                    .sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO,
+                    .pNext = nullptr,
+                    .flags = 0
+                };
 
                 //Can not use <const VkSemaphore> here because vulkan method requires non-const VkSemaphore parameter
                 std::unique_ptr<VkSemaphore> semaphore = std::make_unique<VkSemaphore>();

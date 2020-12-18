@@ -21,6 +21,7 @@
 #include "SemaphoreFactory.hpp"
 #include "CommandBufferFactory.hpp"
 #include "CommandBufferRecorder.hpp"
+#include "VertexBufferFactory.hpp"
 
 namespace SnowfallEngine
 {
@@ -65,6 +66,7 @@ namespace SnowfallEngine
                     const std::unique_ptr<const FramebufferFactory> FRAMEBUFFER_FACTORY;
                     const std::unique_ptr<const SemaphoreFactory> SEMAPHORE_FACTORY;
                     const std::unique_ptr<const CommandBufferFactory> COMMAND_BUFFER_FACTORY;
+                    const std::unique_ptr<const VertexBufferFactory> VERTEX_BUFFER_FACTORY;
             };  
         }
     }

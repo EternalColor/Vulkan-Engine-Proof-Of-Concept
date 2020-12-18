@@ -12,13 +12,13 @@ namespace SnowfallEngine
                     { 
                         new VkApplicationInfo
                         {
-                            VK_STRUCTURE_TYPE_APPLICATION_INFO, //sType
-                            nullptr,                            //pNext
-                            "Vulkan Test",                      //pApplicationName //TODO: Make it changeable
-                            VK_MAKE_VERSION(0, 0, 0),           //applicationVersion
-                            "Snowfall Engine",                  //pEngineName
-                            VK_MAKE_VERSION(1, 0, 0),           //engineVersion
-                            VK_API_VERSION_1_2                  //apiVersion
+                            .sType = VK_STRUCTURE_TYPE_APPLICATION_INFO, 
+                            .pNext = nullptr,                            
+                            .pApplicationName = "Vulkan Test",           
+                            .applicationVersion = VK_MAKE_VERSION(0, 0, 0),
+                            .pEngineName = "Snowfall Engine",            
+                            .engineVersion = VK_MAKE_VERSION(1, 0, 0),           
+                            .apiVersion = VK_API_VERSION_1_2                  
                         }
                     }
             {

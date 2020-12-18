@@ -12,12 +12,12 @@ namespace SnowfallEngine
                     { 
                         new VkViewport
                         {
-                            0.0f,         //x
-                            0.0f,         //y
-                            windowWidth,  //width
-                            windowHeight, //height
-                            0.0f,         //minDepth
-                            1.0f          //maxDepth
+                            .x = 0.0f,         
+                            .y = 0.0f,        
+                            .width = windowWidth,  
+                            .height = windowHeight,
+                            .minDepth = 0.0f,      
+                            .maxDepth = 1.0f       
                         }
                     },
                     SCISSOR 
