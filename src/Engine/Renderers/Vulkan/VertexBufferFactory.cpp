@@ -6,7 +6,7 @@ namespace SnowfallEngine
     {
         namespace VulkanRenderer
         {
-            VertexBufferFactory::VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, const std::vector<Geometry::Vertex2D>& vertices, const bool&& isStagingBuffer) 
+            VertexBufferFactory::VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, const std::vector<Geometry::Vertex2D>* vertices, const bool&& isStagingBuffer) 
                 :   //INITIALIZATION ORDER MATTERS
                     CACHED_DEVICE { device },
                     DEVICE_SIZE { deviceSize },
@@ -27,9 +27,17 @@ namespace SnowfallEngine
 
             VertexBufferFactory::VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags)
                 //Here we disable the bind and map memory, because this constructor is designed to be used for GPU vertex buffers that dont need the bind and mapping since we will copy the data ourselves
-                : VertexBufferFactory(device, deviceSize, properties, queueFamilyIndex, queueFamilyIndices, propertyFlags, usageFlags, std::vector<Geometry::Vertex2D>(), false)
+                : VertexBufferFactory(device, deviceSize, properties, queueFamilyIndex, queueFamilyIndices, propertyFlags, usageFlags, nullptr, false)
             {
 
+            }
+
+            //Constructor for Index buffer
+            VertexBufferFactory::VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, const std::vector<uint16_t>* indices)
+                //the vertex vector passed here is just an empty one
+                : VertexBufferFactory(device, deviceSize, properties, queueFamilyIndex, queueFamilyIndices, propertyFlags, usageFlags, nullptr, false)
+            {
+                this->mapMemory(this->CACHED_DEVICE, this->MEMORY.get(), deviceSize, indices);
             }
 
             VertexBufferFactory::~VertexBufferFactory()
@@ -98,13 +106,24 @@ namespace SnowfallEngine
                 vkBindBufferMemory(*device, *buffer, *memory, 0);
             }
 
-            void VertexBufferFactory::mapMemory(const VkDevice* device, const VkDeviceMemory* deviceMemory, const VkDeviceSize& deviceSize, const std::vector<Geometry::Vertex2D>& vertices) const
+            void VertexBufferFactory::mapMemory(const VkDevice* device, const VkDeviceMemory* deviceMemory, const VkDeviceSize& deviceSize, const std::vector<Geometry::Vertex2D>* vertices) const
             {
                 void* data;
                 vkMapMemory(*device, *deviceMemory, 0, deviceSize, 0, &data);
                 
                 //Copy vertices into data
-                std::memcpy(data, vertices.data(), static_cast<size_t>(deviceSize));
+                std::memcpy(data, vertices->data(), static_cast<size_t>(deviceSize));
+
+                vkUnmapMemory(*device, *deviceMemory);
+            }
+
+            void VertexBufferFactory::mapMemory(const VkDevice* device, const VkDeviceMemory* deviceMemory, const VkDeviceSize& deviceSize, const std::vector<uint16_t>* indices) const
+            {
+                void* data;
+                vkMapMemory(*device, *deviceMemory, 0, deviceSize, 0, &data);
+                
+                //Copy vertices into data
+                std::memcpy(data, indices->data(), static_cast<size_t>(deviceSize));
 
                 vkUnmapMemory(*device, *deviceMemory);
             }

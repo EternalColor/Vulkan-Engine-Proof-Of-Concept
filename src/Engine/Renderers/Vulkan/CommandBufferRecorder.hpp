@@ -11,7 +11,7 @@ namespace SnowfallEngine
         {
             namespace CommandBufferRecorder
             {
-                void inline RecordCommandBuffers(const VkCommandBuffer commandBuffers[], const uint32_t& bufferCount, const VkRenderPass* renderPass, const VkFramebuffer framebuffers[], const uint32_t& windowWidth, const uint32_t windowHeight, const VkPipeline* pipeline, const VkViewport viewports[], const VkRect2D scissors[], const uint32_t& vertexCount, const VkBuffer* vertexBuffer)
+                void inline RecordCommandBuffers(const VkCommandBuffer commandBuffers[], const uint32_t& bufferCount, const VkRenderPass* renderPass, const VkFramebuffer framebuffers[], const uint32_t& windowWidth, const uint32_t windowHeight, const VkPipeline* pipeline, const VkViewport viewports[], const VkRect2D scissors[], const VkBuffer* vertexBuffer, const uint32_t& indexCount, const VkBuffer* indexBuffer)
                 {
                     const VkCommandBufferBeginInfo commandBufferBeginInfo
                     {
@@ -54,7 +54,9 @@ namespace SnowfallEngine
 
                         vkCmdBindVertexBuffers(commandBuffers[i], 0, 1, vertexBuffer, offsets);
 
-                        vkCmdDraw(commandBuffers[i], vertexCount, 1, 0, 0);
+                        vkCmdBindIndexBuffer(commandBuffers[i], *indexBuffer, 0, VK_INDEX_TYPE_UINT16);
+
+                        vkCmdDrawIndexed(commandBuffers[i], indexCount, 1, 0, 0, 0);
 
                         vkCmdEndRenderPass(commandBuffers[i]);
 
