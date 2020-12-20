@@ -22,11 +22,11 @@ namespace SnowfallEngine
                     },
                     VERTEX_SHADER_PATHS 
                     { 
-                        "/home/sascha/HDD1/VulkanTest2/build/vert.spv" 
+                        "/home/sascha/Games/VulkanTest2/build/vert.spv" 
                     },
                     FRAGMENT_SHADER_PATHS 
                     { 
-                        "/home/sascha/HDD1/VulkanTest2/build/frag.spv" 
+                        "/home/sascha/Games/VulkanTest2/build/frag.spv" 
                     },
                     LAYERS 
                     { 
@@ -177,7 +177,7 @@ namespace SnowfallEngine
                             this->SWAPCHAIN_FACTORY->GetAmountOfImagesInSwapchain()
                         ) 
                     },
-                    VERTEX_BUFFER_FACTORY_FOR_CPU_STAGING
+                    /*VERTEX_BUFFER_FACTORY_FOR_CPU_STAGING
                     {
                         std::make_unique<const VertexBufferFactory>
                         (
@@ -231,10 +231,32 @@ namespace SnowfallEngine
                             static_cast<VkMemoryPropertyFlagBits>(VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT),
                             static_cast<VkBufferUsageFlags>(VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT)
                         )
+                    }*/
+                    TEXTURED_IMAGE_FACTORY
+                    {
+                        std::make_unique<const TexturedImageFactory>()
+                    },
+                    TEXEL_BUFFER_FACTORY_FOR_CPU_STAGING
+                    {
+                        std::make_unique<const VertexBufferFactory>
+                        (
+                            this->DEVICE_FACTORY->DEVICE.get(),
+                            this->TEXTURED_IMAGE_FACTORY->SIZE,
+                            this->PHYSICAL_DEVICE_FACTORY->BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES.get(),
+                            this->PHYSICAL_DEVICE_QUEUE_FACTORY->CREATE_INFO->queueFamilyIndex,
+                            nullptr,
+                            static_cast<VkMemoryPropertyFlagBits>(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT),
+                            static_cast<VkBufferUsageFlags>(VK_BUFFER_USAGE_TRANSFER_SRC_BIT),
+                            this->TEXTURED_IMAGE_FACTORY->TEXEL.get()
+                        )
+                    },
+                    TEXEL_BUFFER_FACTORY_FOR_GPU
+                    {
+
                     }
             {
                 //Copy indexs staging buffer to GPU buffer
-                CommandBufferRecorder::CopyBuffer
+               /* CommandBufferRecorder::CopyBuffer
                 (
                     this->DEVICE_FACTORY->DEVICE.get(),
                     this->DEVICE_FACTORY->QUEUE.get(),
@@ -276,7 +298,7 @@ namespace SnowfallEngine
                     this->VERTEX_BUFFER_FACTORY_FOR_GPU->BUFFER.get(),
                     static_cast<uint32_t>(this->INDICES.size()),
                     this->INDEX_BUFFER_FACTORY_FOR_GPU->BUFFER.get()
-                );
+                );*/
             }
         }
     }

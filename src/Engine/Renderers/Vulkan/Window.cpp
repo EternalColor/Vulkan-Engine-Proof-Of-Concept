@@ -77,6 +77,7 @@ namespace SnowfallEngine
                 
                 //Disabled GLFW and OpenGL API because we use Vulkan
                 glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+                glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
                 return std::unique_ptr<GLFWwindow, DestroyGLFWwindow> { glfwCreateWindow(width, height, title, nullptr, nullptr), DestroyGLFWwindow()};
             }

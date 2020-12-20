@@ -14,3 +14,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Xcursor)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 #GLM
 target_link_libraries(${PROJECT_NAME} PRIVATE glm)
+#STB (Image loading)
+target_link_libraries(${PROJECT_NAME} PRIVATE stbImage)
