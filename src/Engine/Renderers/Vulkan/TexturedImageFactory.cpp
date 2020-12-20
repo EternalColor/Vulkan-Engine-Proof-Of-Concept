@@ -1,5 +1,9 @@
 #include "TexturedImageFactory.hpp"
 
+//According to doccumentation this define needs to be here, so the whole STB_IMAGE code is only copied once into this cpp module
+#define STB_IMAGE_IMPLEMENTATION
+#include "../../libraries/stb/stb_image.h"
+
 namespace SnowfallEngine
 {
     namespace Renderers
@@ -20,22 +24,23 @@ namespace SnowfallEngine
 
             TexturedImageFactory::~TexturedImageFactory()
             {
-                //Cast constness away, otherwise it wont be accepted by stbi_image_free
-                stbi_image_free(const_cast<stbi_uc*>(this->TEXEL.get()));
+                stbi_image_free(this->TEXEL.get());
             }
 
-            std::unique_ptr<const stbi_uc> TexturedImageFactory::createTexturedImage(int* textureWidth, int* textureHeight, VkDeviceSize* deviceSize) const
+            std::unique_ptr<stbi_uc> TexturedImageFactory::createTexturedImage(int* textureWidth, int* textureHeight, VkDeviceSize* deviceSize) const
             {
                 int texChannels = 0;
-                stbi_uc* pixels = stbi_load("../textures/texture.jpg", textureWidth, textureHeight, &texChannels, STBI_rgb_alpha);
-                VkDeviceSize imageSize = *textureWidth * *textureHeight * 4;
+
+                //textureWidth, textureHeight and deviceSize will be returned by pointer
+                std::unique_ptr<stbi_uc> pixels { stbi_load("/home/sascha/Games/VulkanTest2/textures/texture.jpg", textureWidth, textureHeight, &texChannels, STBI_rgb_alpha) };
+                *deviceSize = *textureWidth * *textureHeight * 4;
 
                 if (!pixels) 
                 {
                     throw std::runtime_error("failed to load texture image!");
                 }
 
-                return std::make_unique<stbi_uc>(pixels);
+                return pixels;
             }
 
             std::unique_ptr<const VkImage> TexturedImageFactory::createImage(const VkDevice* device, const int& textureWidth, const int& textureHeight) const
@@ -43,7 +48,10 @@ namespace SnowfallEngine
                 const VkImageCreateInfo imageInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO,
+                    .pNext = nullptr,
+                    .flags = 0, // Optional
                     .imageType = VK_IMAGE_TYPE_2D,
+                    .format = VK_FORMAT_R8G8B8A8_SRGB, //TODO: Check if format is valid
                     .extent
                     {
                         .width = static_cast<uint32_t>(textureWidth),
@@ -52,13 +60,13 @@ namespace SnowfallEngine
                     },
                     .mipLevels = 1,
                     .arrayLayers = 1,
-                    .format = VK_FORMAT_R8G8B8A8_SRGB, //TODO: Check if format is valid
+                    .samples = VK_SAMPLE_COUNT_1_BIT,
                     .tiling = VK_IMAGE_TILING_OPTIMAL,
-                    .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED,
                     .usage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,
                     .sharingMode = VK_SHARING_MODE_EXCLUSIVE,
-                    .samples = VK_SAMPLE_COUNT_1_BIT,
-                    .flags = 0 // Optional
+                    .queueFamilyIndexCount = 0,
+                    .pQueueFamilyIndices = nullptr,
+                    .initialLayout = VK_IMAGE_LAYOUT_UNDEFINED
                 };
 
                 //Can not use <const VkImage> here because vulkan method requires non-const VkImage parameter
@@ -79,6 +87,21 @@ namespace SnowfallEngine
                 vkGetImageMemoryRequirements(*device, *image, memoryRequirements.get());
 
                 return memoryRequirements;
+            }
+
+            const int& TexturedImageFactory::GetTextureWidth() const
+            {
+                return this->textureWidth;
+            }
+
+            const int& TexturedImageFactory::GetTextureHeight() const
+            {
+                return this->textureHeight;
+            }
+
+            const VkDeviceSize& TexturedImageFactory::GetDeviceSize() const
+            {
+                return this->size;
             }
         }
     }

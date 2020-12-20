@@ -35,8 +35,8 @@ namespace SnowfallEngine
             {
                 private:
                     //TODO: REMOVE and load from actual vertex data
-                    const std::vector<Geometry::Vertex2D> VERTICES;
-                    const std::vector<uint16_t> INDICES;
+                  //  const std::vector<Geometry::Vertex2D> VERTICES;
+                 //   const std::vector<uint16_t> INDICES;
                     //TODO: Load from folder
                     const std::vector<std::string> VERTEX_SHADER_PATHS;
                     const std::vector<std::string> FRAGMENT_SHADER_PATHS;

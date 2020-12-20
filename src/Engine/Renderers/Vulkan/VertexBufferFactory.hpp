@@ -5,9 +5,8 @@
 #include <stdexcept>
 #include <cstring>
 #include <vector>
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
 #include "Geometry/Vertex2D.hpp"
+#include "../../libraries/stb/stb_image.h"
 
 namespace SnowfallEngine
 {
@@ -25,13 +24,14 @@ namespace SnowfallEngine
                     std::unique_ptr<const VkMemoryRequirements> createMemoryRequirementsForBuffer(const VkDevice* device, const VkBuffer* buffer) const;
                     std::unique_ptr<const VkDeviceMemory> allocateMemory(const VkDevice* device, const VkPhysicalDeviceMemoryProperties* properties, const VkMemoryRequirements* memoryRequirements, const VkMemoryPropertyFlags& propertyFlags) const;
                     
-                    void bindMemory(const VkDevice* device, const VkBuffer* buffer, const VkDeviceMemory* memory) const;
+                    void bindMemory(const VkDevice* device, const VkBuffer* buffer, const VkDeviceMemory* deviceMemory) const;
+                    void bindMemory(const VkDevice* device, const VkImage* image, const VkDeviceMemory* deviceMemory) const;
+
                     void mapMemory(const VkDevice* device, const VkDeviceMemory* deviceMemory, const VkDeviceSize& deviceSize, const std::vector<Geometry::Vertex2D>* vertices) const;
                     void mapMemory(const VkDevice* device, const VkDeviceMemory* deviceMemory, const VkDeviceSize& deviceSize, const std::vector<uint16_t>* indices) const;
                     void mapMemory(const VkDevice* device, const VkDeviceMemory* deviceMemory, const VkDeviceSize& deviceSize, stbi_uc* texel) const;
 
                     const uint32_t findMemoryType(const uint32_t& typeFilter, const VkPhysicalDeviceMemoryProperties* properties, const VkMemoryPropertyFlags& propertyFlags) const;
-
                     //Private constructor that is used for constructor chaining for all the overloaded constructors
                     VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags);
                 public:
@@ -39,9 +39,7 @@ namespace SnowfallEngine
                     //Constructor version intended for the cpu staging vertex buffer, vertices passed here will be copied
                     VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, const std::vector<Geometry::Vertex2D>* vertices, const bool&& isStagingBuffer);
                     VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, const std::vector<uint16_t>* indices, const bool&& isStagingBuffer);
-                    VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, stbi_uc* texel, const bool&& isStagingBuffer);
-                    //Constructor version intended for GPU vertex buffer, without vertices (they are copied into the buffer memory, but we already to that previously in a staging vertex buffer)
-                    VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags);
+                    VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, stbi_uc* texel, const VkImage* image, const bool&& isStagingBuffer);
                     ~VertexBufferFactory();
 
                     //Read-only "getter fields"

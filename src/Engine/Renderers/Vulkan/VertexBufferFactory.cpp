@@ -1,5 +1,7 @@
 #include "VertexBufferFactory.hpp"
 
+#include "../../libraries/stb/stb_image.h"
+
 namespace SnowfallEngine
 {
     namespace Renderers
@@ -41,7 +43,7 @@ namespace SnowfallEngine
             }
 
             //Constructor for Texel (TextureImage pixels) Buffer
-            VertexBufferFactory::VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, stbi_uc* texel, const bool&& isStagingBuffer)
+            VertexBufferFactory::VertexBufferFactory(const VkDevice* device, const VkDeviceSize& deviceSize, const VkPhysicalDeviceMemoryProperties* properties, const uint32_t& queueFamilyIndex, const uint32_t queueFamilyIndices[], const VkMemoryPropertyFlags& propertyFlags, const VkBufferUsageFlags& usageFlags, stbi_uc* texel, const VkImage* image, const bool&& isStagingBuffer)
                 : VertexBufferFactory(device, deviceSize, properties, queueFamilyIndex, queueFamilyIndices, propertyFlags, usageFlags)
             {
                 if(isStagingBuffer)
@@ -49,7 +51,7 @@ namespace SnowfallEngine
                     this->mapMemory(this->CACHED_DEVICE, this->MEMORY.get(), deviceSize, texel);
                 }
 
-                this->bindMemory(this->CACHED_DEVICE, this->BUFFER.get(), this->MEMORY.get());
+                this->bindMemory(this->CACHED_DEVICE, image, this->MEMORY.get());
             }
 
             VertexBufferFactory::~VertexBufferFactory()
@@ -113,9 +115,14 @@ namespace SnowfallEngine
                 return deviceMemory;
             }
 
-            void VertexBufferFactory::bindMemory(const VkDevice* device, const VkBuffer* buffer, const VkDeviceMemory* memory) const
+            void VertexBufferFactory::bindMemory(const VkDevice* device, const VkBuffer* buffer, const VkDeviceMemory* deviceMemory) const
             {
-                vkBindBufferMemory(*device, *buffer, *memory, 0);
+                vkBindBufferMemory(*device, *buffer, *deviceMemory, 0);
+            }
+
+            void VertexBufferFactory::bindMemory(const VkDevice* device, const VkImage* image, const VkDeviceMemory* deviceMemory) const
+            {
+                vkBindImageMemory(*device, *image, *deviceMemory, 0);
             }
 
             void VertexBufferFactory::mapMemory(const VkDevice* device, const VkDeviceMemory* deviceMemory, const VkDeviceSize& deviceSize, const std::vector<Geometry::Vertex2D>* vertices) const

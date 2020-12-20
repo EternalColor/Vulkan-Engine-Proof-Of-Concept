@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vulkan/vulkan.h>
-#include <glm/glm.hpp>
+#include "../../libraries/glm/glm/glm.hpp"
 #include <array>
 
 namespace SnowfallEngine

@@ -8,7 +8,7 @@ namespace SnowfallEngine
         {
             VulkanWrapper::VulkanWrapper() 
                 :   //INITIALIZATION ORDER MATTERS
-                    VERTICES
+                   /* VERTICES
                     {
                         //POSITION        COLOR
                         {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}},
@@ -19,7 +19,7 @@ namespace SnowfallEngine
                     INDICES
                     {
                         0, 1, 2, 2, 3, 0
-                    },
+                    },*/
                     VERTEX_SHADER_PATHS 
                     { 
                         "/home/sascha/Games/VulkanTest2/build/vert.spv" 
@@ -234,25 +234,42 @@ namespace SnowfallEngine
                     }*/
                     TEXTURED_IMAGE_FACTORY
                     {
-                        std::make_unique<const TexturedImageFactory>()
+                        std::make_unique<const TexturedImageFactory>
+                        (
+                            this->DEVICE_FACTORY->DEVICE.get()
+                        )
                     },
                     TEXEL_BUFFER_FACTORY_FOR_CPU_STAGING
                     {
                         std::make_unique<const VertexBufferFactory>
                         (
                             this->DEVICE_FACTORY->DEVICE.get(),
-                            this->TEXTURED_IMAGE_FACTORY->SIZE,
+                            this->TEXTURED_IMAGE_FACTORY->GetDeviceSize(),
                             this->PHYSICAL_DEVICE_FACTORY->BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES.get(),
                             this->PHYSICAL_DEVICE_QUEUE_FACTORY->CREATE_INFO->queueFamilyIndex,
                             nullptr,
                             static_cast<VkMemoryPropertyFlagBits>(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT),
                             static_cast<VkBufferUsageFlags>(VK_BUFFER_USAGE_TRANSFER_SRC_BIT),
-                            this->TEXTURED_IMAGE_FACTORY->TEXEL.get()
+                            this->TEXTURED_IMAGE_FACTORY->TEXEL.get(),
+                            this->TEXTURED_IMAGE_FACTORY->IMAGE.get(),
+                            true
                         )
                     },
                     TEXEL_BUFFER_FACTORY_FOR_GPU
                     {
-
+                        std::make_unique<const VertexBufferFactory>
+                        (
+                            this->DEVICE_FACTORY->DEVICE.get(),
+                            this->TEXTURED_IMAGE_FACTORY->GetDeviceSize(),
+                            this->PHYSICAL_DEVICE_FACTORY->BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES.get(),
+                            this->PHYSICAL_DEVICE_QUEUE_FACTORY->CREATE_INFO->queueFamilyIndex,
+                            nullptr,
+                            static_cast<VkMemoryPropertyFlagBits>(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT),
+                            static_cast<VkBufferUsageFlags>(VK_BUFFER_USAGE_TRANSFER_SRC_BIT),
+                            this->TEXTURED_IMAGE_FACTORY->TEXEL.get(),
+                            this->TEXTURED_IMAGE_FACTORY->IMAGE.get(),
+                            false
+                        )
                     }
             {
                 //Copy indexs staging buffer to GPU buffer
@@ -299,6 +316,36 @@ namespace SnowfallEngine
                     static_cast<uint32_t>(this->INDICES.size()),
                     this->INDEX_BUFFER_FACTORY_FOR_GPU->BUFFER.get()
                 );*/
+
+                //Copy Texel staging buffer to GPU buffer
+                CommandBufferRecorder::CopyBuffer
+                (
+                    this->DEVICE_FACTORY->DEVICE.get(),
+                    this->DEVICE_FACTORY->QUEUE.get(),
+                    this->TEXEL_BUFFER_FACTORY_FOR_CPU_STAGING->BUFFER.get(),
+                    this->TEXEL_BUFFER_FACTORY_FOR_GPU->BUFFER.get(),
+                    static_cast<uint32_t>(this->TEXEL_BUFFER_FACTORY_FOR_GPU->DEVICE_SIZE),
+                    this->COMMAND_BUFFER_FACTORY->POOL.get()
+                );
+
+                //We dont need the staging buffer anymore so we can delete it
+                this->TEXEL_BUFFER_FACTORY_FOR_CPU_STAGING.reset();
+
+                CommandBufferRecorder::RecordCommandBuffers
+                (
+                    this->COMMAND_BUFFER_FACTORY->BUFFERS.get(), 
+                    this->SWAPCHAIN_FACTORY->GetAmountOfImagesInSwapchain(), 
+                    this->RENDERPASS->RENDER_PASS.get(), 
+                    this->FRAMEBUFFER_FACTORY->FRAMEBUFFERS.get(), 
+                    this->WINDOW->GetWidth(), 
+                    this->WINDOW->GetHeight(), 
+                    this->PIPELINE_FACTORY->PIPELINE.get(), 
+                    this->VIEWPORT_FACTORY->VIEWPORT.get(), 
+                    this->VIEWPORT_FACTORY->SCISSOR.get(),  
+                    this->TEXEL_BUFFER_FACTORY_FOR_GPU->BUFFER.get(),
+                    static_cast<uint32_t>(this->TEXEL_BUFFER_FACTORY_FOR_GPU->DEVICE_SIZE),
+                    this->TEXEL_BUFFER_FACTORY_FOR_GPU->BUFFER.get()
+                );
             }
         }
     }
