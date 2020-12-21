@@ -22,11 +22,11 @@ namespace SnowfallEngine
                     },*/
                     VERTEX_SHADER_PATHS 
                     { 
-                        "/home/sascha/Games/VulkanTest2/build/vert.spv" 
+                        "/home/sascha/HDD1/VulkanTest2/build/vert.spv" 
                     },
                     FRAGMENT_SHADER_PATHS 
                     { 
-                        "/home/sascha/Games/VulkanTest2/build/frag.spv" 
+                        "/home/sascha/HDD1/VulkanTest2/build/frag.spv" 
                     },
                     LAYERS 
                     { 
