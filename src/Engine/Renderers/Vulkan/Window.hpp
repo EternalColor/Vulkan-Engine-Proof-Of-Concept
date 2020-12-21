@@ -2,12 +2,11 @@
 
 #define GLFW_INCLUDE_VULKAN
 
-#include "../../libraries/glfw/include/GLFW/glfw3.h"
-#include <vulkan/vulkan.h>
 #include <memory>
 #include <limits>
 #include <stdexcept>
 
+#include "../../libraries/glfw/include/GLFW/glfw3.h"
 
 namespace SnowfallEngine
 {

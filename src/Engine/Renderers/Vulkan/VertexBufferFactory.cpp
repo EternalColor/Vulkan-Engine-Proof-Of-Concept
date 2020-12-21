@@ -70,7 +70,7 @@ namespace SnowfallEngine
                     .size = deviceSize,
                     .usage = usageFlags,
                     .sharingMode = VK_SHARING_MODE_EXCLUSIVE,            
-                    .queueFamilyIndexCount = queueFamilyIndex,                 
+                    .queueFamilyIndexCount = queueFamilyIndex, //TODO: OOOPS PLS REMOVE THIS, does not mean what i thought
                     .pQueueFamilyIndices = queueFamilyIndices //can be set to nullptr if sharingMode is not VK_SHARING_MODE_CONCURRENT 
                 };
 
