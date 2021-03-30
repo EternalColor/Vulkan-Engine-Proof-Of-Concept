@@ -24,6 +24,7 @@
 #include "CommandBufferRecorder.hpp"
 #include "VertexBufferFactory.hpp"
 #include "TexturedImageFactory.hpp"
+#include "BufferMemoryFactory.hpp"
 
 namespace SnowfallEngine
 {
@@ -62,7 +63,9 @@ namespace SnowfallEngine
                     const std::unique_ptr<const FramebufferFactory> FRAMEBUFFER_FACTORY;
                     const std::unique_ptr<const SemaphoreFactory> SEMAPHORE_FACTORY;
                     const std::unique_ptr<const CommandBufferFactory> COMMAND_BUFFER_FACTORY;
-                    const std::unique_ptr<const TexturedImageFactory> TEXTURED_IMAGE_FACTORY;
+                    std::unique_ptr<const TexturedImageFactory> TEXTURED_IMAGE_FACTORY;
+                    std::unique_ptr<const BufferMemoryFactory> TEXTURED_IMAGE_BUFFER_FACTORY_FOR_CPU_STAGING;
+                    const std::unique_ptr<const BufferMemoryFactory> TEXTURED_IMAGE_BUFFER_FACTORY_FOR_GPU;
 
                     //TODO: Consider using custom allocater with offset instead of initializing all buffers by hand
                     //Is not const because it will be deleted after the staging is moved to gpu
@@ -71,8 +74,6 @@ namespace SnowfallEngine
                     //Is not const because it will be deleted after the staging is moved to gpu
                     std::unique_ptr<const VertexBufferFactory> INDEX_BUFFER_FACTORY_FOR_CPU_STAGING;
                     const std::unique_ptr<const VertexBufferFactory> INDEX_BUFFER_FACTORY_FOR_GPU;*/
-                    std::unique_ptr<const VertexBufferFactory> TEXEL_BUFFER_FACTORY_FOR_CPU_STAGING;
-                    const std::unique_ptr<const VertexBufferFactory> TEXEL_BUFFER_FACTORY_FOR_GPU;
             };  
         }
     }

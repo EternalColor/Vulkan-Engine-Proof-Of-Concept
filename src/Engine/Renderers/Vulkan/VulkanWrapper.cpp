@@ -239,15 +239,13 @@ namespace SnowfallEngine
                             this->DEVICE_FACTORY->DEVICE.get()
                         )
                     },
-                    TEXEL_BUFFER_FACTORY_FOR_CPU_STAGING
+                    TEXTURED_IMAGE_BUFFER_FACTORY_FOR_CPU_STAGING
                     {
-                        std::make_unique<const VertexBufferFactory>
+                        std::make_unique<const BufferMemoryFactory>
                         (
                             this->DEVICE_FACTORY->DEVICE.get(),
                             this->TEXTURED_IMAGE_FACTORY->GetDeviceSize(),
                             this->PHYSICAL_DEVICE_FACTORY->BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES.get(),
-                            this->PHYSICAL_DEVICE_QUEUE_FACTORY->CREATE_INFO->queueFamilyIndex,
-                            nullptr,
                             static_cast<VkMemoryPropertyFlagBits>(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT),
                             static_cast<VkBufferUsageFlags>(VK_BUFFER_USAGE_TRANSFER_SRC_BIT),
                             this->TEXTURED_IMAGE_FACTORY->TEXEL.get(),
@@ -255,17 +253,15 @@ namespace SnowfallEngine
                             true
                         )
                     },
-                    TEXEL_BUFFER_FACTORY_FOR_GPU
+                    TEXTURED_IMAGE_BUFFER_FACTORY_FOR_GPU
                     {
-                        std::make_unique<const VertexBufferFactory>
+                        std::make_unique<const BufferMemoryFactory>
                         (
                             this->DEVICE_FACTORY->DEVICE.get(),
                             this->TEXTURED_IMAGE_FACTORY->GetDeviceSize(),
                             this->PHYSICAL_DEVICE_FACTORY->BEST_PHYSICAL_DEVICE_MEMORY_PROPERTIES.get(),
-                            this->PHYSICAL_DEVICE_QUEUE_FACTORY->CREATE_INFO->queueFamilyIndex,
-                            nullptr,
                             static_cast<VkMemoryPropertyFlagBits>(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT),
-                            static_cast<VkBufferUsageFlags>(VK_BUFFER_USAGE_TRANSFER_SRC_BIT),
+                            static_cast<VkBufferUsageFlags>(VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT),
                             this->TEXTURED_IMAGE_FACTORY->TEXEL.get(),
                             this->TEXTURED_IMAGE_FACTORY->IMAGE.get(),
                             false
@@ -322,14 +318,14 @@ namespace SnowfallEngine
                 (
                     this->DEVICE_FACTORY->DEVICE.get(),
                     this->DEVICE_FACTORY->QUEUE.get(),
-                    this->TEXEL_BUFFER_FACTORY_FOR_CPU_STAGING->BUFFER.get(),
-                    this->TEXEL_BUFFER_FACTORY_FOR_GPU->BUFFER.get(),
-                    static_cast<uint32_t>(this->TEXEL_BUFFER_FACTORY_FOR_GPU->DEVICE_SIZE),
+                    this->TEXTURED_IMAGE_BUFFER_FACTORY_FOR_CPU_STAGING->BUFFER.get(),
+                    this->TEXTURED_IMAGE_BUFFER_FACTORY_FOR_GPU->.get(),
+                    static_cast<uint32_t>(this->TEXEL_BUFFER_FACTORY_FOR_GPU->SIZE),
                     this->COMMAND_BUFFER_FACTORY->POOL.get()
                 );
 
                 //We dont need the staging buffer anymore so we can delete it
-                this->TEXEL_BUFFER_FACTORY_FOR_CPU_STAGING.reset();
+                this->TEXTURED_IMAGE_BUFFER_FACTORY_FOR_CPU_STAGING.reset();
 
                 CommandBufferRecorder::RecordCommandBuffers
                 (
@@ -343,9 +339,11 @@ namespace SnowfallEngine
                     this->VIEWPORT_FACTORY->VIEWPORT.get(), 
                     this->VIEWPORT_FACTORY->SCISSOR.get(),  
                     this->TEXEL_BUFFER_FACTORY_FOR_GPU->BUFFER.get(),
-                    static_cast<uint32_t>(this->TEXEL_BUFFER_FACTORY_FOR_GPU->DEVICE_SIZE),
+                    static_cast<uint32_t>(this->TEXEL_BUFFER_FACTORY_FOR_GPU->SIZE),
                     this->TEXEL_BUFFER_FACTORY_FOR_GPU->BUFFER.get()
                 );
+    
+                this->TEXTURED_IMAGE_FACTORY.reset();
             }
         }
     }

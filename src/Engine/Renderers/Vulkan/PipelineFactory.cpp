@@ -87,10 +87,9 @@ namespace SnowfallEngine
 
             std::unique_ptr<const VkPipeline> PipelineFactory::createPipeline(const VkDevice* device, const uint32_t& shaderStageCount, const VkPipelineShaderStageCreateInfo shaderStageCreateInfos[], const VkPipelineLayout* layout, const VkRenderPass* renderPass, const VkViewport* viewport, const VkRect2D* scissor) const
             {
-                //TODO: Dont use auto
                 //TODO: Place somewhere else
-                auto bindingDescription = Geometry::Vertex2D::GetBindingDescription();
-                auto attributeDescriptions = Geometry::Vertex2D::GetAttributeDescriptions();
+                VkVertexInputBindingDescription bindingDescription = Geometry::Vertex2D::GetBindingDescription();
+                std::array<VkVertexInputAttributeDescription, 2> attributeDescriptions = Geometry::Vertex2D::GetAttributeDescriptions();
 
                 const VkPipelineVertexInputStateCreateInfo pipelineVertexInputStateCreateInfo 
                 {

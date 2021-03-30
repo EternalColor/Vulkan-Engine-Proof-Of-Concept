@@ -8,6 +8,7 @@ namespace SnowfallEngine
         {
             DeviceFactory::DeviceFactory(const VkInstance* vkInstance, const VkPhysicalDevice* physicalDevices, const VkDeviceQueueCreateInfo* deviceQueueCreateInfo, const Layers* layers, const VkPhysicalDeviceFeatures* physicalDeviceFeatures, const uint32_t& queueFamilyIndex) 
                 :   //INITIALIZATION ORDER MATTERS
+                    //Require that the device supports VkSwapchain
                     DEVICE_EXTENSIONS { VK_KHR_SWAPCHAIN_EXTENSION_NAME },
                     DEVICE { this->createVkDevice(vkInstance, physicalDevices, deviceQueueCreateInfo, layers, this->DEVICE_EXTENSIONS, physicalDeviceFeatures) },
                     QUEUE { this->createVkQueue(this->DEVICE.get(), queueFamilyIndex) }

@@ -301,7 +301,7 @@ libraries/glfw/CMakeFiles/uninstall.dir/clean:
 libraries/glfw/src/CMakeFiles/glfw.dir/all:
 	$(MAKE) $(MAKESILENT) -f libraries/glfw/src/CMakeFiles/glfw.dir/build.make libraries/glfw/src/CMakeFiles/glfw.dir/depend
 	$(MAKE) $(MAKESILENT) -f libraries/glfw/src/CMakeFiles/glfw.dir/build.make libraries/glfw/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41 "Built target glfw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42 "Built target glfw"
 .PHONY : libraries/glfw/src/CMakeFiles/glfw.dir/all
 
 # Build rule for subdir invocation for target.
@@ -328,7 +328,7 @@ libraries/glfw/src/CMakeFiles/glfw.dir/clean:
 libraries/glfw/docs/CMakeFiles/docs.dir/all:
 	$(MAKE) $(MAKESILENT) -f libraries/glfw/docs/CMakeFiles/docs.dir/build.make libraries/glfw/docs/CMakeFiles/docs.dir/depend
 	$(MAKE) $(MAKESILENT) -f libraries/glfw/docs/CMakeFiles/docs.dir/build.make libraries/glfw/docs/CMakeFiles/docs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=24 "Built target docs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=25 "Built target docs"
 .PHONY : libraries/glfw/docs/CMakeFiles/docs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -355,7 +355,7 @@ libraries/glfw/docs/CMakeFiles/docs.dir/clean:
 libraries/stb/CMakeFiles/stb_image.dir/all:
 	$(MAKE) $(MAKESILENT) -f libraries/stb/CMakeFiles/stb_image.dir/build.make libraries/stb/CMakeFiles/stb_image.dir/depend
 	$(MAKE) $(MAKESILENT) -f libraries/stb/CMakeFiles/stb_image.dir/build.make libraries/stb/CMakeFiles/stb_image.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=43 "Built target stb_image"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=44 "Built target stb_image"
 .PHONY : libraries/stb/CMakeFiles/stb_image.dir/all
 
 # Build rule for subdir invocation for target.
@@ -382,7 +382,7 @@ libraries/stb/CMakeFiles/stb_image.dir/clean:
 shaders/CMakeFiles/run.dir/all:
 	$(MAKE) $(MAKESILENT) -f shaders/CMakeFiles/run.dir/build.make shaders/CMakeFiles/run.dir/depend
 	$(MAKE) $(MAKESILENT) -f shaders/CMakeFiles/run.dir/build.make shaders/CMakeFiles/run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=42 "Built target run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=43 "Built target run"
 .PHONY : shaders/CMakeFiles/run.dir/all
 
 # Build rule for subdir invocation for target.
@@ -410,12 +410,12 @@ build/CMakeFiles/SnowfallEngine.dir/all: libraries/glfw/src/CMakeFiles/glfw.dir/
 build/CMakeFiles/SnowfallEngine.dir/all: libraries/stb/CMakeFiles/stb_image.dir/all
 	$(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/depend
 	$(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "Built target SnowfallEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sascha/HDD1/VulkanTest2/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24 "Built target SnowfallEngine"
 .PHONY : build/CMakeFiles/SnowfallEngine.dir/all
 
 # Build rule for subdir invocation for target.
 build/CMakeFiles/SnowfallEngine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sascha/HDD1/VulkanTest2/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sascha/HDD1/VulkanTest2/CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 build/CMakeFiles/SnowfallEngine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/sascha/HDD1/VulkanTest2/CMakeFiles 0
 .PHONY : build/CMakeFiles/SnowfallEngine.dir/rule

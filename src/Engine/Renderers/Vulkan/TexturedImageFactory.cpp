@@ -27,12 +27,13 @@ namespace SnowfallEngine
                 stbi_image_free(this->TEXEL.get());
             }
 
-            std::unique_ptr<stbi_uc> TexturedImageFactory::createTexturedImage(int* textureWidth, int* textureHeight, VkDeviceSize* deviceSize) const
+            std::unique_ptr<stbi_uc[]> TexturedImageFactory::createTexturedImage(int* textureWidth, int* textureHeight, VkDeviceSize* deviceSize) const
             {
                 int texChannels = 0;
 
                 //textureWidth, textureHeight and deviceSize will be returned by pointer
-                std::unique_ptr<stbi_uc> pixels { stbi_load("/home/sascha/HDD1/VulkanTest2/textures/texture.jpg", textureWidth, textureHeight, &texChannels, STBI_rgb_alpha) };
+                std::unique_ptr<stbi_uc[]> pixels { stbi_load("/home/sascha/HDD1/VulkanTest2/textures/texture.jpg", textureWidth, textureHeight, &texChannels, STBI_rgb_alpha) };
+                //4 means we have 4 values per pixel (R, G, B, A) 
                 *deviceSize = *textureWidth * *textureHeight * 4;
 
                 if (!pixels) 

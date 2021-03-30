@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/sascha/HDD1/VulkanTest2/src/Engine/Core/Main.cpp" "/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Core/Main.cpp.o"
   "/home/sascha/HDD1/VulkanTest2/src/Engine/Renderers/Vulkan/ApplicationFactory.cpp" "/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/ApplicationFactory.cpp.o"
   "/home/sascha/HDD1/VulkanTest2/src/Engine/Renderers/Vulkan/AttachmentFactory.cpp" "/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/AttachmentFactory.cpp.o"
+  "/home/sascha/HDD1/VulkanTest2/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp" "/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.o"
   "/home/sascha/HDD1/VulkanTest2/src/Engine/Renderers/Vulkan/CommandBufferFactory.cpp" "/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/CommandBufferFactory.cpp.o"
   "/home/sascha/HDD1/VulkanTest2/src/Engine/Renderers/Vulkan/DeviceFactory.cpp" "/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/DeviceFactory.cpp.o"
   "/home/sascha/HDD1/VulkanTest2/src/Engine/Renderers/Vulkan/FramebufferFactory.cpp" "/home/sascha/HDD1/VulkanTest2/build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/FramebufferFactory.cpp.o"

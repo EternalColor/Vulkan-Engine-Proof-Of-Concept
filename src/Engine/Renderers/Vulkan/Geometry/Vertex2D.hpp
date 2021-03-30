@@ -26,7 +26,7 @@ namespace SnowfallEngine
                         {
                             VkVertexInputBindingDescription bindingDescription{};
                             bindingDescription.binding = 0;
-                            bindingDescription.stride = sizeof(Geometry::Vertex2D);
+                            bindingDescription.stride = sizeof(Vertex2D);
                             bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
 
                             return bindingDescription;

@@ -298,6 +298,33 @@ __/src/Engine/Renderers/Vulkan/AttachmentFactory.cpp.s:
 	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/AttachmentFactory.cpp.s
 .PHONY : __/src/Engine/Renderers/Vulkan/AttachmentFactory.cpp.s
 
+__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.o: __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.o
+
+.PHONY : __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.o
+
+# target to build an object file
+__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.o:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.o
+.PHONY : __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.o
+
+__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.i: __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.i
+
+.PHONY : __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.i
+
+# target to preprocess a source file
+__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.i:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.i
+.PHONY : __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.i
+
+__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.s: __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.s
+
+.PHONY : __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.s
+
+# target to generate assembly for a file
+__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.s:
+	cd /home/sascha/HDD1/VulkanTest2 && $(MAKE) $(MAKESILENT) -f build/CMakeFiles/SnowfallEngine.dir/build.make build/CMakeFiles/SnowfallEngine.dir/__/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.s
+.PHONY : __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.cpp.s
+
 __/src/Engine/Renderers/Vulkan/CommandBufferFactory.o: __/src/Engine/Renderers/Vulkan/CommandBufferFactory.cpp.o
 
 .PHONY : __/src/Engine/Renderers/Vulkan/CommandBufferFactory.o
@@ -809,6 +836,9 @@ help:
 	@echo "... __/src/Engine/Renderers/Vulkan/AttachmentFactory.o"
 	@echo "... __/src/Engine/Renderers/Vulkan/AttachmentFactory.i"
 	@echo "... __/src/Engine/Renderers/Vulkan/AttachmentFactory.s"
+	@echo "... __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.o"
+	@echo "... __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.i"
+	@echo "... __/src/Engine/Renderers/Vulkan/BufferMemoryFactory.s"
 	@echo "... __/src/Engine/Renderers/Vulkan/CommandBufferFactory.o"
 	@echo "... __/src/Engine/Renderers/Vulkan/CommandBufferFactory.i"
 	@echo "... __/src/Engine/Renderers/Vulkan/CommandBufferFactory.s"

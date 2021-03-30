@@ -2,6 +2,7 @@
 
 #include <vulkan/vulkan.h>
 #include <memory>
+#include <array>
 #include "Geometry/Vertex2D.hpp"
 
 namespace SnowfallEngine

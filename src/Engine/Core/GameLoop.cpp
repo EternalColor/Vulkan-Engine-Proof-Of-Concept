@@ -28,7 +28,7 @@ namespace SnowfallEngine
                 this->Tick(deltaTime);
             }
 
-            //Wait until all operation on the device has finished
+            //Wait until all operation on the device have finished
             vkDeviceWaitIdle(*this->renderWrapper->DEVICE_FACTORY->DEVICE);
         }
 
