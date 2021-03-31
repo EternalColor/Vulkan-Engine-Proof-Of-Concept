@@ -15,11 +15,11 @@ namespace SnowfallEngine
             double deltaTime = 0.0f;
             while(!this->renderWrapper->WINDOW->CloseRequested())
             { 
-                //!IMPORTANT! messuring timeBeforeRendering and calling the Render method must be executed in this order
+                //!IMPORTANT! measuring timeBeforeRendering and calling the Render method must be executed in this order
                 std::chrono::high_resolution_clock::time_point timeBeforeRendering = std::chrono::high_resolution_clock::now();
                 this->Render();
                 
-                //!IMPORTANT! messuring deltaTime and calling Tick must be executed in this order
+                //!IMPORTANT! measuring deltaTime and calling Tick must be executed in this order
                 //now - timeBeforeRendering = deltaTime (Time the rendering took)
                 deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>(std::chrono::high_resolution_clock::now() - timeBeforeRendering).count();
 
